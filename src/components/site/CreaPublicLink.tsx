@@ -1,37 +1,58 @@
 "use client";
 
+import { useState } from "react";
 import { siteConfig } from "@/content/site";
 import { buildCreaPublicSearchUrl, copyToClipboard } from "@/lib/crea";
-import { useState } from "react";
 
-type Props = { className?: string };
+type CopyStatus = "idle" | "copied" | "failed";
+
+type Props = Readonly<{
+  className?: string;
+}>;
+
+function getHint(status: CopyStatus) {
+  switch (status) {
+    case "copied":
+      return "Número do CREA copiado. Abrindo consulta pública...";
+    case "failed":
+      return "Não foi possível copiar automaticamente. Abrindo consulta pública...";
+    default:
+      return "Abrir consulta pública do CREA-SP (o número será copiado automaticamente).";
+  }
+}
 
 export function CreaPublicLink({ className }: Props) {
-  const [status, setStatus] = useState<"idle" | "copied" | "failed">("idle");
+  const [status, setStatus] = useState<CopyStatus>("idle");
 
   const number = siteConfig.crea.number;
   const url = buildCreaPublicSearchUrl(siteConfig.crea.publicSearchUrl);
 
-  async function handleClick() {
-    const ok = await copyToClipboard(number);
-    setStatus(ok ? "copied" : "failed");
+  const hint = getHint(status);
 
-    // Abre a consulta pública oficial em nova aba
-    window.open(url, "_blank", "noopener,noreferrer");
+  function handleClick() {
+    // Abre primeiro (evita bloqueio por popup quando há await)
+    const win = window.open(url, "_blank", "noopener,noreferrer");
+
+    copyToClipboard(number)
+      .then((ok) => setStatus(ok ? "copied" : "failed"))
+      .catch(() => setStatus("failed"))
+      .finally(() => {
+        globalThis.setTimeout(() => setStatus("idle"), 2500);
+      });
+
+    // Fallback se popup for bloqueado
+    if (!win) globalThis.location.assign(url);
   }
 
-  const hint =
-    status === "copied"
-      ? "Número copiado. Na página do CREA-SP, cole no campo Registro e clique em Buscar."
-      : status === "failed"
-      ? "Não foi possível copiar automaticamente. Copie o número e prossiga na página do CREA-SP."
-      : "Abrir consulta pública do CREA-SP (o número será copiado automaticamente).";
+  const mergedClassName = ["cursor-pointer", className]
+    .filter(Boolean)
+    .join(" ");
 
   return (
     <button
       type="button"
       onClick={handleClick}
-      className={className}
+      className={mergedClassName}
       aria-label="Abrir consulta pública do CREA-SP e copiar o número do registro"
       title={hint}
     >

@@ -17,7 +17,7 @@ export function CreaVerificationCard() {
         <div>
           <h2 className="text-base font-semibold">Autenticidade do CREA-SP</h2>
           <p className="mt-1 text-sm text-white/70">
-            Data e Hora da Pesquisa (simulada): {dt}
+            Data e Hora da Pesquisa: {dt}
           </p>
         </div>
 
@@ -26,19 +26,24 @@ export function CreaVerificationCard() {
             CREA-{siteConfig.crea.uf} {siteConfig.crea.number}
           </span>
           <span className="ml-2 text-white/60">•</span>
-          <CreaPublicLink className="ml-2 text-sm font-semibold text-[var(--j2c-gold)] hover:brightness-110" />
+
+          <CreaPublicLink className="ml-2 cursor-pointer text-sm font-semibold text-[var(--j2c-gold)] no-underline hover:brightness-110 hover:no-underline" />
         </div>
       </div>
 
       <div className="mt-5 grid gap-4 sm:grid-cols-2">
         <div>
           <p className="text-xs text-white/60">Nome do Profissional</p>
-          <p className="text-sm font-semibold">{siteConfig.creaPublicProfile.professionalName}</p>
+          <p className="text-sm font-semibold">
+            {siteConfig.creaPublicProfile.professionalName}
+          </p>
         </div>
 
         <div>
           <p className="text-xs text-white/60">Situação do Registro</p>
-          <p className="text-sm font-semibold">{siteConfig.creaPublicProfile.registrationStatus}</p>
+          <p className="text-sm font-semibold">
+            {siteConfig.creaPublicProfile.registrationStatus}
+          </p>
         </div>
 
         <div className="sm:col-span-2">
@@ -49,17 +54,12 @@ export function CreaVerificationCard() {
             ))}
           </ul>
         </div>
-
-        <div className="sm:col-span-2">
-          <p className="text-xs text-white/60">Responsabilidade Técnica</p>
-          <p className="mt-1 text-sm text-white/80">
-            {siteConfig.creaPublicProfile.technicalResponsibilityNote}
-          </p>
-        </div>
       </div>
 
       <p className="mt-5 text-xs text-white/60">
-        Observação: a validação oficial ocorre no site do CREA-SP. Ao abrir a consulta pública, o número do registro é copiado automaticamente para facilitar o preenchimento.
+        Observação: a validação oficial ocorre no site do CREA-SP. Ao abrir a
+        consulta pública, o número do registro é copiado automaticamente para
+        facilitar o preenchimento.
       </p>
     </section>
   );
