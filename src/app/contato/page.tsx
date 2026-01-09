@@ -5,13 +5,13 @@ import { buildWhatsAppLink } from "@/lib/whatsapp";
 export const metadata: Metadata = {
   title: "Contato",
   description:
-    "Contato da J2C Engenharia & Geotecnia: WhatsApp, e-mail e Instagram.",
+    "Contato da J2C Engenharia e Geotecnia: WhatsApp, e-mail e Instagram. Campinas/SP, atendimento nacional e plantão 24h para emergências (até 300 km).",
 };
 
 export default function ContactPage() {
   const wa = buildWhatsAppLink(
     siteConfig.contacts.whatsapp,
-    "Olá! Quero solicitar um orçamento. Minha cidade/UF é: _____. Serviço: _____."
+    "Olá! Gostaria de solicitar um orçamento.\n\nPara agilizar, por favor envie na próxima mensagem:\n- Cidade/UF\n- Serviço desejado\n- Prazo desejado\n- Descrição objetiva do objetivo/problema\n- Fotos/plantas/PDFs (se houver)\n- Se é emergência (plantão 24h até 300 km de Campinas/SP)"
   );
 
   return (
@@ -20,7 +20,15 @@ export default function ContactPage() {
 
       <div className="mt-6 rounded-2xl border border-white/10 bg-black/20 p-6">
         <p className="text-sm text-white/70">
-          {siteConfig.businessHours} • {siteConfig.responseSla}
+          <span className="font-semibold text-white">
+            {siteConfig.businessHours}
+          </span>
+          <span className="mx-2 text-white/40">•</span>
+          <span>{siteConfig.responseSla}</span>
+          <span className="mx-2 text-white/40">•</span>
+          <span className="font-semibold text-white">
+            {siteConfig.emergencyCoverage}
+          </span>
         </p>
 
         <div className="mt-4 grid gap-3 text-sm">
@@ -45,9 +53,18 @@ export default function ContactPage() {
           </a>
         </div>
 
+        <div className="mt-6 rounded-xl border border-white/10 bg-white/5 p-4 text-sm text-white/70">
+          <p className="font-semibold text-white">Região de atuação</p>
+          <p className="mt-2">
+            {siteConfig.location} • {siteConfig.coverage}
+          </p>
+          <p className="mt-1 text-white/60">{siteConfig.emergencyCoverage}</p>
+        </div>
+
         <p className="mt-6 text-sm text-white/70">
-          Para agilizar: envie cidade/UF, serviço desejado, descrição do
-          objetivo/problema e fotos/plantas (se houver).
+          Para agilizar: envie cidade/UF, tipo de serviço, prazo desejado e uma
+          descrição objetiva do problema/objetivo (com fotos, plantas ou PDFs se
+          houver).
         </p>
       </div>
     </main>

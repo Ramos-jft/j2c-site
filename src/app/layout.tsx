@@ -5,7 +5,7 @@ import { SiteFooter } from "@/components/site/SiteFooter";
 import { siteConfig } from "@/content/site";
 
 const description =
-  "Engenharia e geotecnia com foco em barragens, investigação geotécnica, estabilidade de taludes, fundações e contenções.";
+  "Engenharia e geotecnia em Campinas/SP, com atendimento nacional e plantão 24h para emergências (até 300 km). Taludes, contenções, drenagem, barragens, inspeções prediais, laudos e investigações geotécnicas — com documentação objetiva e responsabilidade técnica.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
@@ -29,7 +29,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" suppressHydrationWarning>
       <body>
         <SiteHeader />
         {children}

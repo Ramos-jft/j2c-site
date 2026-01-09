@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { siteConfig } from "@/content/site";
-import { CreaPublicLink } from "@/components/site/CreaPublicLink";
 
 const nav = [
   { href: "/", label: "Início" },
@@ -40,7 +39,7 @@ export function SiteHeader() {
             className="inline-flex items-center"
           >
             <Image
-              src="/public/brand/j2c-logo.png"
+              src="/brand/j2c-logo.png"
               alt="J2C Engenharia & Geotecnia"
               width={140}
               height={56}
@@ -48,7 +47,7 @@ export function SiteHeader() {
             />
           </Link>
 
-          {/* Nome + CREA NÃO clicáveis */}
+          {/* Nome + CREA (sem consulta pública no header) */}
           <div className="hidden sm:block leading-tight">
             <p className="text-sm font-semibold text-white">
               {siteConfig.responsible}
@@ -58,11 +57,6 @@ export function SiteHeader() {
               <span>
                 CREA-{siteConfig.crea.uf} {siteConfig.crea.number}
               </span>
-
-              <span className="text-white/40">•</span>
-
-              {/* Consulta pública: dourado, sem underline, cursor de link */}
-              <CreaPublicLink className="cursor-pointer text-xs font-semibold text-[var(--j2c-gold)] no-underline hover:brightness-110 hover:no-underline" />
             </div>
           </div>
         </div>

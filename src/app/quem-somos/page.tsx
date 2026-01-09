@@ -4,7 +4,7 @@ import { siteConfig } from "@/content/site";
 export const metadata: Metadata = {
   title: "Quem Somos",
   description:
-    "Responsável técnico, credenciais e forma de trabalho da J2C Engenharia & Geotecnia.",
+    "Responsável técnico, credenciais e forma de trabalho da J2C Engenharia e Geotecnia (Campinas/SP, atendimento nacional e plantão 24h para emergências).",
 };
 
 export default function AboutPage() {
@@ -18,25 +18,43 @@ export default function AboutPage() {
           CREA-{siteConfig.crea.uf} {siteConfig.crea.number} •{" "}
           {siteConfig.location} • {siteConfig.coverage}
         </p>
+        <p className="mt-2 text-sm text-white/70">
+          <span className="font-semibold text-white">
+            {siteConfig.emergencyCoverage}
+          </span>
+          <span className="mx-2 text-white/40">•</span>
+          {siteConfig.responseSla}
+        </p>
+
+        <h2 className="mt-6 text-lg font-semibold">Quem somos</h2>
+        <p className="mt-3 text-sm text-white/70">
+          A J2C Engenharia e Geotecnia é liderada por {siteConfig.responsible}{" "}
+          (CREA-{siteConfig.crea.uf} {siteConfig.crea.number}), com atuação em
+          obras e análises técnicas envolvendo geotecnia, taludes, drenagem,
+          contenções, barragens e inspeções.
+        </p>
+        <p className="mt-3 text-sm text-white/70">
+          Trabalhamos com método, transparência de premissas e documentação bem
+          apresentada. O padrão é entregar um material que possa ser usado para
+          aprovação, contratação, execução e histórico técnico — sem excesso de
+          palavras e sem lacunas críticas.
+        </p>
 
         <h2 className="mt-6 text-lg font-semibold">Como trabalhamos</h2>
-        <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-white/70">
-          <li>Triagem objetiva (cidade/UF, serviço, urgência e contexto).</li>
+        <ol className="mt-3 list-decimal space-y-2 pl-5 text-sm text-white/70">
+          <li>Entendimento e objetivo (escopo, prazo, nível de detalhe).</li>
           <li>
-            Vistoria/levantamento (quando necessário) com registro e
-            rastreabilidade.
+            Visita/levantamento (vistoria, registros, medições e evidências).
           </li>
-          <li>
-            Entregáveis claros: relatório/laudo/memorial/pranchas conforme
-            escopo.
-          </li>
-          <li>Quando aplicável: emissão de ART conforme contratação.</li>
-        </ul>
+          <li>Análise técnica (normas, parâmetros e hipóteses explícitas).</li>
+          <li>Entrega do relatório/projeto (com clareza e anexos).</li>
+          <li>Suporte à execução (quando contratado).</li>
+        </ol>
 
-        <h2 className="mt-6 text-lg font-semibold">Conformidade</h2>
+        <h2 className="mt-6 text-lg font-semibold">Responsabilidade técnica</h2>
         <p className="mt-3 text-sm text-white/70">
-          Atuação com responsabilidade técnica e documentação compatível com o
-          tipo de demanda.
+          Quando aplicável, os serviços são acompanhados de ART, conforme escopo
+          contratado e exigências do cliente/órgão/empreendimento.
         </p>
       </div>
     </main>

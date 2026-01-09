@@ -1,9 +1,16 @@
 export const siteConfig = {
+  // Marca (o que aparece no site)
   name: "J2C Engenharia & Geotecnia",
+
+  // Nome fantasia / uso em SEO (mantém compatibilidade com jsonld)
+  tradeName: "J2C Engenharia e Geotecnia",
+
+  // Razão social (se quiser diferenciar no futuro; por ora igual ao tradeName)
   legalName: "J2C Engenharia e Geotecnia",
+
   cnpj: "43.849.045/0001-48",
 
-  // Nome de apresentação no site (pode ser encurtado)
+  // Nome do responsável (curto no header)
   responsible: "José Luiz Carneiro",
 
   crea: {
@@ -13,7 +20,7 @@ export const siteConfig = {
       "https://creanet1.creasp.org.br/_UI/Pages/ConsultaPublica/PesquisaProfissional/PesquisaProfissional.aspx",
   },
 
-  // Dados que devem aparecer “exatamente como no print” na seção de autenticidade
+  // Dados exibidos na verificação (conforme print)
   creaPublicProfile: {
     professionalName: "JOSE LUIZ CARNEIRO DA SILVA",
     registrationStatus: "ATIVO",
@@ -22,14 +29,26 @@ export const siteConfig = {
       "Não foi encontrada nenhuma empresa sob responsabilidade técnica de JOSE LUIZ CARNEIRO DA SILVA (CREASP 5070949755).",
   },
 
+  // Região / atuação
   location: "Campinas - SP",
   coverage: "Atendimento Nacional",
-  businessHours: "Seg–Sex, 08:00–18:00", // simulado
-  responseSla: "Resposta média em até 1 dia útil", // simulado
+  emergencyCoverage: "Plantão 24h para emergências (até 300 km de Campinas/SP)",
+
+  // Horário / SLA
+  businessHours: "Seg–Sex, 08:00–17:00",
+  responseSla: "Resposta em até 1 dia útil",
+
+  // Endereço: como você não quer “endereço comercial completo”, deixamos só cidade/UF
+  // (mantém compatibilidade e evita undefined no JSON-LD)
+  address: {
+    city: "Campinas",
+    state: "SP",
+    country: "BR",
+  },
 
   contacts: {
     whatsapp: "+55 19 98398-9725",
-    email: "jl.carneiro@outlook.com.br",
+    email: "jl.carneiro@j2c.eng.br",
     instagramHandle: "@j2c_engenharia",
     instagramUrl: "https://www.instagram.com/j2c_engenharia",
 

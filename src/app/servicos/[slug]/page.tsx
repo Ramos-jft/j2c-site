@@ -1,40 +1,172 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SiteHeader } from "@/components/site/SiteHeader";
-import { SiteFooter } from "@/components/site/SiteFooter";
-import { services } from "@/content/services";
+import { notFound } from "next/navigation";
+import { siteConfig } from "@/content/site";
+import { getAllServiceSlugs, getServiceBySlug } from "@/content/services";
+import { buildWhatsAppLink } from "@/lib/whatsapp";
+import { serviceJsonLd } from "@/lib/seo/jsonld";
 
-export const metadata: Metadata = {
-  title: "Serviços",
-  description:
-    "Serviços de engenharia e geotecnia: barragens, drone, taludes, investigação geotécnica, fundações, solos moles e contenções.",
+export const dynamicParams = false;
+
+type PageProps = {
+  params: { slug: string } | Promise<{ slug: string }>;
 };
 
-export default function ServicesPage() {
+export function generateStaticParams() {
+  return getAllServiceSlugs().map((slug) => ({ slug }));
+}
+
+export function generateMetadata(): Metadata {
+  return {
+    title: "Serviço | J2C Engenharia e Geotecnia",
+    description:
+      "Detalhes do serviço, escopo, entregáveis e contato. Atendimento nacional e plantão 24h (até 300 km de Campinas/SP).",
+  };
+}
+
+function SectionTitle({ children }: Readonly<{ children: React.ReactNode }>) {
+  return <h2 className="text-lg font-semibold text-white">{children}</h2>;
+}
+
+export default async function ServiceDetailPage({
+  params,
+}: Readonly<PageProps>) {
+  const { slug } = await params;
+  const service = getServiceBySlug(slug);
+
+  if (!service) notFound();
+
+  const waHref = buildWhatsAppLink(
+    siteConfig.contacts.whatsapp,
+    service.cta.whatsappMessage
+  );
+
   return (
-    <>
-      <SiteHeader />
-      <main id="conteudo" className="mx-auto max-w-6xl px-4 py-10">
-        <h1 className="text-3xl font-semibold">Serviços</h1>
-        <p className="mt-3 text-sm text-white/70">
-          Clique em um serviço para ver detalhes e iniciar uma triagem objetiva.
+    <main id="conteudo" className="mx-auto max-w-6xl px-4 py-10">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(serviceJsonLd(service)),
+        }}
+      />
+
+      <nav aria-label="Breadcrumb" className="text-sm text-white/60">
+        <Link className="hover:text-white" href="/">
+          Início
+        </Link>
+        <span className="mx-2">/</span>
+        <Link className="hover:text-white" href="/servicos">
+          Serviços
+        </Link>
+        <span className="mx-2">/</span>
+        <span className="text-white/80">{service.title}</span>
+      </nav>
+
+      <header className="mt-6 rounded-2xl border border-white/10 bg-black/20 p-6">
+        <h1 className="text-3xl font-semibold text-white">{service.title}</h1>
+
+        <p className="mt-3 max-w-3xl text-sm text-white/70">
+          {service.overview}
         </p>
 
-        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((s) => (
-            <Link
-              key={s.slug}
-              href={`/servicos/${s.slug}`}
-              className="rounded-2xl border border-white/10 bg-black/20 p-5 hover:bg-black/30"
+        <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <a
+            href={waHref}
+            className="inline-flex items-center justify-center rounded-xl bg-[var(--j2c-whatsapp)] px-5 py-3 text-sm font-semibold text-white hover:brightness-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--j2c-gold)]"
+            aria-label={service.cta.label}
+          >
+            {service.cta.label}
+          </a>
+
+          <Link
+            href="/contato"
+            className="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white/90 hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--j2c-gold)]"
+          >
+            Ver contato e horários
+          </Link>
+
+          <p className="text-xs text-white/60">
+            {siteConfig.responseSla} • {siteConfig.emergencyCoverage}
+          </p>
+        </div>
+      </header>
+
+      <section className="mt-8 grid gap-6 lg:grid-cols-2">
+        <div className="rounded-2xl border border-white/10 bg-black/20 p-6">
+          <SectionTitle>Quando este serviço é indicado</SectionTitle>
+          <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-white/75">
+            {service.whenClientsLookForYou.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+
+          <SectionTitle>
+            <span className="mt-8 block">Como funciona</span>
+          </SectionTitle>
+          <ol className="mt-4 list-decimal space-y-2 pl-5 text-sm text-white/75">
+            {service.howItWorks.map((step) => (
+              <li key={step}>{step}</li>
+            ))}
+          </ol>
+        </div>
+
+        <div className="rounded-2xl border border-white/10 bg-black/20 p-6">
+          <SectionTitle>O que você recebe</SectionTitle>
+          <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-white/75">
+            {service.typicalDeliverables.map((d) => (
+              <li key={d}>{d}</li>
+            ))}
+          </ul>
+
+          <div className="mt-8 rounded-xl border border-white/10 bg-white/5 p-4">
+            <p className="text-sm font-semibold text-white">Prazo típico</p>
+            <p className="mt-2 text-sm text-white/75">
+              {service.typicalTimeline}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="mt-6 rounded-2xl border border-white/10 bg-black/20 p-6">
+        <SectionTitle>O que precisamos para orçar com precisão</SectionTitle>
+        <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-white/75">
+          {service.clientProvides.map((i) => (
+            <li key={i}>{i}</li>
+          ))}
+        </ul>
+
+        <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <a
+            href={waHref}
+            className="inline-flex items-center justify-center rounded-xl bg-[var(--j2c-whatsapp)] px-5 py-3 text-sm font-semibold text-white hover:brightness-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--j2c-gold)]"
+          >
+            Enviar detalhes no WhatsApp
+          </a>
+
+          <p className="text-xs text-white/60">
+            Dica: envie cidade/UF, objetivo, prazo e fotos/plantas/PDFs se
+            houver.
+          </p>
+        </div>
+      </section>
+
+      <section className="mt-6 rounded-2xl border border-white/10 bg-black/20 p-6">
+        <SectionTitle>Perguntas frequentes</SectionTitle>
+
+        <div className="mt-4 space-y-3">
+          {service.faqs.map((f) => (
+            <details
+              key={f.q}
+              className="rounded-xl border border-white/10 bg-white/5 p-4"
             >
-              <h2 className="text-base font-semibold">{s.title}</h2>
-              <p className="mt-2 text-sm text-white/70">{s.short}</p>
-              <p className="mt-4 text-sm font-semibold text-[var(--j2c-gold)]">Abrir →</p>
-            </Link>
+              <summary className="cursor-pointer text-sm font-semibold text-white">
+                {f.q}
+              </summary>
+              <p className="mt-2 text-sm text-white/75">{f.a}</p>
+            </details>
           ))}
         </div>
-      </main>
-      <SiteFooter />
-    </>
+      </section>
+    </main>
   );
 }

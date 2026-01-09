@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { siteConfig } from "@/content/site";
+import { buildWhatsAppLink } from "@/lib/whatsapp";
 
 function SecureConnectionBadge() {
   return (
@@ -8,7 +9,6 @@ function SecureConnectionBadge() {
       title="Conexão segura (HTTPS)"
       aria-label="Conexão segura (HTTPS)"
     >
-      {/* Cadeado (SVG inline) */}
       <svg
         aria-hidden="true"
         width="14"
@@ -37,8 +37,34 @@ function SecureConnectionBadge() {
   );
 }
 
+function EmergencyBadge({
+  href,
+  title,
+}: Readonly<{ href: string; title: string }>) {
+  return (
+    <a
+      href={href}
+      aria-label="Acionar plantão 24 horas via WhatsApp"
+      title={title}
+      className="mt-3 inline-flex items-center gap-2 rounded-full border border-[var(--j2c-whatsapp)]/35 bg-[var(--j2c-whatsapp)]/12 px-3 py-2 text-xs font-semibold text-[var(--j2c-whatsapp)] hover:bg-[var(--j2c-whatsapp)]/16 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--j2c-gold)]"
+    >
+      <span
+        aria-hidden="true"
+        className="h-2 w-2 rounded-full bg-[var(--j2c-whatsapp)]"
+      />
+      <span>Plantão 24h</span>
+      <span className="hidden sm:inline text-white/55">• Emergências</span>
+    </a>
+  );
+}
+
 export function SiteFooter() {
   const year = new Date().getFullYear();
+
+  const emergencyWa = buildWhatsAppLink(
+    siteConfig.contacts.whatsapp,
+    "Olá! Preciso de atendimento EMERGENCIAL (Plantão 24h).\n\nPara agilizar, por favor envie na próxima mensagem:\n- Cidade/UF e ponto de referência\n- O que aconteceu (resumo objetivo)\n- Se há risco imediato para pessoas/estruturas\n- Fotos/vídeos do local (se possível)\n- Melhor horário para retorno por ligação (se necessário)"
+  );
 
   return (
     <footer className="border-t border-black/20 bg-[var(--j2c-graphite)]">
@@ -53,17 +79,30 @@ export function SiteFooter() {
               CNPJ: {siteConfig.cnpj}
               <br />
               {siteConfig.location} • {siteConfig.coverage}
+              <br />
+              <span className="text-white/60">{siteConfig.businessHours}</span>
             </p>
           </div>
 
           <div>
             <p className="text-sm font-semibold text-white">Contato</p>
-            <p className="mt-2 text-sm text-white/70">
+
+            <EmergencyBadge
+              href={emergencyWa}
+              title={siteConfig.emergencyCoverage}
+            />
+            <p className="mt-2 text-xs text-white/60">
+              {siteConfig.emergencyCoverage}
+            </p>
+
+            <p className="mt-3 text-sm text-white/70">
               WhatsApp: {siteConfig.contacts.whatsapp}
               <br />
               E-mail: {siteConfig.contacts.email}
               <br />
               Instagram: {siteConfig.contacts.instagramHandle}
+              <br />
+              <span className="text-white/60">{siteConfig.responseSla}</span>
             </p>
           </div>
 

@@ -86,6 +86,11 @@ main a:hover {
   text-underline-offset: 3px;
 }
 
+/* Opt-out: páginas que NÃO devem sublinhar links (Home e Serviços) */
+main[data-no-underline] a:hover {
+  text-decoration: none;
+}
+
 :focus-visible {
   outline: 2px solid var(--j2c-gold);
   outline-offset: 2px;

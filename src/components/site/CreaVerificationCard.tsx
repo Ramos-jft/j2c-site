@@ -1,23 +1,29 @@
 import { siteConfig } from "@/content/site";
-import { CreaPublicLink } from "@/components/site/CreaPublicLink";
 
-export function CreaVerificationCard() {
-  const now = new Date();
-  const dt = new Intl.DateTimeFormat("pt-BR", {
+function formatNowPtBr() {
+  return new Intl.DateTimeFormat("pt-BR", {
     dateStyle: "short",
     timeStyle: "medium",
-  }).format(now);
+  }).format(new Date());
+}
+
+export function CreaVerificationCard() {
+  const dt = formatNowPtBr();
 
   return (
     <section
-      aria-label="Autenticidade do registro no CREA-SP"
+      aria-label="Dados de verificação do registro no CREA-SP"
       className="rounded-2xl border border-white/10 bg-black/20 p-6"
     >
       <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <h2 className="text-base font-semibold">Autenticidade do CREA-SP</h2>
+          <h2 className="text-base font-semibold">Verificação do CREA-SP</h2>
+
           <p className="mt-1 text-sm text-white/70">
-            Data e Hora da Pesquisa: {dt}
+            Data e Hora da Pesquisa:{" "}
+            <span suppressHydrationWarning className="font-semibold text-white">
+              {dt}
+            </span>
           </p>
         </div>
 
@@ -25,23 +31,20 @@ export function CreaVerificationCard() {
           <span className="font-semibold text-white">
             CREA-{siteConfig.crea.uf} {siteConfig.crea.number}
           </span>
-          <span className="ml-2 text-white/60">•</span>
-
-          <CreaPublicLink className="ml-2 cursor-pointer text-sm font-semibold text-[var(--j2c-gold)] no-underline hover:brightness-110 hover:no-underline" />
         </div>
       </div>
 
       <div className="mt-5 grid gap-4 sm:grid-cols-2">
         <div>
           <p className="text-xs text-white/60">Nome do Profissional</p>
-          <p className="text-sm font-semibold">
+          <p className="text-sm font-semibold text-white">
             {siteConfig.creaPublicProfile.professionalName}
           </p>
         </div>
 
         <div>
           <p className="text-xs text-white/60">Situação do Registro</p>
-          <p className="text-sm font-semibold">
+          <p className="text-sm font-semibold text-white">
             {siteConfig.creaPublicProfile.registrationStatus}
           </p>
         </div>
@@ -55,11 +58,9 @@ export function CreaVerificationCard() {
           </ul>
         </div>
       </div>
-
-      <p className="mt-5 text-xs text-white/60">
-        Observação: a validação oficial ocorre no site do CREA-SP. Ao abrir a
-        consulta pública, o número do registro é copiado automaticamente para
-        facilitar o preenchimento.
+      <p className="mt-5 text-xs text-white/55">
+        Nota: os dados acima são exibidos no site como referência de
+        verificação.
       </p>
     </section>
   );
