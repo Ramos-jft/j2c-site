@@ -40,7 +40,7 @@ export function SiteHeader() {
             className="inline-flex items-center"
           >
             <Image
-              src="/brand/j2c-logo.jpeg"
+              src="/public/brand/j2c-logo.png"
               alt="J2C Engenharia & Geotecnia"
               width={140}
               height={56}
