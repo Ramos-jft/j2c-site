@@ -18,9 +18,9 @@ export default function ServicesPage() {
     >
       <h1 className="text-3xl font-semibold">Serviços</h1>
 
-      <p className="mt-3 max-w-3xl text-sm text-white/70">
+      <p className="mt-3 max-w-3xl text-sm text-slate-600">
         Atendimento nacional.{" "}
-        <span className="font-semibold text-white">
+        <span className="font-semibold text-slate-900">
           {siteConfig.emergencyCoverage}
         </span>{" "}
         • {siteConfig.responseSla}.
@@ -31,11 +31,11 @@ export default function ServicesPage() {
           <Link
             key={s.slug}
             href={`/servicos/${s.slug}`}
-            className="cursor-pointer rounded-2xl border border-white/10 bg-black/20 p-5 no-underline hover:bg-black/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--j2c-gold)]"
+            className="cursor-pointer rounded-2xl border border-black/10 bg-white p-5 no-underline hover:bg-[var(--j2c-cor-superficie)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--j2c-gold)]"
             aria-label={`Abrir serviço: ${s.title}`}
           >
-            <h2 className="text-base font-semibold text-white">{s.title}</h2>
-            <p className="mt-2 text-sm text-white/70">{s.short}</p>
+            <h2 className="text-base font-semibold text-slate-900">{s.title}</h2>
+            <p className="mt-2 text-sm text-slate-600">{s.short}</p>
 
             <p className="mt-4 text-sm font-semibold text-[var(--j2c-gold)]">
               Ver detalhes →

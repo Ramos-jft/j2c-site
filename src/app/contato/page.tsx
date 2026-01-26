@@ -18,33 +18,33 @@ export default function ContactPage() {
     <main id="conteudo" className="mx-auto max-w-6xl px-4 py-10">
       <h1 className="text-3xl font-semibold">Contato</h1>
 
-      <div className="mt-6 rounded-2xl border border-white/10 bg-black/20 p-6">
-        <p className="text-sm text-white/70">
-          <span className="font-semibold text-white">
+      <div className="mt-6 rounded-2xl border border-black/10 bg-white p-6">
+        <p className="text-sm text-slate-600">
+          <span className="font-semibold text-slate-900">
             {siteConfig.businessHours}
           </span>
-          <span className="mx-2 text-white/40">•</span>
+          <span className="mx-2 text-slate-400">•</span>
           <span>{siteConfig.responseSla}</span>
-          <span className="mx-2 text-white/40">•</span>
-          <span className="font-semibold text-white">
+          <span className="mx-2 text-slate-400">•</span>
+          <span className="font-semibold text-slate-900">
             {siteConfig.emergencyCoverage}
           </span>
         </p>
 
         <div className="mt-4 grid gap-3 text-sm">
-          <a className="text-white/80 hover:text-white" href={wa}>
+          <a className="text-slate-700 hover:text-slate-900" href={wa}>
             WhatsApp: {siteConfig.contacts.whatsapp}
           </a>
 
           <a
-            className="text-white/80 hover:text-white"
+            className="text-slate-700 hover:text-slate-900"
             href={`mailto:${siteConfig.contacts.email}`}
           >
             E-mail: {siteConfig.contacts.email}
           </a>
 
           <a
-            className="text-white/80 hover:text-white"
+            className="text-slate-700 hover:text-slate-900"
             href={siteConfig.contacts.instagramUrl}
             target="_blank"
             rel="noreferrer"
@@ -53,15 +53,15 @@ export default function ContactPage() {
           </a>
         </div>
 
-        <div className="mt-6 rounded-xl border border-white/10 bg-white/5 p-4 text-sm text-white/70">
-          <p className="font-semibold text-white">Região de atuação</p>
+        <div className="mt-6 rounded-xl border border-black/10 bg-[var(--j2c-cor-superficie)] p-4 text-sm text-slate-600">
+          <p className="font-semibold text-slate-900">Região de atuação</p>
           <p className="mt-2">
             {siteConfig.location} • {siteConfig.coverage}
           </p>
-          <p className="mt-1 text-white/60">{siteConfig.emergencyCoverage}</p>
+          <p className="mt-1 text-slate-500">{siteConfig.emergencyCoverage}</p>
         </div>
 
-        <p className="mt-6 text-sm text-white/70">
+        <p className="mt-6 text-sm text-slate-600">
           Para agilizar: envie cidade/UF, tipo de serviço, prazo desejado e uma
           descrição objetiva do problema/objetivo (com fotos, plantas ou PDFs se
           houver).

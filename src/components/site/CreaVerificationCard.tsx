@@ -13,22 +13,27 @@ export function CreaVerificationCard() {
   return (
     <section
       aria-label="Dados de verificação do registro no CREA-SP"
-      className="rounded-2xl border border-white/10 bg-black/20 p-6"
+      className="rounded-2xl border border-black/10 bg-[var(--j2c-cor-superficie)] p-6"
     >
       <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <h2 className="text-base font-semibold">Verificação do CREA-SP</h2>
+          <h2 className="text-base font-semibold text-slate-900">
+            Verificação do CREA-SP
+          </h2>
 
-          <p className="mt-1 text-sm text-white/70">
+          <p className="mt-1 text-sm text-slate-600">
             Data e Hora da Pesquisa:{" "}
-            <span suppressHydrationWarning className="font-semibold text-white">
+            <span
+              suppressHydrationWarning
+              className="font-semibold text-slate-900"
+            >
               {dt}
             </span>
           </p>
         </div>
 
         <div className="text-sm">
-          <span className="font-semibold text-white">
+          <span className="font-semibold text-slate-900">
             CREA-{siteConfig.crea.uf} {siteConfig.crea.number}
           </span>
         </div>
@@ -36,29 +41,29 @@ export function CreaVerificationCard() {
 
       <div className="mt-5 grid gap-4 sm:grid-cols-2">
         <div>
-          <p className="text-xs text-white/60">Nome do Profissional</p>
-          <p className="text-sm font-semibold text-white">
+          <p className="text-xs text-slate-500">Nome do Profissional</p>
+          <p className="text-sm font-semibold text-slate-900">
             {siteConfig.creaPublicProfile.professionalName}
           </p>
         </div>
 
         <div>
-          <p className="text-xs text-white/60">Situação do Registro</p>
-          <p className="text-sm font-semibold text-white">
+          <p className="text-xs text-slate-500">Situação do Registro</p>
+          <p className="text-sm font-semibold text-slate-900">
             {siteConfig.creaPublicProfile.registrationStatus}
           </p>
         </div>
 
         <div className="sm:col-span-2">
-          <p className="text-xs text-white/60">Títulos</p>
-          <ul className="mt-1 list-disc pl-5 text-sm text-white/80">
+          <p className="text-xs text-slate-500">Títulos</p>
+          <ul className="mt-1 list-disc pl-5 text-sm text-slate-700">
             {siteConfig.creaPublicProfile.titles.map((t) => (
               <li key={t}>{t}</li>
             ))}
           </ul>
         </div>
       </div>
-      <p className="mt-5 text-xs text-white/55">
+      <p className="mt-5 text-xs text-slate-500">
         Nota: os dados acima são exibidos no site como referência de
         verificação.
       </p>

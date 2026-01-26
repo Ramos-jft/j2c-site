@@ -21,7 +21,7 @@ export function SiteHeader() {
   const pathname = usePathname();
 
   return (
-    <header className="border-b border-white/10 bg-[var(--j2c-graphite)]">
+    <header className="border-b border-black/10 bg-white/80 backdrop-blur">
       <a
         href="#conteudo"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-white focus:px-3 focus:py-2 focus:text-black"
@@ -49,11 +49,11 @@ export function SiteHeader() {
 
           {/* Nome + CREA (sem consulta pública no header) */}
           <div className="hidden sm:block leading-tight">
-            <p className="text-sm font-semibold text-white">
+            <p className="text-sm font-semibold text-slate-900">
               {siteConfig.responsible}
             </p>
 
-            <div className="mt-1 flex items-center gap-2 text-xs text-white/70">
+            <div className="mt-1 flex items-center gap-2 text-xs text-slate-600">
               <span>
                 CREA-{siteConfig.crea.uf} {siteConfig.crea.number}
               </span>

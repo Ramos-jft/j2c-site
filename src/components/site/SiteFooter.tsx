@@ -5,7 +5,7 @@ import { buildWhatsAppLink } from "@/lib/whatsapp";
 function SecureConnectionBadge() {
   return (
     <div
-      className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-2 text-xs text-white/70 backdrop-blur-sm"
+      className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-[var(--j2c-cor-superficie)] px-3 py-2 text-xs text-slate-700"
       title="Conexão segura (HTTPS)"
       aria-label="Conexão segura (HTTPS)"
     >
@@ -32,7 +32,7 @@ function SecureConnectionBadge() {
       </svg>
 
       <span className="font-semibold">Conexão segura</span>
-      <span className="text-white/50">(HTTPS)</span>
+      <span className="text-slate-500">(HTTPS)</span>
     </div>
   );
 }
@@ -53,7 +53,7 @@ function EmergencyBadge({
         className="h-2 w-2 rounded-full bg-[var(--j2c-whatsapp)]"
       />
       <span>Plantão 24h</span>
-      <span className="hidden sm:inline text-white/55">• Emergências</span>
+      <span className="hidden sm:inline text-slate-600">• Emergências</span>
     </a>
   );
 }
@@ -67,52 +67,52 @@ export function SiteFooter() {
   );
 
   return (
-    <footer className="border-t border-black/20 bg-[var(--j2c-graphite)]">
+    <footer className="border-t border-black/10 bg-white">
       {/* Cards: agrupados a partir do meio da página */}
       <div className="mx-auto max-w-6xl px-4 py-10">
         <div className="mx-auto grid max-w-4xl gap-6 sm:grid-cols-3">
           <div>
-            <p className="text-sm font-semibold text-white">
+            <p className="text-sm font-semibold text-slate-900">
               {siteConfig.legalName}
             </p>
-            <p className="mt-2 text-sm text-white/70">
+            <p className="mt-2 text-sm text-slate-600">
               CNPJ: {siteConfig.cnpj}
               <br />
               {siteConfig.location} • {siteConfig.coverage}
               <br />
-              <span className="text-white/60">{siteConfig.businessHours}</span>
+              <span className="text-slate-500">{siteConfig.businessHours}</span>
             </p>
           </div>
 
           <div>
-            <p className="text-sm font-semibold text-white">Contato</p>
+            <p className="text-sm font-semibold text-slate-900">Contato</p>
 
             <EmergencyBadge
               href={emergencyWa}
               title={siteConfig.emergencyCoverage}
             />
-            <p className="mt-2 text-xs text-white/60">
+            <p className="mt-2 text-xs text-slate-600">
               {siteConfig.emergencyCoverage}
             </p>
 
-            <p className="mt-3 text-sm text-white/70">
+            <p className="mt-3 text-sm text-slate-600">
               WhatsApp: {siteConfig.contacts.whatsapp}
               <br />
               E-mail: {siteConfig.contacts.email}
               <br />
               Instagram: {siteConfig.contacts.instagramHandle}
               <br />
-              <span className="text-white/60">{siteConfig.responseSla}</span>
+              <span className="text-slate-500">{siteConfig.responseSla}</span>
             </p>
           </div>
 
           <div>
-            <p className="text-sm font-semibold text-white">Informações</p>
+            <p className="text-sm font-semibold text-slate-900">Informações</p>
             <div className="mt-2 flex flex-col gap-2 text-sm">
-              <Link className="text-white/70 hover:text-white" href="/servicos">
+              <Link className="text-slate-700 hover:text-slate-900" href="/servicos">
                 Ver serviços
               </Link>
-              <Link className="text-white/70 hover:text-white" href="/contato">
+              <Link className="text-slate-700 hover:text-slate-900" href="/contato">
                 Solicitar orçamento
               </Link>
             </div>
@@ -121,9 +121,9 @@ export function SiteFooter() {
       </div>
 
       {/* Barra inferior: copyright | site seguro | CREA (centrado a partir do meio) */}
-      <div className="border-t border-black/20">
+      <div className="border-t border-black/10">
         <div className="mx-auto max-w-6xl px-4 py-4">
-          <div className="mx-auto grid max-w-4xl items-center gap-3 text-xs text-white/60 sm:grid-cols-3">
+          <div className="mx-auto grid max-w-4xl items-center gap-3 text-xs text-slate-600 sm:grid-cols-3">
             <span className="sm:justify-self-start">
               © {year} {siteConfig.legalName}. Todos os direitos reservados.
             </span>

@@ -25,7 +25,7 @@ export function generateMetadata(): Metadata {
 }
 
 function SectionTitle({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <h2 className="text-lg font-semibold text-white">{children}</h2>;
+  return <h2 className="text-lg font-semibold text-slate-900">{children}</h2>;
 }
 
 export default async function ServiceDetailPage({
@@ -50,29 +50,29 @@ export default async function ServiceDetailPage({
         }}
       />
 
-      <nav aria-label="Breadcrumb" className="text-sm text-white/60">
-        <Link className="hover:text-white" href="/">
+      <nav aria-label="Breadcrumb" className="text-sm text-slate-500">
+        <Link className="hover:text-slate-900" href="/">
           Início
         </Link>
         <span className="mx-2">/</span>
-        <Link className="hover:text-white" href="/servicos">
+        <Link className="hover:text-slate-900" href="/servicos">
           Serviços
         </Link>
         <span className="mx-2">/</span>
-        <span className="text-white/80">{service.title}</span>
+        <span className="text-slate-700">{service.title}</span>
       </nav>
 
-      <header className="mt-6 rounded-2xl border border-white/10 bg-black/20 p-6">
-        <h1 className="text-3xl font-semibold text-white">{service.title}</h1>
+      <header className="mt-6 rounded-2xl border border-black/10 bg-white p-6">
+        <h1 className="text-3xl font-semibold text-slate-900">{service.title}</h1>
 
-        <p className="mt-3 max-w-3xl text-sm text-white/70">
+        <p className="mt-3 max-w-3xl text-sm text-slate-600">
           {service.overview}
         </p>
 
         <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center">
           <a
             href={waHref}
-            className="inline-flex items-center justify-center rounded-xl bg-[var(--j2c-whatsapp)] px-5 py-3 text-sm font-semibold text-white hover:brightness-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--j2c-gold)]"
+            className="inline-flex items-center justify-center rounded-xl bg-[var(--j2c-gold)] px-5 py-3 text-sm font-semibold text-white hover:brightness-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--j2c-gold)]"
             aria-label={service.cta.label}
           >
             {service.cta.label}
@@ -80,21 +80,21 @@ export default async function ServiceDetailPage({
 
           <Link
             href="/contato"
-            className="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white/90 hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--j2c-gold)]"
+            className="inline-flex items-center justify-center rounded-xl border border-black/10 bg-[var(--j2c-cor-superficie)] px-5 py-3 text-sm font-semibold text-slate-900 hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--j2c-gold)]"
           >
             Ver contato e horários
           </Link>
 
-          <p className="text-xs text-white/60">
+          <p className="text-xs text-slate-500">
             {siteConfig.responseSla} • {siteConfig.emergencyCoverage}
           </p>
         </div>
       </header>
 
       <section className="mt-8 grid gap-6 lg:grid-cols-2">
-        <div className="rounded-2xl border border-white/10 bg-black/20 p-6">
+        <div className="rounded-2xl border border-black/10 bg-white p-6">
           <SectionTitle>Quando este serviço é indicado</SectionTitle>
-          <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-white/75">
+          <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-slate-600">
             {service.whenClientsLookForYou.map((item) => (
               <li key={item}>{item}</li>
             ))}
@@ -103,33 +103,33 @@ export default async function ServiceDetailPage({
           <SectionTitle>
             <span className="mt-8 block">Como funciona</span>
           </SectionTitle>
-          <ol className="mt-4 list-decimal space-y-2 pl-5 text-sm text-white/75">
+          <ol className="mt-4 list-decimal space-y-2 pl-5 text-sm text-slate-600">
             {service.howItWorks.map((step) => (
               <li key={step}>{step}</li>
             ))}
           </ol>
         </div>
 
-        <div className="rounded-2xl border border-white/10 bg-black/20 p-6">
+        <div className="rounded-2xl border border-black/10 bg-white p-6">
           <SectionTitle>O que você recebe</SectionTitle>
-          <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-white/75">
+          <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-slate-600">
             {service.typicalDeliverables.map((d) => (
               <li key={d}>{d}</li>
             ))}
           </ul>
 
-          <div className="mt-8 rounded-xl border border-white/10 bg-white/5 p-4">
-            <p className="text-sm font-semibold text-white">Prazo típico</p>
-            <p className="mt-2 text-sm text-white/75">
+          <div className="mt-8 rounded-xl border border-black/10 bg-[var(--j2c-cor-superficie)] p-4">
+            <p className="text-sm font-semibold text-slate-900">Prazo típico</p>
+            <p className="mt-2 text-sm text-slate-600">
               {service.typicalTimeline}
             </p>
           </div>
         </div>
       </section>
 
-      <section className="mt-6 rounded-2xl border border-white/10 bg-black/20 p-6">
+      <section className="mt-6 rounded-2xl border border-black/10 bg-white p-6">
         <SectionTitle>O que precisamos para orçar com precisão</SectionTitle>
-        <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-white/75">
+        <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-slate-600">
           {service.clientProvides.map((i) => (
             <li key={i}>{i}</li>
           ))}
@@ -138,31 +138,31 @@ export default async function ServiceDetailPage({
         <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
           <a
             href={waHref}
-            className="inline-flex items-center justify-center rounded-xl bg-[var(--j2c-whatsapp)] px-5 py-3 text-sm font-semibold text-white hover:brightness-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--j2c-gold)]"
+            className="inline-flex items-center justify-center rounded-xl bg-[var(--j2c-gold)] px-5 py-3 text-sm font-semibold text-white hover:brightness-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--j2c-gold)]"
           >
             Enviar detalhes no WhatsApp
           </a>
 
-          <p className="text-xs text-white/60">
+          <p className="text-xs text-slate-500">
             Dica: envie cidade/UF, objetivo, prazo e fotos/plantas/PDFs se
             houver.
           </p>
         </div>
       </section>
 
-      <section className="mt-6 rounded-2xl border border-white/10 bg-black/20 p-6">
+      <section className="mt-6 rounded-2xl border border-black/10 bg-white p-6">
         <SectionTitle>Perguntas frequentes</SectionTitle>
 
         <div className="mt-4 space-y-3">
           {service.faqs.map((f) => (
             <details
               key={f.q}
-              className="rounded-xl border border-white/10 bg-white/5 p-4"
+              className="rounded-xl border border-black/10 bg-[var(--j2c-cor-superficie)] p-4"
             >
-              <summary className="cursor-pointer text-sm font-semibold text-white">
+              <summary className="cursor-pointer text-sm font-semibold text-slate-900">
                 {f.q}
               </summary>
-              <p className="mt-2 text-sm text-white/75">{f.a}</p>
+              <p className="mt-2 text-sm text-slate-600">{f.a}</p>
             </details>
           ))}
         </div>
