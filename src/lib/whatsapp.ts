@@ -1,5 +1,6 @@
-export function buildWhatsAppLink(phone: string, message: string) {
-  const digits = phone.replaceAll(/[^\d]/g, "");
-  const text = encodeURIComponent(message);
-  return `https://wa.me/${digits}?text=${text}`;
+export function buildWhatsAppLink(telefone: string, mensagem: string): string {
+  const digitos = (telefone ?? "").replaceAll(/\D/g, "");
+  const texto = encodeURIComponent(mensagem ?? "");
+
+  return `https://wa.me/${digitos}?text=${texto}`;
 }

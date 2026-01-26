@@ -1,141 +1,141 @@
-import Link from "next/link";
 import { siteConfig } from "@/content/site";
-import { services } from "@/content/services";
 import { faq } from "@/content/faq";
+import { getServicesEmOrdemPrioritaria } from "@/content/services";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 import { faqJsonLd, organizationJsonLd } from "@/lib/seo/jsonld";
+import { HeroSplit } from "@/components/home/HeroSplit";
+import { FaixaKpis } from "@/components/home/FaixaKpis";
+import { CardServico } from "@/components/home/CardServico";
 
 export default function HomePage() {
-  const wa = buildWhatsAppLink(
+  const hrefWhatsAppGeral = buildWhatsAppLink(
     siteConfig.contacts.whatsapp,
-    "Olá! Quero solicitar proposta. Minha cidade/UF é: _____. Serviço: _____. Prazo desejado: _____. Caso emergencial? ( ) Sim ( ) Não."
+    `Olá! Quero solicitar orçamento.
+
+Cidade/UF: ____
+Serviço: ____
+Prazo desejado: ____
+O local tem acesso liberado para vistoria? ( ) Sim ( ) Não`
   );
 
+  const itensKpi = [
+    {
+      titulo: "NBR 11682",
+      descricao: "Referência para estabilidade de encostas e taludes (quando aplicável).",
+    },
+    {
+      titulo: "ART quando aplicável",
+      descricao: "Emitida conforme escopo contratado e exigências do cliente/órgão.",
+    },
+    {
+      titulo: siteConfig.responseSla,
+      descricao: "Orçamento inicial e alinhamento de escopo pelo WhatsApp.",
+    },
+  ] as const;
+
+  const servicosOrdenados = getServicesEmOrdemPrioritaria();
+
   return (
-    <main
-      id="conteudo"
-      data-no-underline
-      className="mx-auto max-w-6xl px-4 py-10"
-    >
-      {/* Hero */}
-      <section className="rounded-2xl border border-black/10 bg-[var(--j2c-cor-superficie)] p-6 sm:p-10">
-        <div className="flex flex-col gap-6">
-          <div>
-            <p className="text-sm text-slate-600">
-              {siteConfig.location} • {siteConfig.coverage}
-              <span className="mx-2 text-slate-400">•</span>
-              {siteConfig.emergencyCoverage}
-            </p>
+    <main id="conteudo" data-no-underline className="pb-12">
+      <HeroSplit
+        titulo="Laudo de estabilidade e geotecnia aplicada para decisões seguras."
+        subtitulo="Atendimento para rodovias, cortes e aterros, obras urbanas e imóveis. Diagnóstico em campo, análise técnica e entrega objetiva — com comunicação simples e documentação que ajuda a contratar e executar."
+        linhaProva={`${siteConfig.location} • ${siteConfig.coverage} • ${siteConfig.emergencyCoverage}`}
+        hrefWhatsApp={hrefWhatsAppGeral}
+        textoBotaoPrimario="Chamar no WhatsApp"
+        textoBotaoSecundario="Ver serviços"
+        hrefBotaoSecundario="#servicos"
+        imagem={{
+          src: "/hero/talude.webp",
+          alt: "Talude em obra de infraestrutura (imagem ilustrativa)",
+          prioridade: true,
+        }}
+      />
 
-            <h1 className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">
-              Engenharia e Geotecnia com rigor técnico e entrega objetiva.
-            </h1>
+      <FaixaKpis itens={itensKpi} />
 
-            <p className="mt-4 max-w-3xl text-base leading-relaxed text-slate-700">
-              Projetos, laudos e inspeções para decisões seguras em obras,
-              imóveis e infraestrutura — com método, documentação e
-              responsabilidade profissional.
-            </p>
+      {/* Como funciona (reduz objeções: orçamento remoto / visita) */}
+      <section className="mx-auto max-w-6xl px-4 pt-10">
+        <div className="rounded-2xl border border-black/10 bg-white p-6">
+          <h2 className="text-xl font-semibold text-slate-900">
+            Como funciona do primeiro contato à entrega
+          </h2>
 
-            <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-slate-600">
-              <li>Diagnóstico claro + recomendação executável.</li>
-              <li>
-                Conformidade com normas e boas práticas (ABNT e referências
-                aplicáveis).
-              </li>
-              <li>
-                Relatórios com evidências (fotos, croquis, registros e
-                rastreabilidade).
-              </li>
-            </ul>
-
-            <div className="mt-6 flex flex-wrap gap-3">
-              <a
-                href={wa}
-                className="rounded-xl bg-[var(--j2c-gold)] px-5 py-3 text-sm font-semibold text-white hover:brightness-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--j2c-gold)]"
-              >
-                Falar no WhatsApp
-              </a>
-
-              <Link
-                href="/servicos"
-                className="rounded-xl border border-black/10 bg-white px-5 py-3 text-sm font-semibold text-slate-900 hover:bg-white/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--j2c-gold)]"
-              >
-                Ver serviços
-              </Link>
+          <div className="mt-5 grid gap-4 lg:grid-cols-3">
+            <div className="rounded-2xl border border-black/10 bg-[var(--j2c-cor-superficie)] p-5">
+              <p className="text-sm font-semibold text-slate-900">
+                1) Orçamento pelo WhatsApp
+              </p>
+              <p className="mt-2 text-sm text-slate-600">
+                Você envia local, objetivo e prazo. A gente retorna com escopo
+                sugerido e estimativa inicial.
+              </p>
             </div>
 
-            <div className="mt-6 text-sm text-slate-600">
-              <span className="font-semibold text-slate-900">
-                {siteConfig.businessHours}
-              </span>
-              <span className="mx-2 text-slate-400">•</span>
-              <span>{siteConfig.responseSla}</span>
+            <div className="rounded-2xl border border-black/10 bg-[var(--j2c-cor-superficie)] p-5">
+              <p className="text-sm font-semibold text-slate-900">
+                2) Vistoria quando necessária
+              </p>
+              <p className="mt-2 text-sm text-slate-600">
+                Em casos que exigem evidência de campo, fazemos visita técnica e
+                registros (fotos, medições e checklist).
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-black/10 bg-[var(--j2c-cor-superficie)] p-5">
+              <p className="text-sm font-semibold text-slate-900">
+                3) Entrega objetiva
+              </p>
+              <p className="mt-2 text-sm text-slate-600">
+                Relatório/laudo com evidências, recomendações e próximos passos.
+                Sem texto excessivo e com prioridades claras.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* O que fazemos / Como trabalhamos */}
-      <section className="mt-10 rounded-2xl border border-black/10 bg-white p-6">
-        <h2 className="text-xl font-semibold">O que fazemos</h2>
-        <p className="mt-3 text-sm text-slate-600">
-          A J2C Engenharia e Geotecnia atua com foco em geotecnia aplicada,
-          estabilidade de taludes, drenagem, contenções, barragens e inspeções
-          técnicas, entregando documentação robusta para aprovação, contratação
-          e execução em campo.
-        </p>
+      {/* Serviços (ordem do briefing) */}
+      <section id="servicos" className="mx-auto max-w-6xl px-4 pt-10">
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <h2 className="text-xl font-semibold text-slate-900">Serviços</h2>
+            <p className="mt-1 text-sm text-slate-600">
+              Se o seu caso é “laudo de estabilidade”, você está no lugar certo.
+              Escolha o serviço e peça orçamento no WhatsApp.
+            </p>
+          </div>
 
-        <h3 className="mt-6 text-base font-semibold">Como trabalhamos</h3>
-        <ol className="mt-3 list-decimal space-y-2 pl-5 text-sm text-slate-600">
-          <li>Entendimento e objetivo (escopo, prazo, nível de detalhe).</li>
-          <li>
-            Visita/levantamento (vistoria, registros, medições e evidências).
-          </li>
-          <li>Análise técnica (normas, parâmetros e hipóteses explícitas).</li>
-          <li>Entrega do relatório/projeto (com clareza e anexos).</li>
-          <li>Suporte à execução (quando contratado).</li>
-        </ol>
-
-        <p className="mt-6 text-sm text-slate-600">
-          <span className="font-semibold text-slate-900">
-            Precisão técnica. Comunicação simples. Documento que resolve.
-          </span>{" "}
-          Você recebe um material que facilita a tomada de decisão: o que é, por
-          que ocorreu, risco associado, prioridade, alternativas de correção e
-          próximos passos.
-        </p>
-      </section>
-
-      {/* Serviços */}
-      <section className="mt-10">
-        <h2 className="text-xl font-semibold">Serviços</h2>
-        <p className="mt-2 text-sm text-slate-600">
-          Cada serviço pode ser contratado em níveis de profundidade, conforme
-          objetivo e prazo: do diagnóstico técnico com recomendações ao estudo
-          completo e projeto executivo.
-        </p>
+          <a
+            href={hrefWhatsAppGeral}
+            className="inline-flex items-center justify-center rounded-xl bg-[var(--j2c-cor-laranja)] px-4 py-2 text-sm font-semibold text-white hover:brightness-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--j2c-cor-laranja)]"
+          >
+            Pedir orçamento agora
+          </a>
+        </div>
 
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((s) => (
-            <Link
+          {servicosOrdenados.map((s) => (
+            <CardServico
               key={s.slug}
-              href={`/servicos/${s.slug}`}
-              className="rounded-2xl border border-black/10 bg-white p-5 hover:bg-[var(--j2c-cor-superficie)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--j2c-gold)]"
-            >
-              <h3 className="text-base font-semibold">{s.title}</h3>
-              <p className="mt-2 text-sm text-slate-600">{s.short}</p>
-              <p className="mt-4 text-sm font-semibold text-[var(--j2c-gold)]">
-                Saiba mais →
-              </p>
-            </Link>
+              titulo={s.title}
+              descricao={s.short}
+              hrefDetalhes={`/servicos/${s.slug}`}
+              hrefWhatsApp={buildWhatsAppLink(
+                siteConfig.contacts.whatsapp,
+                s.cta.whatsappMessage
+              )}
+            />
           ))}
         </div>
       </section>
 
       {/* FAQ */}
-      <section className="mt-10">
-        <h2 className="text-xl font-semibold">Perguntas frequentes</h2>
+      <section className="mx-auto max-w-6xl px-4 pt-10">
+        <h2 className="text-xl font-semibold text-slate-900">
+          Perguntas frequentes
+        </h2>
+
         <div className="mt-4 grid gap-3">
           {faq.map((i) => (
             <details

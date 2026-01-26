@@ -89,8 +89,14 @@ export const services: Service[] = [
     ],
     cta: {
       label: "Falar no WhatsApp sobre Barragens",
-      whatsappMessage:
-        "Olá! Gostaria de solicitar um orçamento para BARRAGENS (apoio técnico/inspeção).\n\nPara agilizar, por favor envie na próxima mensagem:\n- Cidade/UF e local do empreendimento\n- Objetivo (inspeção de rotina, pós-chuva/evento, auditoria/contratante, etc.)\n- Prazo desejado\n- Fotos/vídeos e relatórios anteriores (se houver)\n- Se é emergência (plantão 24h até 300 km de Campinas/SP)",
+      whatsappMessage: `Olá! Gostaria de solicitar um orçamento para BARRAGENS (apoio técnico/inspeção).
+
+Para agilizar, por favor envie na próxima mensagem:
+- Cidade/UF e local do empreendimento
+- Objetivo (inspeção de rotina, pós-chuva/evento, auditoria/contratante, etc.)
+- Prazo desejado
+- Fotos/vídeos e relatórios anteriores (se houver)
+- Se é emergência (plantão 24h até 300 km de Campinas/SP)`,
     },
     faqs: [
       {
@@ -159,8 +165,15 @@ export const services: Service[] = [
     ],
     cta: {
       label: "Falar no WhatsApp sobre Regularização",
-      whatsappMessage:
-        "Olá! Gostaria de solicitar um orçamento para REGULARIZAÇÃO junto à Prefeitura.\n\nPara agilizar, por favor envie na próxima mensagem:\n- Município/UF\n- Tipo de imóvel/obra\n- Se já existe processo/exigência (sim/não)\n- Prazo desejado\n- Documentos e exigências recebidas (se houver)\n- Plantas/arquivos existentes (se houver)",
+      whatsappMessage: `Olá! Gostaria de solicitar um orçamento para REGULARIZAÇÃO junto à Prefeitura.
+
+Para agilizar, por favor envie na próxima mensagem:
+- Município/UF
+- Tipo de imóvel/obra
+- Se já existe processo/exigência (sim/não)
+- Prazo desejado
+- Documentos e exigências recebidas (se houver)
+- Plantas/arquivos existentes (se houver)`,
     },
     faqs: [
       {
@@ -180,15 +193,14 @@ export const services: Service[] = [
 
   {
     slug: "drone-topografia-monitoramento",
-    title: "Drone – Topografia e Monitoramento",
+    title: "Drone – Mapeamento e Monitoramento",
     short:
-      "Levantamentos com drone para ortomosaico, modelos digitais e inspeção visual com rapidez e rastreabilidade.",
-    seoTitle: "Levantamento com Drone: topografia e monitoramento | J2C",
+      "Mapeamento e monitoramento com drone: ortomosaico, modelos digitais e inspeção visual com rapidez e rastreabilidade.",
+    seoTitle: "Levantamento com Drone: mapeamento e monitoramento | J2C",
     seoDescription:
-      "Drone para topografia e monitoramento: ortomosaico, modelos digitais, nuvem de pontos e relatórios. Operação alinhada às regras vigentes (ANAC/DECEA/ANATEL).",
+      "Drone para mapeamento e monitoramento: ortomosaico, modelos digitais, nuvem de pontos e relatórios. Operação alinhada às regras vigentes (ANAC/DECEA/ANATEL).",
     keywords: [
       "drone",
-      "topografia",
       "monitoramento",
       "ortomosaico",
       "nuvem de pontos",
@@ -234,8 +246,15 @@ export const services: Service[] = [
     ],
     cta: {
       label: "Falar no WhatsApp sobre Drone",
-      whatsappMessage:
-        "Olá! Gostaria de solicitar um orçamento para LEVANTAMENTO COM DRONE (topografia/monitoramento).\n\nPara agilizar, por favor envie na próxima mensagem:\n- Cidade/UF e local/área\n- Objetivo (topografia, monitoramento de obra, inspeção visual, etc.)\n- Área aproximada / extensão\n- Prazo desejado\n- Restrições de acesso/horários (se houver)\n- Um print/mapa da área (se possível)",
+      whatsappMessage: `Olá! Gostaria de solicitar um orçamento para LEVANTAMENTO COM DRONE (mapeamento/monitoramento).
+
+Para agilizar, por favor envie na próxima mensagem:
+- Cidade/UF e local/área
+- Objetivo (mapeamento, monitoramento de obra, inspeção visual, etc.)
+- Área aproximada / extensão
+- Prazo desejado
+- Restrições de acesso/horários (se houver)
+- Um print/mapa da área (se possível)`,
     },
     faqs: [
       {
@@ -307,8 +326,14 @@ export const services: Service[] = [
     ],
     cta: {
       label: "Falar no WhatsApp sobre Taludes",
-      whatsappMessage:
-        "Olá! Gostaria de solicitar um orçamento para LAUDO/AVALIAÇÃO DE TALUDE/ENCOSTA.\n\nPara agilizar, por favor envie na próxima mensagem:\n- Cidade/UF e local\n- Sinais observados (trincas, erosão, deslocamento, água/surgência, etc.)\n- Prazo desejado\n- Fotos/vídeos atuais\n- Se há risco imediato (e se é emergência – plantão 24h até 300 km de Campinas/SP)",
+      whatsappMessage: `Olá! Gostaria de solicitar um orçamento para LAUDO/AVALIAÇÃO DE TALUDE/ENCOSTA.
+
+Para agilizar, por favor envie na próxima mensagem:
+- Cidade/UF e local
+- Sinais observados (trincas, erosão, deslocamento, água/surgência, etc.)
+- Prazo desejado
+- Fotos/vídeos atuais
+- Se há risco imediato (e se é emergência – plantão 24h até 300 km de Campinas/SP)`,
     },
     faqs: [
       {
@@ -377,8 +402,14 @@ export const services: Service[] = [
     ],
     cta: {
       label: "Falar no WhatsApp sobre Investigação",
-      whatsappMessage:
-        "Olá! Gostaria de solicitar um orçamento para INVESTIGAÇÃO GEOTÉCNICA.\n\nPara agilizar, por favor envie na próxima mensagem:\n- Cidade/UF e local\n- Tipo de obra (residencial, industrial, infraestrutura, etc.)\n- Prazo desejado\n- Se já existe projeto/implantação (se houver, envie)\n- Se há histórico de sondagens/relatórios anteriores (se houver, envie)",
+      whatsappMessage: `Olá! Gostaria de solicitar um orçamento para INVESTIGAÇÃO GEOTÉCNICA.
+
+Para agilizar, por favor envie na próxima mensagem:
+- Cidade/UF e local
+- Tipo de obra (residencial, industrial, infraestrutura, etc.)
+- Prazo desejado
+- Se já existe projeto/implantação (se houver, envie)
+- Se há histórico de sondagens/relatórios anteriores (se houver, envie)`,
     },
     faqs: [
       {
@@ -448,8 +479,14 @@ export const services: Service[] = [
     ],
     cta: {
       label: "Falar no WhatsApp sobre Fundações",
-      whatsappMessage:
-        "Olá! Gostaria de solicitar um orçamento para FUNDAÇÕES (recomendação/suporte técnico).\n\nPara agilizar, por favor envie na próxima mensagem:\n- Cidade/UF e local\n- Tipo de obra e informações de carga (se houver)\n- Prazo desejado\n- Se existe investigação do solo/relatórios (se houver, envie)\n- Restrições de canteiro/vizinhança (se houver)",
+      whatsappMessage: `Olá! Gostaria de solicitar um orçamento para FUNDAÇÕES (recomendação/suporte técnico).
+
+Para agilizar, por favor envie na próxima mensagem:
+- Cidade/UF e local
+- Tipo de obra e informações de carga (se houver)
+- Prazo desejado
+- Se existe investigação do solo/relatórios (se houver, envie)
+- Restrições de canteiro/vizinhança (se houver)`,
     },
     faqs: [
       {
@@ -520,8 +557,14 @@ export const services: Service[] = [
     ],
     cta: {
       label: "Falar no WhatsApp sobre Solos Moles",
-      whatsappMessage:
-        "Olá! Gostaria de solicitar um orçamento para ATERRO EM SOLO MOLE (recalque/estabilidade).\n\nPara agilizar, por favor envie na próxima mensagem:\n- Cidade/UF e local\n- Altura/volume aproximado do aterro\n- Prazo desejado\n- Histórico do terreno/recalques (se houver)\n- Fotos e croqui/implantação (se possível)",
+      whatsappMessage: `Olá! Gostaria de solicitar um orçamento para ATERRO EM SOLO MOLE (recalque/estabilidade).
+
+Para agilizar, por favor envie na próxima mensagem:
+- Cidade/UF e local
+- Altura/volume aproximado do aterro
+- Prazo desejado
+- Histórico do terreno/recalques (se houver)
+- Fotos e croqui/implantação (se possível)`,
     },
     faqs: [
       {
@@ -535,6 +578,80 @@ export const services: Service[] = [
       {
         q: "Vocês fazem acompanhamento?",
         a: "Podemos fazer acompanhamento pontual em marcos críticos, se fizer sentido no seu cenário e escopo.",
+      },
+    ],
+  },
+
+  {
+    slug: "vistoria-imoveis",
+    title: "Vistoria de Imóveis (Entrega e Pós-Obra)",
+    short:
+      "Vistoria técnica em imóveis novos e usados para entrega, compra ou avaliação — com relatório claro, fotos e recomendações.",
+    seoTitle: "Vistoria de Imóveis para entrega e compra | J2C",
+    seoDescription:
+      "Vistoria técnica em imóveis novos e usados para entrega, compra ou avaliação: registro de evidências, recomendações e relatório objetivo. Atendimento nacional.",
+    keywords: [
+      "vistoria",
+      "imóvel",
+      "entrega de obra",
+      "inspeção",
+      "relatório fotográfico",
+      "laudo",
+    ],
+    overview:
+      "Na entrega de um imóvel (ou antes de comprar/alugar), o que você precisa é de clareza: o que está conforme, o que é risco, o que exige correção imediata e o que pode ser tratado depois. A vistoria técnica organiza evidências, descreve condições observadas e recomenda próximos passos — com linguagem direta e documentação que ajuda na negociação, na entrega e no histórico do imóvel.",
+    howItWorks: [
+      "Alinhamento do objetivo (entrega, compra, pós-obra, avaliação) e do nível de detalhe.",
+      "Vistoria no local com registro fotográfico e checklist por ambientes/sistemas.",
+      "Análise das evidências: severidade, risco e recomendações por prioridade.",
+      "Relatório final com fotos, descrição objetiva e próximos passos.",
+    ],
+    whenClientsLookForYou: [
+      "Entrega de apartamento/casa (novo ou reformado).",
+      "Antes de comprar/alugar um imóvel (reduzir surpresas).",
+      "Avaliação pós-obra para identificar pendências e patologias iniciais.",
+    ],
+    commonSegments: [
+      "Pessoas físicas e famílias.",
+      "Investidores e imobiliárias (quando aplicável).",
+      "Construtoras (checagem de entrega e pendências).",
+    ],
+    typicalDeliverables: [
+      "Relatório de vistoria com registro fotográfico e descrição objetiva.",
+      "Lista de pendências/prioridades (o que fazer primeiro).",
+      "Recomendações de correção e mitigação (conforme caso).",
+      "ART (quando aplicável e solicitado).",
+    ],
+    typicalTimeline:
+      "3–7 dias úteis (varia por tamanho do imóvel, nível de detalhe e urgência).",
+    clientProvides: [
+      "Endereço e disponibilidade para acesso.",
+      "Objetivo da vistoria (entrega, compra, pós-obra, etc.).",
+      "Documentos/plantas (se houver) e prazos de entrega/negociação.",
+    ],
+    cta: {
+      label: "Falar no WhatsApp sobre Vistoria",
+      whatsappMessage: `Olá! Gostaria de solicitar um orçamento para VISTORIA DE IMÓVEL (entrega/compra/pós-obra).
+
+Para agilizar, por favor envie na próxima mensagem:
+- Cidade/UF e endereço (ou bairro)
+- Tipo e tamanho do imóvel (apto/casa; m² ou nº de cômodos)
+- Objetivo (entrega, compra, pós-obra, avaliação)
+- Prazo desejado
+- Se tem plantas/documentos (se houver, envie)`,
+    },
+    faqs: [
+      {
+        q: "A vistoria serve para entrega de imóvel novo?",
+        a: "Sim. O foco é registrar evidências, identificar pendências e orientar prioridades de correção com um relatório claro.",
+      },
+      {
+        q: "Vocês fazem vistoria antes de comprar?",
+        a: "Sim. Ajuda a reduzir surpresas e dá base para negociação, principalmente quando há sinais de umidade, trincas, deformações ou histórico desconhecido.",
+      },
+      {
+        q: "Precisa ter plantas do imóvel?",
+        a: "Ajuda, mas não é obrigatório. Com acesso ao local e objetivo definido, conseguimos executar a vistoria e documentar as condições observadas.",
       },
     ],
   },
@@ -592,8 +709,14 @@ export const services: Service[] = [
     ],
     cta: {
       label: "Falar no WhatsApp sobre Contenção",
-      whatsappMessage:
-        "Olá! Gostaria de solicitar um orçamento para MURO DE CONTENÇÃO/CONTENÇÃO.\n\nPara agilizar, por favor envie na próxima mensagem:\n- Cidade/UF e local\n- Sintomas (trincas, deslocamento, água/saturação, etc.)\n- Prazo desejado\n- Fotos/vídeos\n- Se há risco imediato (e se é emergência – plantão 24h até 300 km de Campinas/SP)",
+      whatsappMessage: `Olá! Gostaria de solicitar um orçamento para MURO DE CONTENÇÃO/CONTENÇÃO.
+
+Para agilizar, por favor envie na próxima mensagem:
+- Cidade/UF e local
+- Sintomas (trincas, deslocamento, água/saturação, etc.)
+- Prazo desejado
+- Fotos/vídeos
+- Se há risco imediato (e se é emergência – plantão 24h até 300 km de Campinas/SP)`,
     },
     faqs: [
       {
@@ -612,11 +735,40 @@ export const services: Service[] = [
   },
 ];
 
-export function getServiceBySlug(slug: string) {
+export const ordemServicosPrioridade: readonly string[] = [
+  "investigacao-geotecnica",
+  "laudos-estabilidade-taludes",
+  "barragens",
+  "muros-de-contencao",
+  "fundacoes",
+  "aterros-solos-moles",
+  "drone-topografia-monitoramento",
+  "vistoria-imoveis",
+  "regularizacao-prefeitura",
+];
+
+function isServiceDefined(service: Service | undefined): service is Service {
+  return service !== undefined;
+}
+
+export function getServicesEmOrdemPrioritaria(): Service[] {
+  const porSlug = new Map(services.map((s) => [s.slug, s] as const));
+  const prioridadeSet = new Set(ordemServicosPrioridade);
+
+  const ordenados = ordemServicosPrioridade
+    .map((slug) => porSlug.get(slug))
+    .filter(isServiceDefined);
+
+  const restantes = services.filter((s) => !prioridadeSet.has(s.slug));
+
+  return [...ordenados, ...restantes];
+}
+
+export function getServiceBySlug(slug: string): Service | undefined {
   const normalized = decodeURIComponent(slug).toLowerCase().trim();
   return services.find((s) => s.slug.toLowerCase() === normalized);
 }
 
-export function getAllServiceSlugs() {
+export function getAllServiceSlugs(): string[] {
   return services.map((s) => s.slug);
 }

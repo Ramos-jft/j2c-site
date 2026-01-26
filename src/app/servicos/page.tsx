@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { services } from "@/content/services";
 import { siteConfig } from "@/content/site";
+import { getServicesEmOrdemPrioritaria } from "@/content/services";
 
 export const metadata: Metadata = {
   title: "Serviços | J2C Engenharia e Geotecnia",
   description:
-    "Serviços em engenharia e geotecnia: barragens, taludes, contenções, fundações, investigação geotécnica e levantamentos com drone. Atendimento nacional e plantão 24h (até 300 km de Campinas/SP).",
+    "Serviços em engenharia e geotecnia: investigação, laudos de estabilidade de taludes, barragens, contenções, fundações, solos moles, drone e apoio a regularização. Atendimento nacional e plantão 24h (até 300 km de Campinas/SP).",
 };
 
 export default function ServicesPage() {
+  const servicosOrdenados = getServicesEmOrdemPrioritaria();
+
   return (
     <main
       id="conteudo"
@@ -27,17 +29,17 @@ export default function ServicesPage() {
       </p>
 
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {services.map((s) => (
+        {servicosOrdenados.map((s) => (
           <Link
             key={s.slug}
             href={`/servicos/${s.slug}`}
-            className="cursor-pointer rounded-2xl border border-black/10 bg-white p-5 no-underline hover:bg-[var(--j2c-cor-superficie)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--j2c-gold)]"
+            className="cursor-pointer rounded-2xl border border-black/10 bg-white p-5 no-underline hover:bg-[var(--j2c-cor-superficie)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--j2c-cor-laranja)]"
             aria-label={`Abrir serviço: ${s.title}`}
           >
             <h2 className="text-base font-semibold text-slate-900">{s.title}</h2>
             <p className="mt-2 text-sm text-slate-600">{s.short}</p>
 
-            <p className="mt-4 text-sm font-semibold text-[var(--j2c-gold)]">
+            <p className="mt-4 text-sm font-semibold text-[var(--j2c-cor-laranja)]">
               Ver detalhes →
             </p>
           </Link>
