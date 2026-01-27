@@ -112,6 +112,9 @@ export function SiteFooter() {
               <Link className="text-slate-700 hover:text-slate-900" href="/servicos">
                 Ver serviços
               </Link>
+              <Link className="text-slate-700 hover:text-slate-900" href="/portfolio">
+                Ver portfólio
+              </Link>
               <Link className="text-slate-700 hover:text-slate-900" href="/contato">
                 Solicitar orçamento
               </Link>

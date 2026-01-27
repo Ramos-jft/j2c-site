@@ -9,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: siteConfig.siteUrl, lastModified: now },
     { url: `${siteConfig.siteUrl}/quem-somos`, lastModified: now },
     { url: `${siteConfig.siteUrl}/servicos`, lastModified: now },
+    { url: `${siteConfig.siteUrl}/portfolio`, lastModified: now },
     { url: `${siteConfig.siteUrl}/contato`, lastModified: now },
   ];
 

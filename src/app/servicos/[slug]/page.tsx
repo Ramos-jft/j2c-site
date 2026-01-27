@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { GaleriaServico } from "@/components/site/GaleriaServico";
 import { notFound } from "next/navigation";
 import { siteConfig } from "@/content/site";
 import { getAllServiceSlugs, getServiceBySlug } from "@/content/services";
@@ -16,11 +17,33 @@ export function generateStaticParams() {
   return getAllServiceSlugs().map((slug) => ({ slug }));
 }
 
-export function generateMetadata(): Metadata {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const service = getServiceBySlug(slug);
+
+  if (!service) {
+    return {
+      title: "Serviço | J2C Engenharia e Geotecnia",
+      description:
+        "Detalhes do serviço, escopo, entregáveis e contato. Atendimento nacional e plantão 24h (até 300 km de Campinas/SP).",
+    };
+  }
+
+  const url = `${siteConfig.siteUrl}/servicos/${service.slug}`;
+
   return {
-    title: "Serviço | J2C Engenharia e Geotecnia",
-    description:
-      "Detalhes do serviço, escopo, entregáveis e contato. Atendimento nacional e plantão 24h (até 300 km de Campinas/SP).",
+    title: service.seoTitle,
+    description: service.seoDescription,
+    keywords: service.keywords,
+    alternates: { canonical: url },
+    openGraph: {
+      type: "website",
+      locale: "pt_BR",
+      url,
+      title: service.seoTitle,
+      description: service.seoDescription,
+      siteName: siteConfig.name,
+    },
   };
 }
 
@@ -90,6 +113,20 @@ export default async function ServiceDetailPage({
           </p>
         </div>
       </header>
+
+      {service.galeria?.length ? (
+        <>
+          <GaleriaServico itens={service.galeria} />
+          <div className="mt-3">
+            <Link
+              className="text-sm font-semibold text-[var(--j2c-gold)] hover:underline"
+              href={`/portfolio?servico=${service.slug}`}
+            >
+              Ver mais exemplos deste serviço →
+            </Link>
+          </div>
+        </>
+      ) : null}
 
       <section className="mt-8 grid gap-6 lg:grid-cols-2">
         <div className="rounded-2xl border border-black/10 bg-white p-6">

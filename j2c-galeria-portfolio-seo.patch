@@ -1,0 +1,337 @@
+diff --git a/src/app/portfolio/page.tsx b/src/app/portfolio/page.tsx
+new file mode 100644
+index 0000000..c279ae2
+--- /dev/null
++++ b/src/app/portfolio/page.tsx
+@@ -0,0 +1,129 @@
++import type { Metadata } from "next";
++import Image from "next/image";
++import Link from "next/link";
++import { getServicesEmOrdemPrioritaria } from "@/content/services";
++
++export const metadata: Metadata = {
++  title: "Portfólio",
++  description:
++    "Galeria de registros e exemplos por serviço: taludes, contenções, barragens, fundações, solos moles, drone e vistorias.",
++};
++
++type PortfolioPageProps = {
++  searchParams?: { servico?: string | string[] };
++};
++
++function normalizeSearchParam(value: string | string[] | undefined): string | undefined {
++  if (Array.isArray(value)) return value[0]?.toLowerCase().trim();
++  return value?.toLowerCase().trim();
++}
++
++export default function PortfolioPage({ searchParams }: Readonly<PortfolioPageProps>) {
++  const servicos = getServicesEmOrdemPrioritaria();
++  const slugSelecionado = normalizeSearchParam(searchParams?.servico);
++
++  const servicosFiltrados = slugSelecionado
++    ? servicos.filter((s) => s.slug.toLowerCase() === slugSelecionado)
++    : servicos;
++
++  const itens = servicosFiltrados.flatMap((servico) =>
++    (servico.galeria ?? []).map((img) => ({
++      ...img,
++      slugServico: servico.slug,
++      tituloServico: servico.title,
++    }))
++  );
++
++  return (
++    <main id="conteudo" data-no-underline className="mx-auto max-w-6xl px-4 py-10">
++      <h1 className="text-3xl font-semibold text-slate-900">Portfólio</h1>
++      <p className="mt-3 max-w-3xl text-sm text-slate-600">
++        Exemplos e registros organizados por serviço. Use o filtro para ver apenas o que importa.
++      </p>
++
++      <section className="mt-6">
++        <div className="flex flex-wrap gap-2">
++          <Link
++            href="/portfolio"
++            className={[
++              "rounded-full border px-4 py-2 text-sm font-semibold",
++              !slugSelecionado
++                ? "border-[var(--j2c-gold)] bg-[var(--j2c-gold)] text-white"
++                : "border-black/10 bg-white text-slate-800 hover:bg-[var(--j2c-cor-superficie)]",
++            ].join(" ")}
++          >
++            Todos
++          </Link>
++
++          {servicos.map((servico) => {
++            const ativo = slugSelecionado === servico.slug.toLowerCase();
++
++            return (
++              <Link
++                key={servico.slug}
++                href={`/portfolio?servico=${servico.slug}`}
++                title={servico.title}
++                className={[
++                  "rounded-full border px-4 py-2 text-sm font-semibold",
++                  ativo
++                    ? "border-[var(--j2c-gold)] bg-[var(--j2c-gold)] text-white"
++                    : "border-black/10 bg-white text-slate-800 hover:bg-[var(--j2c-cor-superficie)]",
++                ].join(" ")}
++              >
++                {servico.title}
++              </Link>
++            );
++          })}
++        </div>
++
++        {itens.length ? (
++          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
++            {itens.map((item) => (
++              <article
++                key={`${item.slugServico}:${item.src}`}
++                className="overflow-hidden rounded-2xl border border-black/10 bg-white"
++              >
++                <div className="relative aspect-[16/9]">
++                  <Image
++                    src={item.src}
++                    alt={item.alt}
++                    fill
++                    className="object-cover"
++                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
++                    loading="lazy"
++                  />
++                </div>
++
++                <div className="p-4">
++                  <p className="text-sm font-semibold text-slate-900">
++                    {item.tituloServico}
++                  </p>
++
++                  <p className="mt-1 text-xs text-slate-600">
++                    {item.legenda ?? item.alt}
++                  </p>
++
++                  <Link
++                    href={`/servicos/${item.slugServico}`}
++                    className="mt-3 inline-flex text-sm font-semibold text-[var(--j2c-gold)] hover:underline"
++                  >
++                    Ver detalhes do serviço →
++                  </Link>
++                </div>
++              </article>
++            ))}
++          </div>
++        ) : (
++          <div className="mt-8 rounded-2xl border border-black/10 bg-white p-6">
++            <p className="text-sm text-slate-600">
++              Ainda não há imagens cadastradas para este filtro. Adicione arquivos em{" "}
++              <span className="font-semibold">public/portfolio/&lt;slug&gt;/</span> e preencha{" "}
++              <span className="font-semibold">galeria</span> no arquivo{" "}
++              <span className="font-semibold">src/content/services.ts</span>.
++            </p>
++          </div>
++        )}
++      </section>
++    </main>
++  );
++}
+diff --git a/src/app/servicos/[slug]/page.tsx b/src/app/servicos/[slug]/page.tsx
+index 81ea112..279d7d5 100644
+--- a/src/app/servicos/[slug]/page.tsx
++++ b/src/app/servicos/[slug]/page.tsx
+@@ -1,5 +1,6 @@
+ import type { Metadata } from "next";
+ import Link from "next/link";
++import { GaleriaServico } from "@/components/site/GaleriaServico";
+ import { notFound } from "next/navigation";
+ import { siteConfig } from "@/content/site";
+ import { getAllServiceSlugs, getServiceBySlug } from "@/content/services";
+@@ -16,11 +17,33 @@ export function generateStaticParams() {
+   return getAllServiceSlugs().map((slug) => ({ slug }));
+ }
+
+-export function generateMetadata(): Metadata {
++export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
++  const { slug } = await params;
++  const service = getServiceBySlug(slug);
++
++  if (!service) {
++    return {
++      title: "Serviço | J2C Engenharia e Geotecnia",
++      description:
++        "Detalhes do serviço, escopo, entregáveis e contato. Atendimento nacional e plantão 24h (até 300 km de Campinas/SP).",
++    };
++  }
++
++  const url = `${siteConfig.siteUrl}/servicos/${service.slug}`;
++
+   return {
+-    title: "Serviço | J2C Engenharia e Geotecnia",
+-    description:
+-      "Detalhes do serviço, escopo, entregáveis e contato. Atendimento nacional e plantão 24h (até 300 km de Campinas/SP).",
++    title: service.seoTitle,
++    description: service.seoDescription,
++    keywords: service.keywords,
++    alternates: { canonical: url },
++    openGraph: {
++      type: "website",
++      locale: "pt_BR",
++      url,
++      title: service.seoTitle,
++      description: service.seoDescription,
++      siteName: siteConfig.name,
++    },
+   };
+ }
+
+@@ -91,6 +114,20 @@ export default async function ServiceDetailPage({
+         </div>
+       </header>
+
++      {service.galeria?.length ? (
++        <>
++          <GaleriaServico itens={service.galeria} />
++          <div className="mt-3">
++            <Link
++              className="text-sm font-semibold text-[var(--j2c-gold)] hover:underline"
++              href={`/portfolio?servico=${service.slug}`}
++            >
++              Ver mais exemplos deste serviço →
++            </Link>
++          </div>
++        </>
++      ) : null}
++
+       <section className="mt-8 grid gap-6 lg:grid-cols-2">
+         <div className="rounded-2xl border border-black/10 bg-white p-6">
+           <SectionTitle>Quando este serviço é indicado</SectionTitle>
+diff --git a/src/app/sitemap.ts b/src/app/sitemap.ts
+index 34909fc..7b61c1c 100644
+--- a/src/app/sitemap.ts
++++ b/src/app/sitemap.ts
+@@ -9,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
+     { url: siteConfig.siteUrl, lastModified: now },
+     { url: `${siteConfig.siteUrl}/quem-somos`, lastModified: now },
+     { url: `${siteConfig.siteUrl}/servicos`, lastModified: now },
++    { url: `${siteConfig.siteUrl}/portfolio`, lastModified: now },
+     { url: `${siteConfig.siteUrl}/contato`, lastModified: now },
+   ];
+
+diff --git a/src/components/site/GaleriaServico.tsx b/src/components/site/GaleriaServico.tsx
+new file mode 100644
+index 0000000..191fbce
+--- /dev/null
++++ b/src/components/site/GaleriaServico.tsx
+@@ -0,0 +1,62 @@
++import Image from "next/image";
++
++type ItemGaleria = {
++  src: string;
++  alt: string;
++  legenda?: string;
++};
++
++type GaleriaServicoProps = {
++  titulo?: string;
++  itens: ItemGaleria[];
++};
++
++export function GaleriaServico({
++  titulo = "Exemplos (portfólio)",
++  itens,
++}: Readonly<GaleriaServicoProps>) {
++  if (!itens.length) return null;
++
++  return (
++    <section className="mt-6 rounded-2xl border border-black/10 bg-white p-6">
++      <h2 className="text-lg font-semibold text-slate-900">{titulo}</h2>
++      <p className="mt-2 text-sm text-slate-600">
++        Arraste para o lado no celular para ver mais registros.
++      </p>
++
++      <div
++        className="mt-4 flex gap-3 overflow-x-auto pb-2"
++        style={{
++          scrollSnapType: "x mandatory",
++          WebkitOverflowScrolling: "touch",
++        }}
++        aria-label="Galeria com rolagem horizontal"
++      >
++        {itens.map((item) => (
++          <figure
++            key={item.src}
++            className="shrink-0 overflow-hidden rounded-xl border border-black/10 bg-[var(--j2c-cor-superficie)]"
++            style={{ scrollSnapAlign: "start" }}
++          >
++            <div className="relative aspect-[16/9] w-[280px] sm:w-[360px] lg:w-[420px]">
++              <Image
++                src={item.src}
++                alt={item.alt}
++                fill
++                sizes="(max-width: 640px) 280px, (max-width: 1024px) 360px, 420px"
++                className="object-cover"
++                loading="lazy"
++              />
++            </div>
++
++            {item.legenda ? (
++              <figcaption className="px-3 py-2 text-xs text-slate-600">
++                {item.legenda}
++              </figcaption>
++            ) : null}
++          </figure>
++        ))}
++      </div>
++    </section>
++  );
++}
+diff --git a/src/components/site/SiteFooter.tsx b/src/components/site/SiteFooter.tsx
+index e8d3681..53054cf 100644
+--- a/src/components/site/SiteFooter.tsx
++++ b/src/components/site/SiteFooter.tsx
+@@ -112,6 +112,9 @@ export function SiteFooter() {
+               <Link className="text-slate-700 hover:text-slate-900" href="/servicos">
+                 Ver serviços
+               </Link>
++              <Link className="text-slate-700 hover:text-slate-900" href="/portfolio">
++                Ver portfólio
++              </Link>
+               <Link className="text-slate-700 hover:text-slate-900" href="/contato">
+                 Solicitar orçamento
+               </Link>
+diff --git a/src/components/site/SiteHeader.tsx b/src/components/site/SiteHeader.tsx
+index ca5e9c1..aa5f223 100644
+--- a/src/components/site/SiteHeader.tsx
++++ b/src/components/site/SiteHeader.tsx
+@@ -9,6 +9,7 @@ const nav = [
+   { href: "/", label: "Início" },
+   { href: "/quem-somos", label: "Quem Somos" },
+   { href: "/servicos", label: "Serviços" },
++  { href: "/portfolio", label: "Portfólio" },
+   { href: "/contato", label: "Contato" },
+ ];
+
+diff --git a/src/content/services.ts b/src/content/services.ts
+index a3aabec..2830807 100644
+--- a/src/content/services.ts
++++ b/src/content/services.ts
+@@ -8,6 +8,12 @@ export type ServiceCta = {
+   whatsappMessage: string;
+ };
+
++export type ImagemGaleriaServico = {
++  src: string;
++  alt: string;
++  legenda?: string;
++};
++
+ export type Service = {
+   slug: string;
+   title: string;
+@@ -30,6 +36,8 @@ export type Service = {
+   typicalTimeline: string;
+   clientProvides: string[];
+
++  galeria?: ImagemGaleriaServico[];
++
+   cta: ServiceCta;
+   faqs: ServiceFaq[];
+ };

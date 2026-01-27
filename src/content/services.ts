@@ -8,6 +8,12 @@ export type ServiceCta = {
   whatsappMessage: string;
 };
 
+export type ImagemGaleriaServico = {
+  src: string;
+  alt: string;
+  legenda?: string;
+};
+
 export type Service = {
   slug: string;
   title: string;
@@ -29,6 +35,8 @@ export type Service = {
   typicalDeliverables: string[];
   typicalTimeline: string;
   clientProvides: string[];
+
+  galeria?: ImagemGaleriaServico[];
 
   cta: ServiceCta;
   faqs: ServiceFaq[];
