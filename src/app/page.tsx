@@ -31,7 +31,7 @@ O local tem acesso liberado para vistoria? ( ) Sim ( ) Não`,
     },
     {
       titulo: siteConfig.responseSla,
-      descricao: "Orçamento inicial e alinhamento de escopo pelo WhatsApp.",
+      descricao: "Orçamento inicial e alinhamento de escopo.",
     },
   ] as const;
 
@@ -66,7 +66,7 @@ O local tem acesso liberado para vistoria? ( ) Sim ( ) Não`,
           <div className="mt-5 grid gap-4 lg:grid-cols-3">
             <div className="rounded-2xl border border-black/10 bg-[var(--j2c-cor-superficie)] p-5">
               <p className="text-sm font-semibold text-slate-900">
-                1) Orçamento pelo WhatsApp
+                1) Orçamento
               </p>
               <p className="mt-2 text-sm text-slate-600">
                 Você envia local, objetivo e prazo. A gente retorna com escopo
@@ -104,7 +104,7 @@ O local tem acesso liberado para vistoria? ( ) Sim ( ) Não`,
             <h2 className="text-xl font-semibold text-slate-900">Serviços</h2>
             <p className="mt-1 text-sm text-slate-600">
               Se o seu caso é “laudo de estabilidade”, você está no lugar certo.
-              Escolha o serviço e peça orçamento no WhatsApp.
+              Escolha o serviço e peça orçamento no WhatsApp ou E-mail.
             </p>
           </div>
         </div>
