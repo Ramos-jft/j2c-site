@@ -177,7 +177,7 @@ export default async function ServiceDetailPage({
             href={waHref}
             className="inline-flex items-center justify-center rounded-xl bg-[var(--j2c-gold)] px-5 py-3 text-sm font-semibold text-white hover:brightness-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--j2c-gold)]"
           >
-            Enviar detalhes no WhatsApp
+            Enviar detalhes
           </a>
 
           <p className="text-xs text-slate-500">

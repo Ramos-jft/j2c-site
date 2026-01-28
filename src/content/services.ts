@@ -96,7 +96,7 @@ export const services: Service[] = [
       "Objetivo claro (rotina / evento / auditoria / decisão).",
     ],
     cta: {
-      label: "Falar no WhatsApp sobre Barragens",
+      label: "Falar sobre Barragens",
       whatsappMessage: `Olá! Gostaria de solicitar um orçamento para BARRAGENS (apoio técnico/inspeção).
 
 Para agilizar, por favor envie na próxima mensagem:
@@ -172,7 +172,7 @@ Para agilizar, por favor envie na próxima mensagem:
       "Histórico do processo, exigências recebidas e prazos.",
     ],
     cta: {
-      label: "Falar no WhatsApp sobre Regularização",
+      label: "Falar sobre Regularização",
       whatsappMessage: `Olá! Gostaria de solicitar um orçamento para REGULARIZAÇÃO junto à Prefeitura.
 
 Para agilizar, por favor envie na próxima mensagem:
@@ -253,7 +253,7 @@ Para agilizar, por favor envie na próxima mensagem:
       "Janela de operação (datas e horários possíveis).",
     ],
     cta: {
-      label: "Falar no WhatsApp sobre Drone",
+      label: "Falar sobre Drone",
       whatsappMessage: `Olá! Gostaria de solicitar um orçamento para LEVANTAMENTO COM DRONE (mapeamento/monitoramento).
 
 Para agilizar, por favor envie na próxima mensagem:
@@ -333,7 +333,7 @@ Para agilizar, por favor envie na próxima mensagem:
       "Restrições de segurança e contato local.",
     ],
     cta: {
-      label: "Falar no WhatsApp sobre Taludes",
+      label: "Falar sobre Taludes",
       whatsappMessage: `Olá! Gostaria de solicitar um orçamento para LAUDO/AVALIAÇÃO DE TALUDE/ENCOSTA.
 
 Para agilizar, por favor envie na próxima mensagem:
@@ -409,7 +409,7 @@ Para agilizar, por favor envie na próxima mensagem:
       "Prazos e restrições de obra.",
     ],
     cta: {
-      label: "Falar no WhatsApp sobre Investigação",
+      label: "Falar sobre Investigação",
       whatsappMessage: `Olá! Gostaria de solicitar um orçamento para INVESTIGAÇÃO GEOTÉCNICA.
 
 Para agilizar, por favor envie na próxima mensagem:
@@ -486,7 +486,7 @@ Para agilizar, por favor envie na próxima mensagem:
       "Restrições de canteiro (acesso, vizinhança, ruído, etc.).",
     ],
     cta: {
-      label: "Falar no WhatsApp sobre Fundações",
+      label: "Falar sobre Fundações",
       whatsappMessage: `Olá! Gostaria de solicitar um orçamento para FUNDAÇÕES (recomendação/suporte técnico).
 
 Para agilizar, por favor envie na próxima mensagem:
@@ -564,7 +564,7 @@ Para agilizar, por favor envie na próxima mensagem:
       "Prazos e restrições de obra.",
     ],
     cta: {
-      label: "Falar no WhatsApp sobre Solos Moles",
+      label: "Falar sobre Solos Moles",
       whatsappMessage: `Olá! Gostaria de solicitar um orçamento para ATERRO EM SOLO MOLE (recalque/estabilidade).
 
 Para agilizar, por favor envie na próxima mensagem:
@@ -638,7 +638,7 @@ Para agilizar, por favor envie na próxima mensagem:
       "Documentos/plantas (se houver) e prazos de entrega/negociação.",
     ],
     cta: {
-      label: "Falar no WhatsApp sobre Vistoria",
+      label: "Falar sobre Vistoria",
       whatsappMessage: `Olá! Gostaria de solicitar um orçamento para VISTORIA DE IMÓVEL (entrega/compra/pós-obra).
 
 Para agilizar, por favor envie na próxima mensagem:
@@ -716,7 +716,7 @@ Para agilizar, por favor envie na próxima mensagem:
       "Informações sobre drenagem (pontos de água, vazamentos, etc.).",
     ],
     cta: {
-      label: "Falar no WhatsApp sobre Contenção",
+      label: "Falar sobre Contenção",
       whatsappMessage: `Olá! Gostaria de solicitar um orçamento para MURO DE CONTENÇÃO/CONTENÇÃO.
 
 Para agilizar, por favor envie na próxima mensagem:

@@ -44,7 +44,7 @@ O local tem acesso liberado para vistoria? ( ) Sim ( ) Não`,
         subtitulo="Atendimento para rodovias, cortes e aterros, obras urbanas e imóveis. Diagnóstico em campo, análise técnica e entrega objetiva — com comunicação simples e documentação que ajuda a contratar e executar."
         linhaProva={`${siteConfig.location} • ${siteConfig.coverage} • ${siteConfig.emergencyCoverage}`}
         hrefWhatsApp={hrefWhatsAppGeral}
-        textoBotaoPrimario="Chamar no WhatsApp"
+        textoBotaoPrimario="Entrar em contato"
         textoBotaoSecundario="Ver serviços"
         hrefBotaoSecundario="#servicos"
         imagem={{
@@ -107,13 +107,6 @@ O local tem acesso liberado para vistoria? ( ) Sim ( ) Não`,
               Escolha o serviço e peça orçamento no WhatsApp.
             </p>
           </div>
-
-          <a
-            href={hrefWhatsAppGeral}
-            className="inline-flex items-center justify-center rounded-xl bg-[var(--j2c-cor-laranja)] px-4 py-2 text-sm font-semibold text-white hover:brightness-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--j2c-cor-laranja)]"
-          >
-            Pedir orçamento agora
-          </a>
         </div>
 
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

@@ -305,7 +305,7 @@ index d901d4b..14b269f 100644
 +        subtitulo="Atendimento para rodovias, cortes e aterros, obras urbanas e imóveis. Diagnóstico em campo, análise técnica e entrega objetiva — com comunicação simples e documentação que ajuda a contratar e executar."
 +        linhaProva={`${siteConfig.location} • ${siteConfig.coverage} • ${siteConfig.emergencyCoverage}`}
 +        hrefWhatsApp={hrefWhatsAppGeral}
-+        textoBotaoPrimario="Chamar no WhatsApp"
++        textoBotaoPrimario="Pedir orçamento"
 +        textoBotaoSecundario="Ver serviços"
 +        hrefBotaoSecundario="#servicos"
 +        imagem={{
@@ -447,12 +447,7 @@ index d901d4b..14b269f 100644
 -          objetivo e prazo: do diagnóstico técnico com recomendações ao estudo
 -          completo e projeto executivo.
 -        </p>
-+          <a
-+            href={hrefWhatsAppGeral}
-+            className="inline-flex items-center justify-center rounded-xl bg-[var(--j2c-cor-laranja)] px-4 py-2 text-sm font-semibold text-white hover:brightness-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--j2c-cor-laranja)]"
-+          >
-+            Pedir orçamento agora
-+          </a>
++          
 +        </div>
  
          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
