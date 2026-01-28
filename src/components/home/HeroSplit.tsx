@@ -30,7 +30,7 @@ export function HeroSplit({
   textoBotaoSecundario = "Ver serviços",
   hrefBotaoSecundario = "#servicos",
   imagem,
-}: HeroSplitProps) {
+}: Readonly<HeroSplitProps>) {
   return (
     <section className="mx-auto max-w-6xl px-4 pt-10">
       <div className="grid items-center gap-8 rounded-2xl border border-black/10 bg-white p-6 lg:grid-cols-2 lg:p-10">

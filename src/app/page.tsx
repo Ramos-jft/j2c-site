@@ -15,17 +15,19 @@ export default function HomePage() {
 Cidade/UF: ____
 Serviço: ____
 Prazo desejado: ____
-O local tem acesso liberado para vistoria? ( ) Sim ( ) Não`
+O local tem acesso liberado para vistoria? ( ) Sim ( ) Não`,
   );
 
   const itensKpi = [
     {
       titulo: "NBR 11682",
-      descricao: "Referência para estabilidade de encostas e taludes (quando aplicável).",
+      descricao:
+        "Referência para estabilidade de encostas e taludes (quando aplicável).",
     },
     {
       titulo: "ART quando aplicável",
-      descricao: "Emitida conforme escopo contratado e exigências do cliente/órgão.",
+      descricao:
+        "Emitida conforme escopo contratado e exigências do cliente/órgão.",
     },
     {
       titulo: siteConfig.responseSla,
@@ -46,8 +48,8 @@ O local tem acesso liberado para vistoria? ( ) Sim ( ) Não`
         textoBotaoSecundario="Ver serviços"
         hrefBotaoSecundario="#servicos"
         imagem={{
-          src: "/hero/talude.webp",
-          alt: "Talude em obra de infraestrutura (imagem ilustrativa)",
+          src: "/brand/drone-v2.png",
+          alt: "Vistoria e análise geotécnica em campo (foto real)",
           prioridade: true,
         }}
       />
@@ -123,7 +125,7 @@ O local tem acesso liberado para vistoria? ( ) Sim ( ) Não`
               hrefDetalhes={`/servicos/${s.slug}`}
               hrefWhatsApp={buildWhatsAppLink(
                 siteConfig.contacts.whatsapp,
-                s.cta.whatsappMessage
+                s.cta.whatsappMessage,
               )}
             />
           ))}
