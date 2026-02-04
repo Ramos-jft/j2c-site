@@ -6,6 +6,7 @@ import { siteConfig } from "@/content/site";
 import { getAllServiceSlugs, getServiceBySlug } from "@/content/services";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 import { serviceJsonLd } from "@/lib/seo/jsonld";
+import { BotaoContatoComSelecao } from "@/components/contato/BotaoContatoComSelecao";
 
 export const dynamicParams = false;
 
@@ -97,13 +98,13 @@ export default async function ServiceDetailPage({
         </p>
 
         <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center">
-          <a
-            href={waHref}
-            className="j2c-botao-cta"
-            aria-label={service.cta.label}
-          >
-            {service.cta.label}
-          </a>
+          <BotaoContatoComSelecao
+            textoBotao={service.cta.label}
+            hrefWhatsApp={waHref}
+            assuntoEmail={`Orçamento - ${service.title}`}
+            corpoEmail={service.cta.whatsappMessage}
+            classNameBotao="j2c-botao-cta"
+          />
 
           <Link
             href="/contato"
@@ -177,9 +178,13 @@ export default async function ServiceDetailPage({
         </ul>
 
         <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-          <a href={waHref} className="j2c-botao-cta">
-            Enviar detalhes
-          </a>
+          <BotaoContatoComSelecao
+            textoBotao="Enviar detalhes"
+            hrefWhatsApp={waHref}
+            assuntoEmail={`Detalhes do caso - ${service.title}`}
+            corpoEmail={service.cta.whatsappMessage}
+            classNameBotao="j2c-botao-cta"
+          />
 
           <p className="text-xs text-slate-500">
             Dica: envie cidade/UF, objetivo, prazo e fotos/plantas/PDFs se

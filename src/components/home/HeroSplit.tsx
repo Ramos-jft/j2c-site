@@ -1,5 +1,7 @@
+// src/components/home/HeroSplit.tsx
 import Image from "next/image";
 import Link from "next/link";
+import { BotaoContatoComSelecao } from "@/components/contato/BotaoContatoComSelecao";
 
 type ImagemHero = {
   src: string;
@@ -15,6 +17,9 @@ type HeroSplitProps = {
   hrefWhatsApp: string;
   textoBotaoPrimario?: string;
 
+  assuntoEmailPrimario?: string;
+  corpoEmailPrimario?: string;
+
   textoBotaoSecundario?: string;
   hrefBotaoSecundario?: string;
 
@@ -27,6 +32,8 @@ export function HeroSplit({
   linhaProva,
   hrefWhatsApp,
   textoBotaoPrimario = "Solicitar orçamento",
+  assuntoEmailPrimario,
+  corpoEmailPrimario,
   textoBotaoSecundario = "Ver serviços",
   hrefBotaoSecundario = "#servicos",
   imagem,
@@ -48,9 +55,13 @@ export function HeroSplit({
           ) : null}
 
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-            <a href={hrefWhatsApp} className="j2c-botao-cta">
-              {textoBotaoPrimario}
-            </a>
+            <BotaoContatoComSelecao
+              textoBotao={textoBotaoPrimario}
+              hrefWhatsApp={hrefWhatsApp}
+              assuntoEmail={assuntoEmailPrimario}
+              corpoEmail={corpoEmailPrimario}
+              classNameBotao="j2c-botao-cta"
+            />
 
             <Link
               href={hrefBotaoSecundario}

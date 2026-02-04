@@ -8,14 +8,17 @@ import { FaixaKpis } from "@/components/home/FaixaKpis";
 import { CardServico } from "@/components/home/CardServico";
 
 export default function HomePage() {
+  const mensagemContatoGeral = `Olá! Quero solicitar orçamento.
+
+Para agilizar, por favor envie na próxima mensagem:
+- Cidade/UF
+- Serviço desejado
+- Prazo desejado
+- O local tem acesso liberado para vistoria? (Sim/Não)`;
+
   const hrefWhatsAppGeral = buildWhatsAppLink(
     siteConfig.contacts.whatsapp,
-    `Olá! Quero solicitar orçamento.
-
-Cidade/UF: ____
-Serviço: ____
-Prazo desejado: ____
-O local tem acesso liberado para vistoria? ( ) Sim ( ) Não`,
+    mensagemContatoGeral,
   );
 
   const itensKpi = [
@@ -45,6 +48,8 @@ O local tem acesso liberado para vistoria? ( ) Sim ( ) Não`,
         linhaProva={`${siteConfig.location} • ${siteConfig.coverage} • ${siteConfig.emergencyCoverage}`}
         hrefWhatsApp={hrefWhatsAppGeral}
         textoBotaoPrimario="Entrar em contato"
+        assuntoEmailPrimario="Contato via site - J2C"
+        corpoEmailPrimario={mensagemContatoGeral}
         textoBotaoSecundario="Ver serviços"
         hrefBotaoSecundario="#servicos"
         imagem={{
@@ -120,6 +125,8 @@ O local tem acesso liberado para vistoria? ( ) Sim ( ) Não`,
                 siteConfig.contacts.whatsapp,
                 s.cta.whatsappMessage,
               )}
+              assuntoEmail={`Orçamento - ${s.title}`}
+              corpoEmail={s.cta.whatsappMessage}
             />
           ))}
         </div>

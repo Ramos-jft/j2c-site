@@ -1,10 +1,15 @@
+// src/components/home/CardServico.tsx
 import Link from "next/link";
+import { BotaoContatoComSelecao } from "@/components/contato/BotaoContatoComSelecao";
 
 type CardServicoProps = {
   titulo: string;
   descricao: string;
   hrefDetalhes: string;
   hrefWhatsApp: string;
+
+  assuntoEmail?: string;
+  corpoEmail?: string;
 };
 
 export function CardServico({
@@ -12,6 +17,8 @@ export function CardServico({
   descricao,
   hrefDetalhes,
   hrefWhatsApp,
+  assuntoEmail,
+  corpoEmail,
 }: Readonly<CardServicoProps>) {
   return (
     <article className="rounded-2xl border border-black/10 bg-white p-5">
@@ -26,9 +33,14 @@ export function CardServico({
           Saiba mais
         </Link>
 
-        <a href={hrefWhatsApp} className="j2c-botao-cta j2c-botao-cta--sm">
-          Pedir orçamento
-        </a>
+        <BotaoContatoComSelecao
+          textoBotao="Pedir orçamento"
+          hrefWhatsApp={hrefWhatsApp}
+          assuntoEmail={assuntoEmail}
+          corpoEmail={corpoEmail}
+          classNameBotao="j2c-botao-cta j2c-botao-cta--sm"
+          alinhamentoMenu="esquerda"
+        />
       </div>
     </article>
   );
