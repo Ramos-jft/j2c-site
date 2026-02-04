@@ -1,14 +1,40 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import { siteConfig } from "@/content/site";
 
-function formatNowPtBr() {
-  return new Intl.DateTimeFormat("pt-BR", {
-    dateStyle: "short",
-    timeStyle: "medium",
-  }).format(new Date());
+const FUSO_HORARIO_BRASIL = "America/Sao_Paulo";
+
+const formatadorDataHoraPtBr = new Intl.DateTimeFormat("pt-BR", {
+  timeZone: FUSO_HORARIO_BRASIL,
+  dateStyle: "short",
+  timeStyle: "medium",
+});
+
+function formatarAgoraPtBr() {
+  return formatadorDataHoraPtBr.format(new Date());
 }
 
 export function CreaVerificationCard() {
-  const dt = formatNowPtBr();
+  const [dataHoraPesquisa, setDataHoraPesquisa] = useState<string>("");
+
+  const idTimeout = useRef<ReturnType<typeof globalThis.setTimeout> | null>(
+    null,
+  );
+
+  // Exibe o horário do momento em que o usuário acessa a página (no fuso BR).
+  useEffect(() => {
+    idTimeout.current = globalThis.setTimeout(() => {
+      setDataHoraPesquisa(formatarAgoraPtBr());
+    }, 0);
+
+    return () => {
+      if (idTimeout.current) {
+        globalThis.clearTimeout(idTimeout.current);
+        idTimeout.current = null;
+      }
+    };
+  }, []);
 
   return (
     <section
@@ -23,11 +49,8 @@ export function CreaVerificationCard() {
 
           <p className="mt-1 text-sm text-slate-600">
             Data e Hora da Pesquisa:{" "}
-            <span
-              suppressHydrationWarning
-              className="font-semibold text-slate-900"
-            >
-              {dt}
+            <span className="font-semibold text-slate-900">
+              {dataHoraPesquisa || "—"}
             </span>
           </p>
         </div>
@@ -63,6 +86,7 @@ export function CreaVerificationCard() {
           </ul>
         </div>
       </div>
+
       <p className="mt-5 text-xs text-slate-500">
         Nota: os dados acima são exibidos no site como referência de
         verificação.

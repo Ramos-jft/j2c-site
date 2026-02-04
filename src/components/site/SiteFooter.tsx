@@ -1,6 +1,8 @@
 import Link from "next/link";
+import Image from "next/image";
 import { siteConfig } from "@/content/site";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
+import { LinkEmailComFallback } from "@/components/contato/LinkEmailComFallback";
 
 function SecureConnectionBadge() {
   return (
@@ -63,12 +65,11 @@ export function SiteFooter() {
 
   const emergencyWa = buildWhatsAppLink(
     siteConfig.contacts.whatsapp,
-    "Olá! Preciso de atendimento EMERGENCIAL (Plantão 24h).\n\nPara agilizar, por favor envie na próxima mensagem:\n- Cidade/UF e ponto de referência\n- O que aconteceu (resumo objetivo)\n- Se há risco imediato para pessoas/estruturas\n- Fotos/vídeos do local (se possível)\n- Melhor horário para retorno por ligação (se necessário)"
+    "Olá! Preciso de atendimento EMERGENCIAL (Plantão 24h).\n\nPara agilizar, por favor envie na próxima mensagem:\n- Cidade/UF e ponto de referência\n- O que aconteceu (resumo objetivo)\n- Se há risco imediato para pessoas/estruturas\n- Fotos/vídeos do local (se possível)\n- Melhor horário para retorno por ligação (se necessário)",
   );
 
   return (
     <footer className="border-t border-black/10 bg-white">
-      {/* Cards: agrupados a partir do meio da página */}
       <div className="mx-auto max-w-6xl px-4 py-10">
         <div className="mx-auto grid max-w-4xl gap-6 sm:grid-cols-3">
           <div>
@@ -95,27 +96,81 @@ export function SiteFooter() {
               {siteConfig.emergencyCoverage}
             </p>
 
-            <p className="mt-3 text-sm text-slate-600">
-              WhatsApp: {siteConfig.contacts.whatsapp}
-              <br />
-              E-mail: {siteConfig.contacts.email}
-              <br />
-              Instagram: {siteConfig.contacts.instagramHandle}
-              <br />
-              <span className="text-slate-500">{siteConfig.responseSla}</span>
-            </p>
+            <div className="mt-3 space-y-2 text-sm">
+              <a
+                href={buildWhatsAppLink(
+                  siteConfig.contacts.whatsapp,
+                  "Olá! Vim pelo site e gostaria de um orçamento.",
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-slate-700 hover:text-slate-900"
+              >
+                <Image
+                  src="/brand/whatsapp-v2.png"
+                  alt=""
+                  width={18}
+                  height={18}
+                  className="h-[18px] w-[18px]"
+                />
+                <span>WhatsApp: {siteConfig.contacts.whatsapp}</span>
+              </a>
+
+              <LinkEmailComFallback
+                assunto={`Orçamento - ${siteConfig.name}`}
+                className="flex items-center gap-2 text-slate-700 hover:text-slate-900"
+                ariaLabel="Enviar e-mail"
+                title="E-mail"
+              >
+                <Image
+                  src="/brand/email.png"
+                  alt=""
+                  width={18}
+                  height={18}
+                  className="h-[18px] w-[18px]"
+                />
+                <span>E-mail: {siteConfig.contacts.email}</span>
+              </LinkEmailComFallback>
+
+              <a
+                href={siteConfig.contacts.instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-slate-700 hover:text-slate-900"
+              >
+                <Image
+                  src="/brand/instagram.png"
+                  alt=""
+                  width={18}
+                  height={18}
+                  className="h-[18px] w-[18px]"
+                />
+                <span>Instagram: {siteConfig.contacts.instagramHandle}</span>
+              </a>
+
+              <p className="text-xs text-slate-500">{siteConfig.responseSla}</p>
+            </div>
           </div>
 
           <div>
             <p className="text-sm font-semibold text-slate-900">Informações</p>
             <div className="mt-2 flex flex-col gap-2 text-sm">
-              <Link className="text-slate-700 hover:text-slate-900" href="/servicos">
+              <Link
+                className="text-slate-700 hover:text-slate-900"
+                href="/servicos"
+              >
                 Ver serviços
               </Link>
-              <Link className="text-slate-700 hover:text-slate-900" href="/portfolio">
+              <Link
+                className="text-slate-700 hover:text-slate-900"
+                href="/portfolio"
+              >
                 Ver portfólio
               </Link>
-              <Link className="text-slate-700 hover:text-slate-900" href="/contato">
+              <Link
+                className="text-slate-700 hover:text-slate-900"
+                href="/contato"
+              >
                 Solicitar orçamento
               </Link>
             </div>
@@ -123,7 +178,6 @@ export function SiteFooter() {
         </div>
       </div>
 
-      {/* Barra inferior: copyright | site seguro | CREA (centrado a partir do meio) */}
       <div className="border-t border-black/10">
         <div className="mx-auto max-w-6xl px-4 py-4">
           <div className="mx-auto grid max-w-4xl items-center gap-3 text-xs text-slate-600 sm:grid-cols-3">

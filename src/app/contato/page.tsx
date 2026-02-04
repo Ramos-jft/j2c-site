@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { siteConfig } from "@/content/site";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
+import { LinkEmailComFallback } from "@/components/contato/LinkEmailComFallback";
 
 export const metadata: Metadata = {
   title: "Contato",
@@ -11,7 +13,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   const wa = buildWhatsAppLink(
     siteConfig.contacts.whatsapp,
-    "Olá! Gostaria de solicitar um orçamento."
+    "Olá! Gostaria de solicitar um orçamento.",
   );
 
   return (
@@ -32,24 +34,52 @@ export default function ContactPage() {
         </p>
 
         <div className="mt-4 grid gap-3 text-sm">
-          <a className="text-slate-700 hover:text-slate-900" href={wa}>
-            WhatsApp: {siteConfig.contacts.whatsapp}
-          </a>
-
           <a
-            className="text-slate-700 hover:text-slate-900"
-            href={`mailto:${siteConfig.contacts.email}`}
+            className="flex items-center gap-2 text-slate-700 hover:text-slate-900"
+            href={wa}
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            E-mail: {siteConfig.contacts.email}
+            <Image
+              src="/brand/whatsapp-v2.png"
+              alt=""
+              width={18}
+              height={18}
+              className="h-[18px] w-[18px]"
+            />
+            <span>WhatsApp: {siteConfig.contacts.whatsapp}</span>
           </a>
 
+          <LinkEmailComFallback
+            assunto={`Orçamento - ${siteConfig.name}`}
+            className="flex items-center gap-2 text-slate-700 hover:text-slate-900"
+            ariaLabel="Enviar e-mail"
+            title="E-mail"
+          >
+            <Image
+              src="/brand/email.png"
+              alt=""
+              width={18}
+              height={18}
+              className="h-[18px] w-[18px]"
+            />
+            <span>E-mail: {siteConfig.contacts.email}</span>
+          </LinkEmailComFallback>
+
           <a
-            className="text-slate-700 hover:text-slate-900"
+            className="flex items-center gap-2 text-slate-700 hover:text-slate-900"
             href={siteConfig.contacts.instagramUrl}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
           >
-            Instagram: {siteConfig.contacts.instagramHandle}
+            <Image
+              src="/brand/instagram.png"
+              alt=""
+              width={18}
+              height={18}
+              className="h-[18px] w-[18px]"
+            />
+            <span>Instagram: {siteConfig.contacts.instagramHandle}</span>
           </a>
         </div>
 

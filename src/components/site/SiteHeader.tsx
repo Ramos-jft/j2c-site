@@ -5,6 +5,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { siteConfig } from "@/content/site";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
+import { getServiceBySlug } from "@/content/services";
+import { LinkEmailComFallback } from "@/components/contato/LinkEmailComFallback";
 
 type ItemMenu = { href: string; label: string };
 
@@ -54,7 +56,21 @@ export function SiteHeader() {
   );
 
   const hrefInstagram = siteConfig.contacts.instagramUrl;
-  const hrefEmail = `mailto:${siteConfig.contacts.email}`;
+
+  const assuntoEmailHeader = (() => {
+    const assuntoPadrao = `Orçamento - ${siteConfig.name}`;
+
+    const matchServico = /^\/servicos\/([^/?#]+)/.exec(caminhoAtual ?? "");
+
+    if (!matchServico) return assuntoPadrao;
+
+    const slug = matchServico[1];
+    const servico = getServiceBySlug(slug);
+    if (!servico) return assuntoPadrao;
+
+    // Mesma linha usada nos CTAs da página do serviço
+    return `Orçamento - ${servico.title}`;
+  })();
 
   return (
     <header className="border-b border-black/10 bg-white/80 backdrop-blur">
@@ -66,9 +82,7 @@ export function SiteHeader() {
       </a>
 
       <div className="mx-auto max-w-6xl px-4 py-4">
-        {/* UM ÚNICO GRID: evita desalinhamento entre “parte de cima/baixo” */}
         <div className="grid items-center gap-4 grid-cols-[1fr,auto] sm:grid-cols-[auto,1fr,auto]">
-          {/* Esquerda: logo + (desktop) responsável/CREA */}
           <div className="col-start-1 row-start-1 flex items-center gap-3">
             <Link
               href="/"
@@ -96,7 +110,6 @@ export function SiteHeader() {
             </div>
           </div>
 
-          {/* Direita: ícones (sempre na 1ª linha) */}
           <div className="col-start-2 row-start-1 justify-self-end sm:col-start-3 sm:justify-self-end">
             <div className="flex items-center gap-3">
               <a
@@ -135,10 +148,10 @@ export function SiteHeader() {
                 <span className="sr-only">Instagram</span>
               </a>
 
-              <a
-                href={hrefEmail}
+              <LinkEmailComFallback
+                assunto={assuntoEmailHeader}
                 className="j2c-header-icone-link"
-                aria-label="Enviar e-mail"
+                ariaLabel="Enviar e-mail"
                 title="E-mail"
               >
                 <Image
@@ -149,13 +162,10 @@ export function SiteHeader() {
                   className="j2c-header-icone-img"
                 />
                 <span className="sr-only">E-mail</span>
-              </a>
+              </LinkEmailComFallback>
             </div>
           </div>
 
-          {/* Menu:
-              - Mobile: 2ª linha, span 2 colunas, centralizado
-              - Desktop: 1ª linha, coluna do meio, centralizado */}
           <nav
             aria-label="Menu principal"
             className="col-span-2 row-start-2 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 sm:col-span-1 sm:col-start-2 sm:row-start-1"
