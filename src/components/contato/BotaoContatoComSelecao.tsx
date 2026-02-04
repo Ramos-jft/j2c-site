@@ -43,7 +43,6 @@ export function BotaoContatoComSelecao({
   textoBotao,
   hrefWhatsApp,
   assuntoEmail,
-  corpoEmail,
   classNameBotao = "j2c-botao-cta",
   alinhamentoMenu = "esquerda",
   abrirWhatsAppEmNovaAba = true,
@@ -64,8 +63,7 @@ export function BotaoContatoComSelecao({
 
   const hrefEmail = buildMailtoLink({
     destinatario: destinatarioEmail,
-    assunto: assuntoEmail,
-    corpo: corpoEmail,
+    assunto: assuntoEmail
   });
 
   useEffect(() => {

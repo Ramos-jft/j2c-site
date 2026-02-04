@@ -97,14 +97,7 @@ export const services: Service[] = [
     ],
     cta: {
       label: "Falar sobre Barragens",
-      whatsappMessage: `Olá! Gostaria de solicitar um orçamento para BARRAGENS (apoio técnico/inspeção).
-
-Para agilizar, por favor envie na próxima mensagem:
-- Cidade/UF e local do empreendimento
-- Objetivo (inspeção de rotina, pós-chuva/evento, auditoria/contratante, etc.)
-- Prazo desejado
-- Fotos/vídeos e relatórios anteriores (se houver)
-- Se é emergência (plantão 24h até 300 km de Campinas/SP)`,
+      whatsappMessage: `Olá! Gostaria de solicitar um orçamento para BARRAGENS (apoio técnico/inspeção).`,
     },
     faqs: [
       {
@@ -173,15 +166,7 @@ Para agilizar, por favor envie na próxima mensagem:
     ],
     cta: {
       label: "Falar sobre Regularização",
-      whatsappMessage: `Olá! Gostaria de solicitar um orçamento para REGULARIZAÇÃO junto à Prefeitura.
-
-Para agilizar, por favor envie na próxima mensagem:
-- Município/UF
-- Tipo de imóvel/obra
-- Se já existe processo/exigência (sim/não)
-- Prazo desejado
-- Documentos e exigências recebidas (se houver)
-- Plantas/arquivos existentes (se houver)`,
+      whatsappMessage: `Olá! Gostaria de solicitar um orçamento para REGULARIZAÇÃO junto à Prefeitura.`,
     },
     faqs: [
       {
@@ -254,15 +239,7 @@ Para agilizar, por favor envie na próxima mensagem:
     ],
     cta: {
       label: "Falar sobre Drone",
-      whatsappMessage: `Olá! Gostaria de solicitar um orçamento para LEVANTAMENTO COM DRONE (mapeamento/monitoramento).
-
-Para agilizar, por favor envie na próxima mensagem:
-- Cidade/UF e local/área
-- Objetivo (mapeamento, monitoramento de obra, inspeção visual, etc.)
-- Área aproximada / extensão
-- Prazo desejado
-- Restrições de acesso/horários (se houver)
-- Um print/mapa da área (se possível)`,
+      whatsappMessage: `Olá! Gostaria de solicitar um orçamento para LEVANTAMENTO COM DRONE (mapeamento/monitoramento).`,
     },
     faqs: [
       {
@@ -334,14 +311,7 @@ Para agilizar, por favor envie na próxima mensagem:
     ],
     cta: {
       label: "Falar sobre Taludes",
-      whatsappMessage: `Olá! Gostaria de solicitar um orçamento para LAUDO/AVALIAÇÃO DE TALUDE/ENCOSTA.
-
-Para agilizar, por favor envie na próxima mensagem:
-- Cidade/UF e local
-- Sinais observados (trincas, erosão, deslocamento, água/surgência, etc.)
-- Prazo desejado
-- Fotos/vídeos atuais
-- Se há risco imediato (e se é emergência – plantão 24h até 300 km de Campinas/SP)`,
+      whatsappMessage: `Olá! Gostaria de solicitar um orçamento para LAUDO/AVALIAÇÃO DE TALUDE/ENCOSTA.`,
     },
     faqs: [
       {
@@ -410,14 +380,7 @@ Para agilizar, por favor envie na próxima mensagem:
     ],
     cta: {
       label: "Falar sobre Investigação",
-      whatsappMessage: `Olá! Gostaria de solicitar um orçamento para INVESTIGAÇÃO GEOTÉCNICA.
-
-Para agilizar, por favor envie na próxima mensagem:
-- Cidade/UF e local
-- Tipo de obra (residencial, industrial, infraestrutura, etc.)
-- Prazo desejado
-- Se já existe projeto/implantação (se houver, envie)
-- Se há histórico de sondagens/relatórios anteriores (se houver, envie)`,
+      whatsappMessage: `Olá! Gostaria de solicitar um orçamento para INVESTIGAÇÃO GEOTÉCNICA.`,
     },
     faqs: [
       {
@@ -487,14 +450,7 @@ Para agilizar, por favor envie na próxima mensagem:
     ],
     cta: {
       label: "Falar sobre Fundações",
-      whatsappMessage: `Olá! Gostaria de solicitar um orçamento para FUNDAÇÕES (recomendação/suporte técnico).
-
-Para agilizar, por favor envie na próxima mensagem:
-- Cidade/UF e local
-- Tipo de obra e informações de carga (se houver)
-- Prazo desejado
-- Se existe investigação do solo/relatórios (se houver, envie)
-- Restrições de canteiro/vizinhança (se houver)`,
+      whatsappMessage: `Olá! Gostaria de solicitar um orçamento para FUNDAÇÕES (recomendação/suporte técnico).`,
     },
     faqs: [
       {
@@ -565,14 +521,7 @@ Para agilizar, por favor envie na próxima mensagem:
     ],
     cta: {
       label: "Falar sobre Solos Moles",
-      whatsappMessage: `Olá! Gostaria de solicitar um orçamento para ATERRO EM SOLO MOLE (recalque/estabilidade).
-
-Para agilizar, por favor envie na próxima mensagem:
-- Cidade/UF e local
-- Altura/volume aproximado do aterro
-- Prazo desejado
-- Histórico do terreno/recalques (se houver)
-- Fotos e croqui/implantação (se possível)`,
+      whatsappMessage: `Olá! Gostaria de solicitar um orçamento para ATERRO EM SOLO MOLE (recalque/estabilidade).`,
     },
     faqs: [
       {
@@ -639,14 +588,7 @@ Para agilizar, por favor envie na próxima mensagem:
     ],
     cta: {
       label: "Falar sobre Vistoria",
-      whatsappMessage: `Olá! Gostaria de solicitar um orçamento para VISTORIA DE IMÓVEL (entrega/compra/pós-obra).
-
-Para agilizar, por favor envie na próxima mensagem:
-- Cidade/UF e endereço (ou bairro)
-- Tipo e tamanho do imóvel (apto/casa; m² ou nº de cômodos)
-- Objetivo (entrega, compra, pós-obra, avaliação)
-- Prazo desejado
-- Se tem plantas/documentos (se houver, envie)`,
+      whatsappMessage: `Olá! Gostaria de solicitar um orçamento para VISTORIA DE IMÓVEL (entrega/compra/pós-obra).`,
     },
     faqs: [
       {
@@ -717,14 +659,7 @@ Para agilizar, por favor envie na próxima mensagem:
     ],
     cta: {
       label: "Falar sobre Contenção",
-      whatsappMessage: `Olá! Gostaria de solicitar um orçamento para MURO DE CONTENÇÃO/CONTENÇÃO.
-
-Para agilizar, por favor envie na próxima mensagem:
-- Cidade/UF e local
-- Sintomas (trincas, deslocamento, água/saturação, etc.)
-- Prazo desejado
-- Fotos/vídeos
-- Se há risco imediato (e se é emergência – plantão 24h até 300 km de Campinas/SP)`,
+      whatsappMessage: `Olá! Gostaria de solicitar um orçamento para MURO DE CONTENÇÃO/CONTENÇÃO.`,
     },
     faqs: [
       {

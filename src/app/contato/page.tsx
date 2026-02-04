@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   const wa = buildWhatsAppLink(
     siteConfig.contacts.whatsapp,
-    "Olá! Gostaria de solicitar um orçamento.\n\nPara agilizar, por favor envie na próxima mensagem:\n- Cidade/UF\n- Serviço desejado\n- Prazo desejado\n- Descrição objetiva do objetivo/problema\n- Fotos/plantas/PDFs (se houver)\n- Se é emergência (plantão 24h até 300 km de Campinas/SP)"
+    "Olá! Gostaria de solicitar um orçamento."
   );
 
   return (

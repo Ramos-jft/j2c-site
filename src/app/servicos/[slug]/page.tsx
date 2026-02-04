@@ -102,7 +102,6 @@ export default async function ServiceDetailPage({
             textoBotao={service.cta.label}
             hrefWhatsApp={waHref}
             assuntoEmail={`Orçamento - ${service.title}`}
-            corpoEmail={service.cta.whatsappMessage}
             classNameBotao="j2c-botao-cta"
           />
 
@@ -182,7 +181,6 @@ export default async function ServiceDetailPage({
             textoBotao="Enviar detalhes"
             hrefWhatsApp={waHref}
             assuntoEmail={`Detalhes do caso - ${service.title}`}
-            corpoEmail={service.cta.whatsappMessage}
             classNameBotao="j2c-botao-cta"
           />
 
