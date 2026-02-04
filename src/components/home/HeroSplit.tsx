@@ -48,10 +48,7 @@ export function HeroSplit({
           ) : null}
 
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-            <a
-              href={hrefWhatsApp}
-              className="inline-flex items-center justify-center rounded-xl bg-[var(--j2c-cor-laranja)] px-5 py-3 text-sm font-semibold text-white hover:brightness-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--j2c-cor-laranja)]"
-            >
+            <a href={hrefWhatsApp} className="j2c-botao-cta">
               {textoBotaoPrimario}
             </a>
 

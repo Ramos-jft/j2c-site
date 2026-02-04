@@ -17,7 +17,9 @@ export function generateStaticParams() {
   return getAllServiceSlugs().map((slug) => ({ slug }));
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const service = getServiceBySlug(slug);
 
@@ -61,7 +63,7 @@ export default async function ServiceDetailPage({
 
   const waHref = buildWhatsAppLink(
     siteConfig.contacts.whatsapp,
-    service.cta.whatsappMessage
+    service.cta.whatsappMessage,
   );
 
   return (
@@ -86,7 +88,9 @@ export default async function ServiceDetailPage({
       </nav>
 
       <header className="mt-6 rounded-2xl border border-black/10 bg-white p-6">
-        <h1 className="text-3xl font-semibold text-slate-900">{service.title}</h1>
+        <h1 className="text-3xl font-semibold text-slate-900">
+          {service.title}
+        </h1>
 
         <p className="mt-3 max-w-3xl text-sm text-slate-600">
           {service.overview}
@@ -95,7 +99,7 @@ export default async function ServiceDetailPage({
         <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center">
           <a
             href={waHref}
-            className="inline-flex items-center justify-center rounded-xl bg-[var(--j2c-gold)] px-5 py-3 text-sm font-semibold text-white hover:brightness-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--j2c-gold)]"
+            className="j2c-botao-cta"
             aria-label={service.cta.label}
           >
             {service.cta.label}
@@ -173,10 +177,7 @@ export default async function ServiceDetailPage({
         </ul>
 
         <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-          <a
-            href={waHref}
-            className="inline-flex items-center justify-center rounded-xl bg-[var(--j2c-gold)] px-5 py-3 text-sm font-semibold text-white hover:brightness-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--j2c-gold)]"
-          >
+          <a href={waHref} className="j2c-botao-cta">
             Enviar detalhes
           </a>
 
