@@ -67,6 +67,9 @@ export default async function ServiceDetailPage({
     service.cta.whatsappMessage,
   );
 
+  const temGaleria = (service.galeria?.length ?? 0) > 0;
+  const temCasosPortfolio = (service.casosPortfolio?.length ?? 0) > 0;
+
   return (
     <main id="conteudo" className="mx-auto max-w-6xl px-4 py-10">
       <script
@@ -118,18 +121,17 @@ export default async function ServiceDetailPage({
         </div>
       </header>
 
-      {service.galeria?.length ? (
-        <>
-          <GaleriaServico itens={service.galeria} />
-          <div className="mt-3">
-            <Link
-              className="text-sm font-semibold text-[var(--j2c-gold)] hover:underline"
-              href={`/portfolio?servico=${service.slug}`}
-            >
-              Ver mais exemplos deste serviço →
-            </Link>
-          </div>
-        </>
+      {temGaleria ? <GaleriaServico itens={service.galeria ?? []} /> : null}
+
+      {temCasosPortfolio ? (
+        <div className={temGaleria ? "mt-3" : "mt-6"}>
+          <Link
+            className="text-sm font-semibold text-[var(--j2c-gold)] hover:opacity-90"
+            href={`/portfolio?servico=${encodeURIComponent(service.slug)}`}
+          >
+            Ver portfólio deste serviço →
+          </Link>
+        </div>
       ) : null}
 
       <section className="mt-8 grid gap-6 lg:grid-cols-2">

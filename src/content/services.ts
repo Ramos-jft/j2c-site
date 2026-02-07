@@ -14,6 +14,18 @@ export type ImagemGaleriaServico = {
   legenda?: string;
 };
 
+export type CasoPortfolio = {
+  id: string;
+  titulo: string;
+  periodo?: string;
+  localidadeAproximada?: string;
+
+  resumo: string;
+  destaques: string[];
+
+  imagens?: ImagemGaleriaServico[];
+};
+
 export type Service = {
   slug: string;
   title: string;
@@ -37,6 +49,7 @@ export type Service = {
   clientProvides: string[];
 
   galeria?: ImagemGaleriaServico[];
+  casosPortfolio?: CasoPortfolio[];
 
   cta: ServiceCta;
   faqs: ServiceFaq[];
@@ -95,6 +108,83 @@ export const services: Service[] = [
       "Contato do responsável local e regras de segurança.",
       "Objetivo claro (rotina / evento / auditoria / decisão).",
     ],
+
+    galeria: [
+      {
+        src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/barragem-5.png",
+        alt: "Referência de extensão do barramento (visão geral).",
+        legenda: "Referência visual de extensão do barramento (visão geral).",
+      },
+      {
+        src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/barragem-4.png",
+        alt: "Vista do reservatório durante inspeção.",
+        legenda: "Registro visual do reservatório no momento da vistoria.",
+      },
+      {
+        src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/barragem-3.png",
+        alt: "Inspeção de dispositivo de drenagem.",
+        legenda: "Registro em campo: condição do dispositivo de drenagem.",
+      },
+      {
+        src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/barragem-2.png",
+        alt: "Traçado dos perfis avaliados (visão geral).",
+        legenda: "Visão geral dos perfis considerados na análise.",
+      },
+      {
+        src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/barragem-1.png",
+        alt: "Perfis analisados na verificação de estabilidade (modelagem 2D).",
+        legenda:
+          "Perfis de análise e resultados de estabilidade (modelagem 2D).",
+      },
+    ],
+
+    casosPortfolio: [
+      {
+        id: "barragem-terra-analise-estabilidade-2024",
+        titulo: "Análise de Estabilidade e Drenagem — Barragem de Terra",
+        periodo: "2024",
+        localidadeAproximada: "Interior de SP",
+        resumo:
+          "Parecer técnico para avaliação de uma barragem de terra associada a lagoa de retenção, com inspeção em campo, registros por drone, interpretação de sondagens SPT e uso de topografia para modelagem 2D. Foram analisados perfis representativos do barramento, verificada a estabilidade global por critério normativo e emitidas recomendações práticas para drenagem e monitoramento.",
+        destaques: [
+          "Inspeção técnica em campo + registro visual com drone (VANT).",
+          "Integração de sondagens SPT e topografia para perfis geotécnicos.",
+          "Análise de estabilidade 2D e verificação por critério da NBR 11682.",
+          "Estabilidade adequada nos perfis analisados e plano de ações recomendado.",
+          "Recomendações: melhorias de drenagem, instrumentação e monitoramento periódico.",
+        ],
+        imagens: [
+          {
+            src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/barragem-5.png",
+            alt: "Referência de extensão do barramento (visão geral).",
+            legenda:
+              "Referência visual de extensão do barramento (visão geral).",
+          },
+          {
+            src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/barragem-4.png",
+            alt: "Vista do reservatório durante inspeção.",
+            legenda: "Registro visual do reservatório no momento da vistoria.",
+          },
+          {
+            src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/barragem-3.png",
+            alt: "Inspeção de dispositivo de drenagem.",
+            legenda: "Registro em campo: condição do dispositivo de drenagem.",
+          },
+          {
+            src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/barragem-2.png",
+            alt: "Traçado dos perfis avaliados (visão geral).",
+            legenda: "Visão geral dos perfis considerados na análise.",
+          },
+          {
+            src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/barragem-1.png",
+            alt: "Perfis analisados na verificação de estabilidade (modelagem 2D).",
+            legenda:
+              "Perfis de análise e resultados de estabilidade (modelagem 2D).",
+          },
+        ],
+      },
+    ],
+
     cta: {
       label: "Falar sobre Barragens",
       whatsappMessage: `Olá! Gostaria de solicitar um orçamento para BARRAGENS (apoio técnico/inspeção).`,

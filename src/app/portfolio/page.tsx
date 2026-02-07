@@ -1,41 +1,72 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
+import { GaleriaImagensAmpliavel } from "@/components/ui/GaleriaImagensAmpliavel";
 import { getServicesEmOrdemPrioritaria } from "@/content/services";
 
 export const metadata: Metadata = {
   title: "Portfólio",
   description:
-    "Galeria de registros e exemplos por serviço: taludes, contenções, barragens, fundações, solos moles, drone e vistorias.",
+    "Casos organizados por serviço: taludes, contenções, barragens, fundações, solos moles, drone e vistorias.",
 };
 
 type PortfolioPageProps = {
-  searchParams?: { servico?: string | string[] };
+  searchParams?:
+    | { servico?: string | string[] }
+    | Promise<{ servico?: string | string[] }>;
 };
 
 function normalizeSearchParam(
   value: string | string[] | undefined,
 ): string | undefined {
-  if (Array.isArray(value)) return value[0]?.toLowerCase().trim();
-  return value?.toLowerCase().trim();
+  const raw = Array.isArray(value) ? value[0] : value;
+  if (!raw) return undefined;
+
+  try {
+    return decodeURIComponent(raw).toLowerCase().trim();
+  } catch {
+    return raw.toLowerCase().trim();
+  }
 }
 
-export default function PortfolioPage({
+function montarMetaDoCaso(
+  tituloServico: string,
+  periodo?: string,
+  localidadeAproximada?: string,
+) {
+  const partes = [tituloServico];
+  if (periodo) partes.push(periodo);
+  if (localidadeAproximada) partes.push(localidadeAproximada);
+  return partes.join(" • ");
+}
+
+export default async function PortfolioPage({
   searchParams,
 }: Readonly<PortfolioPageProps>) {
   const servicos = getServicesEmOrdemPrioritaria();
-  const slugSelecionado = normalizeSearchParam(searchParams?.servico);
 
-  const servicosFiltrados = slugSelecionado
-    ? servicos.filter((s) => s.slug.toLowerCase() === slugSelecionado)
-    : servicos;
+  // ✅ FIX: searchParams pode vir como Promise
+  const searchParamsResolvido = (await searchParams) ?? {};
+  const slugSelecionado = normalizeSearchParam(searchParamsResolvido.servico);
 
-  const itens = servicosFiltrados.flatMap((servico) =>
-    (servico.galeria ?? []).map((img) => ({
-      ...img,
-      slugServico: servico.slug,
-      tituloServico: servico.title,
-    })),
+  // ✅ Só aparece categoria que tem casos
+  const servicosComConteudo = servicos.filter(
+    (s) => (s.casosPortfolio?.length ?? 0) > 0,
+  );
+
+  const servicoSelecionado = slugSelecionado
+    ? servicosComConteudo.find((s) => {
+        const slug = s.slug.toLowerCase();
+        const titulo = s.title.toLowerCase();
+        return slug === slugSelecionado || titulo === slugSelecionado;
+      })
+    : undefined;
+
+  const servicosFiltrados = servicoSelecionado
+    ? [servicoSelecionado]
+    : servicosComConteudo;
+
+  const casos = servicosFiltrados.flatMap((servico) =>
+    (servico.casosPortfolio ?? []).map((caso) => ({ servico, caso })),
   );
 
   return (
@@ -46,8 +77,8 @@ export default function PortfolioPage({
     >
       <h1 className="text-3xl font-semibold text-slate-900">Portfólio</h1>
       <p className="mt-3 max-w-3xl text-sm text-slate-600">
-        Exemplos e registros organizados por serviço. Use o filtro para ver
-        apenas o que importa.
+        Casos organizados por serviço. Use o filtro para ver apenas o que
+        importa.
       </p>
 
       <section className="mt-6">
@@ -56,19 +87,19 @@ export default function PortfolioPage({
             href="/portfolio"
             className={[
               "j2c-botao-cta j2c-botao-cta--pill",
-              slugSelecionado ? "" : "j2c-botao-cta--selecionado",
+              servicoSelecionado ? "" : "j2c-botao-cta--selecionado",
             ].join(" ")}
           >
             Todos
           </Link>
 
-          {servicos.map((servico) => {
-            const ativo = slugSelecionado === servico.slug.toLowerCase();
+          {servicosComConteudo.map((servico) => {
+            const ativo = servicoSelecionado?.slug === servico.slug;
 
             return (
               <Link
                 key={servico.slug}
-                href={`/portfolio?servico=${servico.slug}`}
+                href={`/portfolio?servico=${encodeURIComponent(servico.slug)}`}
                 title={servico.title}
                 className={[
                   "j2c-botao-cta j2c-botao-cta--pill",
@@ -81,57 +112,58 @@ export default function PortfolioPage({
           })}
         </div>
 
-        {itens.length ? (
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {itens.map((item) => (
+        {/* ✅ REMOVIDO: seção “Registros” (grid por galeria) */}
+
+        {casos.length ? (
+          <div className="mt-8 grid gap-4 lg:grid-cols-2">
+            {casos.map(({ servico, caso }) => (
               <article
-                key={`${item.slugServico}:${item.src}`}
-                className="overflow-hidden rounded-2xl border border-black/10 bg-white"
+                key={`${servico.slug}:${caso.id}`}
+                className="overflow-hidden rounded-2xl border border-black/10 bg-white p-6"
               >
-                <div className="relative aspect-[16/9]">
-                  <Image
-                    src={item.src}
-                    alt={item.alt}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    loading="lazy"
-                  />
-                </div>
+                <p className="text-xs font-semibold text-slate-500">
+                  {montarMetaDoCaso(
+                    servico.title,
+                    caso.periodo,
+                    caso.localidadeAproximada,
+                  )}
+                </p>
 
-                <div className="p-4">
-                  <p className="text-sm font-semibold text-slate-900">
-                    {item.tituloServico}
-                  </p>
+                <h2 className="mt-2 text-xl font-semibold text-slate-900">
+                  {caso.titulo}
+                </h2>
 
-                  <p className="mt-1 text-xs text-slate-600">
-                    {item.legenda ?? item.alt}
-                  </p>
+                <p className="mt-3 text-sm text-slate-600">{caso.resumo}</p>
 
-                  <Link
-                    href={`/servicos/${item.slugServico}`}
-                    className="mt-3 inline-flex text-sm font-semibold text-[var(--j2c-gold)] hover:underline"
-                  >
-                    Ver detalhes do serviço →
-                  </Link>
-                </div>
+                {caso.destaques?.length ? (
+                  <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-slate-600">
+                    {caso.destaques.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                ) : null}
+
+                {/* ✅ Imagens ampliáveis no card */}
+                {caso.imagens?.length ? (
+                  <div className="mt-5">
+                    <GaleriaImagensAmpliavel
+                      itens={caso.imagens}
+                      modo="grade"
+                      ariaLabel={`Imagens do caso ${caso.titulo}`}
+                    />
+                  </div>
+                ) : null}
+
+                <Link
+                  href={`/servicos/${encodeURIComponent(servico.slug)}`}
+                  className="mt-5 inline-flex text-sm font-semibold text-[var(--j2c-gold)] hover:opacity-90"
+                >
+                  Ver detalhes do serviço →
+                </Link>
               </article>
             ))}
           </div>
-        ) : (
-          <div className="mt-8 rounded-2xl border border-black/10 bg-white p-6">
-            <p className="text-sm text-slate-600">
-              Ainda não há imagens cadastradas para este filtro. Adicione
-              arquivos em{" "}
-              <span className="font-semibold">
-                public/portfolio/&lt;slug&gt;/
-              </span>{" "}
-              e preencha <span className="font-semibold">galeria</span> no
-              arquivo{" "}
-              <span className="font-semibold">src/content/services.ts</span>.
-            </p>
-          </div>
-        )}
+        ) : null}
       </section>
     </main>
   );
