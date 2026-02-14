@@ -113,12 +113,13 @@ export const services: Service[] = [
       {
         src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/barragem-5.png",
         alt: "Referência de extensão do barramento (visão geral).",
-        legenda: "Referência visual de extensão do barramento (visão geral).",
+        legenda:
+          "Perfis de análise e resultados de estabilidade (modelagem 2D).",
       },
       {
         src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/barragem-4.png",
         alt: "Vista do reservatório durante inspeção.",
-        legenda: "Registro visual do reservatório no momento da vistoria.",
+        legenda: "Visão geral dos perfis considerados na análise.",
       },
       {
         src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/barragem-3.png",
@@ -128,13 +129,12 @@ export const services: Service[] = [
       {
         src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/barragem-2.png",
         alt: "Traçado dos perfis avaliados (visão geral).",
-        legenda: "Visão geral dos perfis considerados na análise.",
+        legenda: "Registro visual do reservatório no momento da vistoria.",
       },
       {
         src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/barragem-1.png",
         alt: "Perfis analisados na verificação de estabilidade (modelagem 2D).",
-        legenda:
-          "Perfis de análise e resultados de estabilidade (modelagem 2D).",
+        legenda: "Referência visual de extensão do barramento (visão geral).",
       },
     ],
 
@@ -399,6 +399,150 @@ export const services: Service[] = [
       "Plantas/projetos existentes (se houver).",
       "Restrições de segurança e contato local.",
     ],
+
+    galeria: [
+      {
+        src: "/portfolio/laudos-estabilidade-taludes/inspecao-inicial-drenagem-escada-taludes-2025/figura-02.png",
+        alt: "Vista geral do canteiro e das áreas vistoriadas.",
+        legenda:
+          "Vista geral do canteiro e das áreas vistoriadas (registro aéreo parcial).",
+      },
+      {
+        src: "/portfolio/laudos-estabilidade-taludes/inspecao-inicial-drenagem-escada-taludes-2025/figura-07.png",
+        alt: "Canaleta de drenagem em berma com sinais de fissuras/desgaste.",
+        legenda:
+          "Canaleta de drenagem em berma: sinais de fissuras e desgaste.",
+      },
+      {
+        src: "/portfolio/laudos-estabilidade-taludes/inspecao-inicial-drenagem-escada-taludes-2025/figura-08.png",
+        alt: "Indícios de trincas e escorregamentos superficiais em talude.",
+        legenda:
+          "Talude com indícios de trincas e escorregamentos superficiais.",
+      },
+      {
+        src: "/portfolio/laudos-estabilidade-taludes/inspecao-inicial-drenagem-escada-taludes-2025/figura-05.png",
+        alt: "Escada hidráulica com aberturas e avarias nas paredes laterais.",
+        legenda:
+          "Escada hidráulica: aberturas laterais e avarias observadas em campo.",
+      },
+      {
+        src: "/portfolio/laudos-estabilidade-taludes/inspecao-inicial-drenagem-escada-taludes-2025/figura-12.png",
+        alt: "Poço de retardo em fase de execução (escavação e estruturas iniciais).",
+        legenda:
+          "Poço de retardo em execução: escavação e estruturas iniciais.",
+      },
+    ],
+
+    casosPortfolio: [
+      {
+        id: "inspecao-inicial-drenagem-escada-taludes-2025",
+        titulo:
+          "Inspeção inicial — Taludes, drenagem de bermas e escada hidráulica",
+        periodo: "2025",
+        localidadeAproximada: "Região metropolitana de SP",
+        resumo:
+          "Visita técnica para avaliar a conformidade da execução de terraplenagem e drenagem em andamento, com registro fotográfico terrestre e aéreo (parcial, por condições climáticas). Foram mapeadas patologias compatíveis com escorregamento superficial em taludes, além de avarias e obstruções em elementos de drenagem (canaletas de berma) e na escada hidráulica existente. O resultado foi um parecer técnico preliminar com priorização de manutenção/correções para reduzir risco geotécnico e preservar a eficiência hidráulica.",
+        destaques: [
+          "Condições adversas (chuva e vento): registro aéreo parcial e necessidade de complementação em nova visita.",
+          "Taludes com fissuras longitudinais/transversais, perda de vegetação e pontos com acúmulo de água na base — indícios de instabilidade localizada.",
+          "Canaletas de drenagem em bermas com sedimentos, vegetação e rachaduras, comprometendo o escoamento superficial.",
+          "Escada hidráulica existente com avarias (desagregação de concreto, armaduras expostas, fissuras e obstruções no canal).",
+          "Poço de retardo em fase de execução; interface hidráulica não conclusiva no momento da vistoria.",
+        ],
+        imagens: [
+          {
+            src: "/portfolio/laudos-estabilidade-taludes/inspecao-inicial-drenagem-escada-taludes-2025/figura-01.png",
+            alt: "Mapa de referência das áreas vistoriadas (G100/G200), sem informações sensíveis.",
+            legenda:
+              "Referência das áreas vistoriadas (G100/G200) e localização das ocorrências observadas.",
+          },
+          {
+            src: "/portfolio/laudos-estabilidade-taludes/inspecao-inicial-drenagem-escada-taludes-2025/figura-02.png",
+            alt: "Vista aérea parcial do local inspecionado.",
+            legenda:
+              "Registro aéreo parcial do local inspecionado (condições climáticas limitaram a operação).",
+          },
+          {
+            src: "/portfolio/laudos-estabilidade-taludes/inspecao-inicial-drenagem-escada-taludes-2025/figura-03.png",
+            alt: "Saída de drenagem com falhas construtivas e indícios de adensamento/compactação inadequada.",
+            legenda:
+              "Saída de drenagem: ausência de proteção lateral e evidências de compactação/adensamento sobre tubulação.",
+          },
+          {
+            src: "/portfolio/laudos-estabilidade-taludes/inspecao-inicial-drenagem-escada-taludes-2025/figura-04.png",
+            alt: "Drenagem de berma e talude com indícios de escorregamento e recomposição superficial.",
+            legenda:
+              "Drenagem de berma e talude: indícios de escorregamento superficial e recomposição.",
+          },
+          {
+            src: "/portfolio/laudos-estabilidade-taludes/inspecao-inicial-drenagem-escada-taludes-2025/figura-05.png",
+            alt: "Escada hidráulica: vista superior, aberturas laterais e avarias em paredes.",
+            legenda:
+              "Escada hidráulica: aberturas laterais e avarias observadas no trecho vistoriado.",
+          },
+          {
+            src: "/portfolio/laudos-estabilidade-taludes/inspecao-inicial-drenagem-escada-taludes-2025/figura-06.png",
+            alt: "Escada hidráulica: rompimento/local sem dissipação e falta de uniformidade geométrica.",
+            legenda:
+              "Escada hidráulica: trecho sem dissipação e com avarias associadas.",
+          },
+          {
+            src: "/portfolio/laudos-estabilidade-taludes/inspecao-inicial-drenagem-escada-taludes-2025/figura-07.png",
+            alt: "Canaleta de berma: sinais de fissuras e pontos de descontinuidade.",
+            legenda:
+              "Canaleta de berma: sinais de fissuras e descontinuidades.",
+          },
+          {
+            src: "/portfolio/laudos-estabilidade-taludes/inspecao-inicial-drenagem-escada-taludes-2025/figura-08.png",
+            alt: "Talude recomposto com indícios de desgaste e escorregamentos.",
+            legenda:
+              "Talude recomposto: indícios de desgaste e escorregamentos superficiais.",
+          },
+          {
+            src: "/portfolio/laudos-estabilidade-taludes/inspecao-inicial-drenagem-escada-taludes-2025/figura-09.png",
+            alt: "Escada hidráulica em construção: registro de execução e trincas pontuais acima do trecho.",
+            legenda:
+              "Escada hidráulica em construção: registro de execução e condições do entorno.",
+          },
+          {
+            src: "/portfolio/laudos-estabilidade-taludes/inspecao-inicial-drenagem-escada-taludes-2025/figura-10.png",
+            alt: "Vista geral do canteiro com indicação de áreas e elementos de drenagem.",
+            legenda:
+              "Vista geral do canteiro: referências de áreas e elementos de drenagem avaliados.",
+          },
+          {
+            src: "/portfolio/laudos-estabilidade-taludes/inspecao-inicial-drenagem-escada-taludes-2025/figura-11.png",
+            alt: "Drenagem pluvial em torno de área de obra (valas/canais).",
+            legenda:
+              "Drenagem pluvial em torno de área de obra: registros de campo.",
+          },
+          {
+            src: "/portfolio/laudos-estabilidade-taludes/inspecao-inicial-drenagem-escada-taludes-2025/figura-12.png",
+            alt: "Poço de retardo 1: fase de execução com acesso e base preparada.",
+            legenda: "Poço de retardo 1 em execução: acesso e base do escavo.",
+          },
+          {
+            src: "/portfolio/laudos-estabilidade-taludes/inspecao-inicial-drenagem-escada-taludes-2025/figura-13.png",
+            alt: "Poço de retardo 2: fase de concretagem e instalação de manilhas.",
+            legenda:
+              "Poço de retardo 2: etapa de concretagem e instalação de manilhas.",
+          },
+          {
+            src: "/portfolio/laudos-estabilidade-taludes/inspecao-inicial-drenagem-escada-taludes-2025/figura-14.png",
+            alt: "Registros complementares de drenagem e condições de talude no entorno.",
+            legenda:
+              "Registros complementares do sistema de drenagem e do talude no entorno.",
+          },
+          {
+            src: "/portfolio/laudos-estabilidade-taludes/inspecao-inicial-drenagem-escada-taludes-2025/figura-15.png",
+            alt: "Vista geral complementar do canteiro.",
+            legenda:
+              "Vista geral complementar do canteiro (registro de apoio).",
+          },
+        ],
+      },
+    ],
+
     cta: {
       label: "Falar sobre Taludes",
       whatsappMessage: `Olá! Gostaria de solicitar um orçamento para LAUDO/AVALIAÇÃO DE TALUDE/ENCOSTA.`,
@@ -747,6 +891,86 @@ export const services: Service[] = [
       "Projetos existentes (se houver).",
       "Informações sobre drenagem (pontos de água, vazamentos, etc.).",
     ],
+
+    galeria: [
+      {
+        src: "/portfolio/muros-de-contencao/muro-divisa-fiore-gardenia-2025/foto-03-rachaduras-horizontais-muro.png",
+        alt: "Rachaduras horizontais no muro de divisa da residência vizinha (porção posterior).",
+        legenda:
+          "Fissuras horizontais contínuas, indicativas de cisalhamento ou adensamento do solo.",
+      },
+      {
+        src: "/portfolio/muros-de-contencao/muro-divisa-fiore-gardenia-2025/foto-05-ferragens-expostas-corrosao.png",
+        alt: "Ferragens expostas e em processo de corrosão no muro de divisa (residência vizinha).",
+        legenda:
+          "Armaduras aparentes com sinais de oxidação avançada, comprometendo a integridade estrutural.",
+      },
+      {
+        src: "/portfolio/muros-de-contencao/muro-divisa-fiore-gardenia-2025/foto-06-vista-geral-interface-terrenos.png",
+        alt: "Vista geral da interface entre os terrenos, com diferença de níveis e contato de solo natural com estrutura enterrada.",
+        legenda:
+          "Diferença de níveis e presença de solo natural em contato direto com estrutura enterrada.",
+      },
+    ],
+
+    casosPortfolio: [
+      {
+        id: "muro-divisa-fiore-gardenia-2025",
+        titulo:
+          "Avaliação geotécnica e estrutural — muro de divisa (Edifício Fiore Gardenia)",
+        periodo: "2025",
+        localidadeAproximada: "São Paulo/SP",
+        resumo:
+          "Laudo técnico preliminar com inspeção e registro fotográfico do muro de divisa entre o Edifício e a residência vizinha. Foram observadas fissuras verticais nos subsolos (mais pronunciadas no 3º subsolo, com continuidade ao 2º) e galgamento/infiltração de água mesmo em período de estiagem. No muro da residência vizinha, identificaram-se rachaduras horizontais contínuas e pontos com armaduras expostas e oxidadas, indicando degradação e potencial risco estrutural.",
+        destaques: [
+          "Inspeção técnica e registros fotográficos em 19/08/2025.",
+          "Fissuras verticais progressivas no edifício, com maior abertura no 3º subsolo e continuidade ao 2º subsolo.",
+          "Galgamento/infiltração de água na base do 3º subsolo mesmo em estiagem.",
+          "Muro vizinho (~40 m) com rachaduras horizontais contínuas, sugerindo cisalhamento/adensamento do solo.",
+          "Armaduras expostas com oxidação avançada: perda de cobrimento e comprometimento de durabilidade/capacidade.",
+          "Recomendações: monitoramento, sondagens/ensaios, avaliação estrutural do muro e drenagem para alívio de pressão hidrostática.",
+        ],
+        imagens: [
+          {
+            src: "/portfolio/muros-de-contencao/muro-divisa-fiore-gardenia-2025/foto-01-fissura-vertical-3-subsolo.png",
+            alt: "Fissura vertical no terceiro subsolo do Edifício Fiore Gardenia, próximo à divisa.",
+            legenda:
+              "Fissura vertical com abertura estimada em cerca de 2 mm, com continuidade até o segundo subsolo.",
+          },
+          {
+            src: "/portfolio/muros-de-contencao/muro-divisa-fiore-gardenia-2025/foto-02-infiltracao-base-3-subsolo.png",
+            alt: "Infiltração de água na base do terceiro subsolo (pé da parede de divisa).",
+            legenda:
+              "Presença de umidade/possível infiltração proveniente do solo vizinho, mesmo em período de estiagem.",
+          },
+          {
+            src: "/portfolio/muros-de-contencao/muro-divisa-fiore-gardenia-2025/foto-03-rachaduras-horizontais-muro.png",
+            alt: "Rachaduras horizontais no muro da residência vizinha (porção posterior).",
+            legenda:
+              "Fissuras horizontais contínuas, indicativas de cisalhamento ou adensamento do solo.",
+          },
+          {
+            src: "/portfolio/muros-de-contencao/muro-divisa-fiore-gardenia-2025/foto-04-trinca-horizontal-garagens.png",
+            alt: "Trinca horizontal no muro com diferença de níveis entre subsolos/garagens.",
+            legenda:
+              "Diferença de níveis entre áreas (subsolo 1 e subsolo 2) com trinca horizontal visível no muro.",
+          },
+          {
+            src: "/portfolio/muros-de-contencao/muro-divisa-fiore-gardenia-2025/foto-05-ferragens-expostas-corrosao.png",
+            alt: "Ferragens expostas e em processo de corrosão no muro de divisa da residência.",
+            legenda:
+              "Armaduras aparentes com oxidação avançada, comprometendo a integridade estrutural.",
+          },
+          {
+            src: "/portfolio/muros-de-contencao/muro-divisa-fiore-gardenia-2025/foto-06-vista-geral-interface-terrenos.png",
+            alt: "Vista geral da interface entre os terrenos (subsolo do edifício e muro da residência).",
+            legenda:
+              "Diferença de níveis e presença de solo natural em contato direto com estrutura enterrada.",
+          },
+        ],
+      },
+    ],
+
     cta: {
       label: "Falar sobre Contenção",
       whatsappMessage: `Olá! Gostaria de solicitar um orçamento para MURO DE CONTENÇÃO/CONTENÇÃO.`,

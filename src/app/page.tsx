@@ -107,10 +107,6 @@ Para agilizar, por favor envie na próxima mensagem:
         <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <h2 className="text-xl font-semibold text-slate-900">Serviços</h2>
-            <p className="mt-1 text-sm text-slate-600">
-              Se o seu caso é “laudo de estabilidade”, você está no lugar certo.
-              Escolha o serviço e peça orçamento no WhatsApp ou E-mail.
-            </p>
           </div>
         </div>
 
