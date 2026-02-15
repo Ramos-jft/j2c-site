@@ -20,9 +20,6 @@ export function GaleriaServico({
   return (
     <section className="mt-6 rounded-2xl border border-black/10 bg-white p-6">
       <h2 className="text-lg font-semibold text-slate-900">{titulo}</h2>
-      <p className="mt-2 text-sm text-slate-600">
-        Arraste para o lado no celular para ver mais registros.
-      </p>
 
       <GaleriaImagensAmpliavel
         itens={itens}
