@@ -109,36 +109,45 @@ export const services: Service[] = [
       "Objetivo claro (rotina / evento / auditoria / decisão).",
     ],
 
+    // ✅ Amostra dos 2 casos (serviço "Barragens")
     galeria: [
+      // Caso existente (amostra)
       {
         src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/barragem-5.png",
-        alt: "Referência de extensão do barramento (visão geral).",
-        legenda:
-          "Perfis de análise e resultados de estabilidade (modelagem 2D).",
+        alt: "Perfis de análise e resultados de estabilidade (modelagem 2D).",
+        legenda: "Caso 1: modelagem 2D e resultados de estabilidade.",
       },
       {
         src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/barragem-4.png",
         alt: "Vista do reservatório durante inspeção.",
-        legenda: "Visão geral dos perfis considerados na análise.",
+        legenda: "Caso 1: registro visual do reservatório durante a vistoria.",
       },
       {
         src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/barragem-3.png",
         alt: "Inspeção de dispositivo de drenagem.",
-        legenda: "Registro em campo: condição do dispositivo de drenagem.",
+        legenda: "Caso 1: condição observada em elemento de drenagem.",
+      },
+
+      // Caso novo (amostra)
+      {
+        src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/fig-01.png",
+        alt: "Figura técnica: seção/perfil considerado na análise de estabilidade do talude.",
+        legenda: "Caso 2: figura técnica do perfil analisado.",
       },
       {
-        src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/barragem-2.png",
-        alt: "Traçado dos perfis avaliados (visão geral).",
-        legenda: "Registro visual do reservatório no momento da vistoria.",
+        src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/antes-01.JPG",
+        alt: "Condição inicial do talude e drenagem (antes).",
+        legenda: "Caso 2: condição inicial (antes).",
       },
       {
-        src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/barragem-1.png",
-        alt: "Perfis analisados na verificação de estabilidade (modelagem 2D).",
-        legenda: "Referência visual de extensão do barramento (visão geral).",
+        src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/depois-01.JPG",
+        alt: "Pós-intervenção: recomposição/berma de equilíbrio (depois).",
+        legenda: "Caso 2: pós-intervenção (depois).",
       },
     ],
 
     casosPortfolio: [
+      // ✅ Caso JÁ EXISTENTE (mantido)
       {
         id: "barragem-terra-analise-estabilidade-2024",
         titulo: "Análise de Estabilidade e Drenagem — Barragem de Terra",
@@ -156,9 +165,9 @@ export const services: Service[] = [
         imagens: [
           {
             src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/barragem-5.png",
-            alt: "Referência de extensão do barramento (visão geral).",
+            alt: "Perfis de análise e resultados de estabilidade (modelagem 2D).",
             legenda:
-              "Referência visual de extensão do barramento (visão geral).",
+              "Perfis de análise e resultados de estabilidade (modelagem 2D).",
           },
           {
             src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/barragem-4.png",
@@ -180,6 +189,90 @@ export const services: Service[] = [
             alt: "Perfis analisados na verificação de estabilidade (modelagem 2D).",
             legenda:
               "Perfis de análise e resultados de estabilidade (modelagem 2D).",
+          },
+        ],
+      },
+
+      // ✅ NOVO CASO (do PDF): talude da lagoa de retenção — com TODAS as imagens
+      {
+        id: "talude-lagoa-retencao-analise-estabilidade-2024",
+        titulo: "Análise de Estabilidade — Talude de Lagoa de Retenção",
+        periodo: "2024",
+        localidadeAproximada: "Interior de SP",
+        resumo:
+          "Parecer técnico para avaliação da estabilidade do talude de uma lagoa de retenção, com definição de seções críticas, uso de dados de sondagens SPT e topografia, e modelagem 2D para verificação de fator de segurança por critério normativo. O trabalho consolidou constatações de campo, avaliou estabilidade global e local e definiu recomendações objetivas para drenagem, instrumentação e monitoramento.",
+        destaques: [
+          "Análises realizadas nas seções transversais consideradas mais críticas (4 perfis).",
+          "Modelagem 2D em software especializado, com método de Bishop simplificado e superfícies circulares de ruptura.",
+          "Comparação dos resultados com os fatores de segurança recomendados pela NBR 11682 (Estabilidade de Encostas).",
+          "Conclusão de estabilidade global adequada, com atenção a ponto local associado a nível d’água elevado e necessidade de drenagem.",
+          "Registro de medida emergencial com recomposição a jusante e berma de equilíbrio elevando a segurança local.",
+          "Recomendações: projeto/adequação de drenagem do vertedouro, dreno na berma de alívio e programa de instrumentação/monitoramento (NA e marco referencial).",
+        ],
+        imagens: [
+          // Figuras técnicas
+          {
+            src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/fig-01.png",
+            alt: "Figura técnica: seção/perfil considerado na análise de estabilidade do talude.",
+            legenda: "Figura técnica: seção/perfil adotado na análise.",
+          },
+          {
+            src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/fig-02.png",
+            alt: "Figura técnica: parâmetros e/ou resultados apresentados para a análise de estabilidade.",
+            legenda:
+              "Figura técnica: parâmetros/resultados apresentados no estudo.",
+          },
+          {
+            src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/antes-01.JPG",
+            alt: "Condição inicial do talude e área de drenagem (antes).",
+            legenda: "Antes: condição inicial observada em campo.",
+          },
+          {
+            src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/antes-02.JPG",
+            alt: "Condição inicial do talude (antes): detalhe de área com influência de água.",
+            legenda: "Antes: detalhe observado em campo e influência de água.",
+          },
+          {
+            src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/antes-03.JPG",
+            alt: "Condição inicial do talude (antes): visão complementar do trecho inspecionado.",
+            legenda: "Antes: visão complementar do trecho inspecionado.",
+          },
+          {
+            src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/antes-04.JPG",
+            alt: "Condição inicial do talude (antes): registro complementar do local.",
+            legenda: "Antes: registro complementar do local.",
+          },
+          {
+            src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/antes-05.JPG",
+            alt: "Condição inicial do talude (antes): registro complementar do local e entorno.",
+            legenda: "Antes: registro complementar do local e entorno.",
+          },
+
+          // Depois (todas)
+          {
+            src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/depois-01.JPG",
+            alt: "Pós-intervenção: recomposição e berma de equilíbrio (depois).",
+            legenda: "Depois: recomposição e berma de equilíbrio.",
+          },
+          {
+            src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/depois-02.JPG",
+            alt: "Pós-intervenção: condição do talude após medidas emergenciais (depois).",
+            legenda: "Depois: condição do talude após medidas emergenciais.",
+          },
+          {
+            src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/depois-03.JPG",
+            alt: "Pós-intervenção: vista complementar do talude após recomposição.",
+            legenda: "Depois: vista complementar após recomposição.",
+          },
+          {
+            src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/depois-04.JPG",
+            alt: "Pós-intervenção: detalhe do trecho corrigido.",
+            legenda: "Depois: detalhe do trecho corrigido.",
+          },
+          {
+            src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/depois-05.JPG",
+            alt: "Pós-intervenção: registro complementar do local após correções.",
+            legenda: "Depois: registro complementar após correções.",
           },
         ],
       },
@@ -966,6 +1059,43 @@ export const services: Service[] = [
             alt: "Vista geral da interface entre os terrenos (subsolo do edifício e muro da residência).",
             legenda:
               "Diferença de níveis e presença de solo natural em contato direto com estrutura enterrada.",
+          },
+        ],
+      },
+
+      {
+        id: "muro-fechamento-contencao-drenagem-2024",
+        titulo:
+          "Projeto e Memória de Cálculo — Muro de Fechamento com Contenção e Drenagem",
+        periodo: "2024",
+        localidadeAproximada: "Interior de SP",
+        resumo:
+          "Memória de cálculo e detalhamento técnico para muro de fechamento com função de contenção, incluindo solução de drenagem e dimensionamento estrutural em concreto armado. O trabalho contemplou definição de geometria, elementos de fundação e armação por trechos, além de estimativa de quantitativos para execução — com objetivo de garantir segurança estrutural e desempenho hidráulico do sistema.",
+        destaques: [
+          "Solução com muro de concreto armado (~2,0 m), contrafortes e reaterro compactado por camadas.",
+          "Integração de drenagem (galeria e canaletas) para controle de água e redução de pressões no maciço.",
+          "Dimensionamento estrutural por empuxo de solo e verificação de esforços (momento/cisalhamento) conforme premissas de projeto.",
+          "Detalhamento de armação por trechos + fundação com estacas e laje de base (conforme necessidade do local).",
+          "Quantitativos de materiais (concreto/aço) para apoiar planejamento e execução.",
+        ],
+        imagens: [
+          {
+            src: "/portfolio/muros-de-contencao/muro-fechamento-contencao-drenagem-2024/perfil-3-3-depois.png",
+            alt: "Perfil de estabilidade com aumento de margem de segurança após intervenções (sem dados sensíveis).",
+            legenda:
+              "Comparativo de estabilidade: leitura do fator de segurança após medidas executadas.",
+          },
+          {
+            src: "/portfolio/muros-de-contencao/muro-fechamento-contencao-drenagem-2024/perfil-3-3-antes.png",
+            alt: "Perfil de estabilidade antes das intervenções (sem dados sensíveis).",
+            legenda:
+              "Referência de análise anterior às intervenções para comparação de desempenho.",
+          },
+          {
+            src: "/portfolio/muros-de-contencao/muro-fechamento-contencao-drenagem-2024/prancha-perfil-aa-redigida.png",
+            alt: "Prancha técnica com implantação e perfil (informações de contato removidas).",
+            legenda:
+              "Prancha de implantação/perfil: referências geométricas e de drenagem (com dados sensíveis redigidos).",
           },
         ],
       },
