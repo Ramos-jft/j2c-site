@@ -1010,7 +1010,7 @@ export const services: Service[] = [
       {
         id: "muro-divisa-fiore-gardenia-2025",
         titulo:
-          "Avaliação geotécnica e estrutural — muro de divisa (Edifício Fiore Gardenia)",
+          "Avaliação geotécnica e estrutural — muro de divisa",
         periodo: "2025",
         localidadeAproximada: "São Paulo/SP",
         resumo:
@@ -1026,7 +1026,7 @@ export const services: Service[] = [
         imagens: [
           {
             src: "/portfolio/muros-de-contencao/muro-divisa-fiore-gardenia-2025/foto-01-fissura-vertical-3-subsolo.png",
-            alt: "Fissura vertical no terceiro subsolo do Edifício Fiore Gardenia, próximo à divisa.",
+            alt: "Fissura vertical no terceiro subsolo do Edifício, próximo à divisa.",
             legenda:
               "Fissura vertical com abertura estimada em cerca de 2 mm, com continuidade até o segundo subsolo.",
           },
