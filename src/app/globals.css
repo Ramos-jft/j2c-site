@@ -1,12 +1,23 @@
 @import "tailwindcss";
 
 :root {
-  --j2c-graphite: #0b0f14;
-  --j2c-gold: #f2c200;
-  --j2c-whatsapp: #25d366;
+  /* Base */
+  --j2c-cor-fundo: #ffffff;
+  --j2c-cor-superficie: #f6f7f9;
+  --j2c-cor-texto: #0f172a;
+  --j2c-cor-texto-suave: #475569;
+  --j2c-cor-borda: rgba(15, 23, 42, 0.12);
 
-  --j2c-gold-rgb: 242 194 0;
+  /* Acentos */
+  --j2c-cor-laranja: #f97316;
+  --j2c-cor-laranja-rgb: 249 115 22;
+  --j2c-whatsapp: #25d366;
   --j2c-whatsapp-rgb: 37 211 102;
+
+  /* Aliases (compatibilidade) */
+  --j2c-graphite: #0b0f14;
+  --j2c-gold: var(--j2c-cor-laranja);
+  --j2c-gold-rgb: var(--j2c-cor-laranja-rgb);
 }
 
 html,
@@ -15,14 +26,14 @@ body {
 }
 
 body {
-  background: var(--j2c-graphite);
-  color: white;
+  background: var(--j2c-cor-fundo);
+  color: var(--j2c-cor-texto);
   min-height: 100dvh;
   position: relative;
   overflow-x: hidden;
 }
 
-/* Background global: degradês circulares com aspecto de vidro (leve e performático) */
+/* Background global */
 body::before {
   content: "";
   position: fixed;
@@ -30,29 +41,17 @@ body::before {
   z-index: -1;
   pointer-events: none;
 
-  /* Camadas: círculos (radial) + uma leve vinheta */
-  background: radial-gradient(
-      680px circle at 18% 12%,
-      rgb(var(--j2c-gold-rgb) / 0.18),
+  background:
+    radial-gradient(
+      720px circle at 18% 12%,
+      rgb(var(--j2c-cor-laranja-rgb) / 0.08),
       transparent 60%
     ),
     radial-gradient(
       520px circle at 86% 10%,
-      rgb(var(--j2c-whatsapp-rgb) / 0.1),
+      rgb(var(--j2c-whatsapp-rgb) / 0.06),
       transparent 58%
-    ),
-    radial-gradient(
-      760px circle at 78% 82%,
-      rgb(var(--j2c-gold-rgb) / 0.1),
-      transparent 62%
-    ),
-    radial-gradient(
-      1100px circle at 50% 50%,
-      rgba(255, 255, 255, 0.03),
-      transparent 70%
     );
-
-  /* Sem blur global (evita custo alto). O “glass” vem da transparência. */
 }
 body::after {
   content: "";
@@ -62,9 +61,9 @@ body::after {
   pointer-events: none;
 
   background: radial-gradient(
-    1200px circle at 50% 20%,
+    1200px circle at 50% 10%,
     rgba(0, 0, 0, 0),
-    rgba(0, 0, 0, 0.35) 70%
+    rgba(15, 23, 42, 0.04) 70%
   );
 }
 
@@ -79,14 +78,10 @@ a {
   text-decoration: none;
 }
 
-/* underline apenas no conteúdo principal, não no header/footer */
 main a:hover {
-  text-decoration: underline;
-  text-decoration-color: rgba(255, 255, 255, 0.35);
-  text-underline-offset: 3px;
+  text-decoration: none;
 }
 
-/* Opt-out: páginas que NÃO devem sublinhar links (Home e Serviços) */
 main[data-no-underline] a:hover {
   text-decoration: none;
 }
@@ -113,57 +108,199 @@ main[data-no-underline] a:hover {
   border-radius: 8px;
 }
 
-/* Menu: pill dourado com efeito "glass" */
-.j2c-menu-pill {
+.j2c-menu-link {
   display: inline-flex;
   align-items: center;
-  border-radius: 9999px;
+
   padding: 0.5rem 0.75rem;
-  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 700;
+
+  color: rgba(15, 23, 42, 0.78);
   text-decoration: none;
 
-  /* texto padrão do menu */
-  color: rgba(255, 255, 255, 0.85);
-
-  /* base "clean" */
-  background: transparent;
-  border: 1px solid transparent;
-
-  transition: background-color 160ms ease, border-color 160ms ease,
-    color 160ms ease, transform 160ms ease, filter 160ms ease;
+  transition: color 160ms ease;
 }
 
-/* Hover: vidro dourado */
-.j2c-menu-pill:hover {
-  text-decoration: none;
-  color: #ffffff;
-
-  background: rgb(var(--j2c-gold-rgb) / 0.18); /* dourado translúcido */
-  border-color: rgb(var(--j2c-gold-rgb) / 0.45);
-
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+/* hover */
+.j2c-menu-link:hover {
+  color: var(--j2c-cor-laranja);
 }
 
-/* Active click */
-.j2c-menu-pill:active {
-  transform: translateY(0.5px);
-  filter: brightness(1.06);
+/* ao pressionar (clique segurado) */
+.j2c-menu-link:active {
+  color: var(--j2c-cor-laranja);
 }
 
-/* Página atual: pill dourado sempre ligado */
-.j2c-menu-pill--active {
-  color: #ffffff;
-
-  background: rgb(var(--j2c-gold-rgb) / 0.24);
-  border-color: rgb(var(--j2c-gold-rgb) / 0.6);
-
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+/* página atual (permanece laranja) */
+.j2c-menu-link--active,
+.j2c-menu-link[aria-current="page"] {
+  color: var(--j2c-cor-laranja);
 }
 
-/* A11y */
-.j2c-menu-pill:focus-visible {
+/* foco acessível */
+.j2c-menu-link:focus-visible {
   outline: 2px solid var(--j2c-gold);
   outline-offset: 2px;
+  border-radius: 8px;
+}
+
+.j2c-whatsapp-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  border-radius: 9999px;
+  padding: 0.5rem 1rem;
+
+  border: 1px solid var(--j2c-whatsapp);
+  background: transparent;
+
+  color: var(--j2c-whatsapp);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 700;
+
+  transition:
+    background-color 160ms ease,
+    transform 160ms ease,
+    filter 160ms ease;
+}
+
+.j2c-whatsapp-pill:hover {
+  background: rgb(var(--j2c-whatsapp-rgb) / 0.12);
+}
+
+.j2c-whatsapp-pill:active {
+  transform: translateY(0.5px);
+}
+
+.j2c-whatsapp-pill:focus-visible {
+  outline: 2px solid var(--j2c-gold);
+  outline-offset: 2px;
+  border-radius: 9999px;
+}
+
+.j2c-whatsapp-icone {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+.j2c-header-icone-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 38px;
+  height: 38px;
+
+  border-radius: 12px;
+
+  transition:
+    transform 160ms ease,
+    background-color 160ms ease,
+    filter 160ms ease;
+}
+
+.j2c-header-icone-link:hover {
+  background: rgba(15, 23, 42, 0.06);
+  filter: brightness(1.02);
+}
+
+.j2c-header-icone-link:active {
+  transform: translateY(0.5px);
+}
+
+.j2c-header-icone-link:focus-visible {
+  outline: 2px solid var(--j2c-gold);
+  outline-offset: 2px;
+}
+
+.j2c-header-icone-img {
+  width: 32px;
+  height: 32px;
+  display: block;
+}
+
+/* Botão CTA — Opção 3 (laranja suave + borda + “press” no clique) */
+.j2c-botao-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  border-radius: 14px;
+  padding: 0.75rem 1.25rem;
+
+  border: 1px solid rgb(var(--j2c-cor-laranja-rgb) / 0.55);
+  background: rgb(var(--j2c-cor-laranja-rgb) / 0.08);
+  color: rgb(var(--j2c-cor-laranja-rgb) / 0.95);
+
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 800;
+
+  box-shadow: 0 10px 22px rgb(var(--j2c-cor-laranja-rgb) / 0.12);
+
+  transition:
+    transform 160ms ease,
+    background-color 160ms ease,
+    box-shadow 160ms ease,
+    filter 160ms ease;
+}
+
+/* Ícones (se houver) herdarem a cor do texto */
+.j2c-botao-cta svg {
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+.j2c-botao-cta:hover {
+  background: rgb(var(--j2c-cor-laranja-rgb) / 0.95);
+  border-color: rgb(var(--j2c-cor-laranja-rgb) / 0.95);
+  color: #fff;
+
+  box-shadow: 0 14px 30px rgb(var(--j2c-cor-laranja-rgb) / 0.22);
+  filter: none;
+}
+
+/* Ao clicar: fundo laranja + texto branco */
+.j2c-botao-cta:active {
+  transform: translateY(0.8px);
+  background: rgb(var(--j2c-cor-laranja-rgb) / 0.92);
+  border-color: rgb(var(--j2c-cor-laranja-rgb) / 0.92);
+  color: #fff;
+
+  box-shadow: 0 10px 20px rgb(var(--j2c-cor-laranja-rgb) / 0.18);
+}
+
+.j2c-botao-cta:focus-visible {
+  outline: 2px solid var(--j2c-gold);
+  outline-offset: 2px;
+}
+
+.j2c-botao-cta--sm {
+  padding: 0.5rem 1rem;
+  font-weight: 800;
+}
+
+.j2c-botao-cta--pill {
+  border-radius: 9999px;
+  padding: 0.45rem 0.95rem;
+  font-weight: 700;
+}
+
+/* Portfólio: item selecionado (persistente) também laranja + branco */
+.j2c-botao-cta--selecionado {
+  background: rgb(var(--j2c-cor-laranja-rgb) / 0.95);
+  border-color: rgb(var(--j2c-cor-laranja-rgb) / 0.95);
+  color: #fff;
+}
+
+.j2c-botao-cta--selecionado:hover {
+  background: rgb(var(--j2c-cor-laranja-rgb) / 0.92);
+  box-shadow: 0 14px 30px rgb(var(--j2c-cor-laranja-rgb) / 0.16);
+  filter: none;
 }

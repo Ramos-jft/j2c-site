@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { GaleriaServico } from "@/components/site/GaleriaServico";
 import { notFound } from "next/navigation";
 import { siteConfig } from "@/content/site";
 import { getAllServiceSlugs, getServiceBySlug } from "@/content/services";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 import { serviceJsonLd } from "@/lib/seo/jsonld";
+import { BotaoContatoComSelecao } from "@/components/contato/BotaoContatoComSelecao";
 
 export const dynamicParams = false;
 
@@ -16,16 +18,40 @@ export function generateStaticParams() {
   return getAllServiceSlugs().map((slug) => ({ slug }));
 }
 
-export function generateMetadata(): Metadata {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const service = getServiceBySlug(slug);
+
+  if (!service) {
+    return {
+      title: "Serviço | J2C Engenharia e Geotecnia",
+      description:
+        "Detalhes do serviço, escopo, entregáveis e contato. Atendimento nacional e plantão 24h (até 300 km de Campinas/SP).",
+    };
+  }
+
+  const url = `${siteConfig.siteUrl}/servicos/${service.slug}`;
+
   return {
-    title: "Serviço | J2C Engenharia e Geotecnia",
-    description:
-      "Detalhes do serviço, escopo, entregáveis e contato. Atendimento nacional e plantão 24h (até 300 km de Campinas/SP).",
+    title: service.seoTitle,
+    description: service.seoDescription,
+    keywords: service.keywords,
+    alternates: { canonical: url },
+    openGraph: {
+      type: "website",
+      locale: "pt_BR",
+      url,
+      title: service.seoTitle,
+      description: service.seoDescription,
+      siteName: siteConfig.name,
+    },
   };
 }
 
 function SectionTitle({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <h2 className="text-lg font-semibold text-white">{children}</h2>;
+  return <h2 className="text-lg font-semibold text-slate-900">{children}</h2>;
 }
 
 export default async function ServiceDetailPage({
@@ -38,8 +64,11 @@ export default async function ServiceDetailPage({
 
   const waHref = buildWhatsAppLink(
     siteConfig.contacts.whatsapp,
-    service.cta.whatsappMessage
+    service.cta.whatsappMessage,
   );
+
+  const temGaleria = (service.galeria?.length ?? 0) > 0;
+  const temCasosPortfolio = (service.casosPortfolio?.length ?? 0) > 0;
 
   return (
     <main id="conteudo" className="mx-auto max-w-6xl px-4 py-10">
@@ -50,51 +79,65 @@ export default async function ServiceDetailPage({
         }}
       />
 
-      <nav aria-label="Breadcrumb" className="text-sm text-white/60">
-        <Link className="hover:text-white" href="/">
+      <nav aria-label="Breadcrumb" className="text-sm text-slate-500">
+        <Link className="hover:text-slate-900" href="/">
           Início
         </Link>
         <span className="mx-2">/</span>
-        <Link className="hover:text-white" href="/servicos">
+        <Link className="hover:text-slate-900" href="/servicos">
           Serviços
         </Link>
         <span className="mx-2">/</span>
-        <span className="text-white/80">{service.title}</span>
+        <span className="text-slate-700">{service.title}</span>
       </nav>
 
-      <header className="mt-6 rounded-2xl border border-white/10 bg-black/20 p-6">
-        <h1 className="text-3xl font-semibold text-white">{service.title}</h1>
+      <header className="mt-6 rounded-2xl border border-black/10 bg-white p-6">
+        <h1 className="text-3xl font-semibold text-slate-900">
+          {service.title}
+        </h1>
 
-        <p className="mt-3 max-w-3xl text-sm text-white/70">
+        <p className="mt-3 max-w-3xl text-sm text-slate-600">
           {service.overview}
         </p>
 
         <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center">
-          <a
-            href={waHref}
-            className="inline-flex items-center justify-center rounded-xl bg-[var(--j2c-whatsapp)] px-5 py-3 text-sm font-semibold text-white hover:brightness-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--j2c-gold)]"
-            aria-label={service.cta.label}
-          >
-            {service.cta.label}
-          </a>
+          <BotaoContatoComSelecao
+            textoBotao={service.cta.label}
+            hrefWhatsApp={waHref}
+            assuntoEmail={`Orçamento - ${service.title}`}
+            classNameBotao="j2c-botao-cta"
+          />
 
           <Link
             href="/contato"
-            className="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white/90 hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--j2c-gold)]"
+            className="inline-flex items-center justify-center rounded-xl border border-black/10 bg-[var(--j2c-cor-superficie)] px-5 py-3 text-sm font-semibold text-slate-900 hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--j2c-gold)]"
           >
             Ver contato e horários
           </Link>
 
-          <p className="text-xs text-white/60">
+          <p className="text-xs text-slate-500">
             {siteConfig.responseSla} • {siteConfig.emergencyCoverage}
           </p>
         </div>
       </header>
 
+      {temGaleria ? <GaleriaServico itens={service.galeria ?? []} /> : null}
+
+      {temCasosPortfolio ? (
+        <div className={temGaleria ? "mt-3" : "mt-6"}>
+          <Link
+            className="text-sm font-semibold text-[var(--j2c-gold)] hover:opacity-90"
+            href={`/portfolio?servico=${encodeURIComponent(service.slug)}`}
+          >
+            Ver portfólio deste serviço →
+          </Link>
+        </div>
+      ) : null}
+
       <section className="mt-8 grid gap-6 lg:grid-cols-2">
-        <div className="rounded-2xl border border-white/10 bg-black/20 p-6">
+        <div className="rounded-2xl border border-black/10 bg-white p-6">
           <SectionTitle>Quando este serviço é indicado</SectionTitle>
-          <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-white/75">
+          <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-slate-600">
             {service.whenClientsLookForYou.map((item) => (
               <li key={item}>{item}</li>
             ))}
@@ -103,66 +146,66 @@ export default async function ServiceDetailPage({
           <SectionTitle>
             <span className="mt-8 block">Como funciona</span>
           </SectionTitle>
-          <ol className="mt-4 list-decimal space-y-2 pl-5 text-sm text-white/75">
+          <ol className="mt-4 list-decimal space-y-2 pl-5 text-sm text-slate-600">
             {service.howItWorks.map((step) => (
               <li key={step}>{step}</li>
             ))}
           </ol>
         </div>
 
-        <div className="rounded-2xl border border-white/10 bg-black/20 p-6">
+        <div className="rounded-2xl border border-black/10 bg-white p-6">
           <SectionTitle>O que você recebe</SectionTitle>
-          <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-white/75">
+          <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-slate-600">
             {service.typicalDeliverables.map((d) => (
               <li key={d}>{d}</li>
             ))}
           </ul>
 
-          <div className="mt-8 rounded-xl border border-white/10 bg-white/5 p-4">
-            <p className="text-sm font-semibold text-white">Prazo típico</p>
-            <p className="mt-2 text-sm text-white/75">
+          <div className="mt-8 rounded-xl border border-black/10 bg-[var(--j2c-cor-superficie)] p-4">
+            <p className="text-sm font-semibold text-slate-900">Prazo típico</p>
+            <p className="mt-2 text-sm text-slate-600">
               {service.typicalTimeline}
             </p>
           </div>
         </div>
       </section>
 
-      <section className="mt-6 rounded-2xl border border-white/10 bg-black/20 p-6">
+      <section className="mt-6 rounded-2xl border border-black/10 bg-white p-6">
         <SectionTitle>O que precisamos para orçar com precisão</SectionTitle>
-        <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-white/75">
+        <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-slate-600">
           {service.clientProvides.map((i) => (
             <li key={i}>{i}</li>
           ))}
         </ul>
 
         <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-          <a
-            href={waHref}
-            className="inline-flex items-center justify-center rounded-xl bg-[var(--j2c-whatsapp)] px-5 py-3 text-sm font-semibold text-white hover:brightness-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--j2c-gold)]"
-          >
-            Enviar detalhes no WhatsApp
-          </a>
+          <BotaoContatoComSelecao
+            textoBotao="Enviar detalhes"
+            hrefWhatsApp={waHref}
+            assuntoEmail={`Detalhes do caso - ${service.title}`}
+            classNameBotao="j2c-botao-cta"
+          />
 
-          <p className="text-xs text-white/60">
+          <p className="text-xs text-slate-500">
             Dica: envie cidade/UF, objetivo, prazo e fotos/plantas/PDFs se
             houver.
           </p>
         </div>
       </section>
 
-      <section className="mt-6 rounded-2xl border border-white/10 bg-black/20 p-6">
+      <section className="mt-6 rounded-2xl border border-black/10 bg-white p-6">
         <SectionTitle>Perguntas frequentes</SectionTitle>
 
         <div className="mt-4 space-y-3">
           {service.faqs.map((f) => (
             <details
               key={f.q}
-              className="rounded-xl border border-white/10 bg-white/5 p-4"
+              className="rounded-xl border border-black/10 bg-[var(--j2c-cor-superficie)] p-4"
             >
-              <summary className="cursor-pointer text-sm font-semibold text-white">
+              <summary className="cursor-pointer text-sm font-semibold text-slate-900">
                 {f.q}
               </summary>
-              <p className="mt-2 text-sm text-white/75">{f.a}</p>
+              <p className="mt-2 text-sm text-slate-600">{f.a}</p>
             </details>
           ))}
         </div>

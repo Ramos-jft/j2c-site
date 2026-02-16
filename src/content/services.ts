@@ -8,6 +8,24 @@ export type ServiceCta = {
   whatsappMessage: string;
 };
 
+export type ImagemGaleriaServico = {
+  src: string;
+  alt: string;
+  legenda?: string;
+};
+
+export type CasoPortfolio = {
+  id: string;
+  titulo: string;
+  periodo?: string;
+  localidadeAproximada?: string;
+
+  resumo: string;
+  destaques: string[];
+
+  imagens?: ImagemGaleriaServico[];
+};
+
 export type Service = {
   slug: string;
   title: string;
@@ -29,6 +47,9 @@ export type Service = {
   typicalDeliverables: string[];
   typicalTimeline: string;
   clientProvides: string[];
+
+  galeria?: ImagemGaleriaServico[];
+  casosPortfolio?: CasoPortfolio[];
 
   cta: ServiceCta;
   faqs: ServiceFaq[];
@@ -87,10 +108,179 @@ export const services: Service[] = [
       "Contato do responsável local e regras de segurança.",
       "Objetivo claro (rotina / evento / auditoria / decisão).",
     ],
+
+    // ✅ Amostra dos 2 casos (serviço "Barragens")
+    galeria: [
+      // Caso existente (amostra)
+      {
+        src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/barragem-5.png",
+        alt: "Perfis de análise e resultados de estabilidade (modelagem 2D).",
+        legenda: "Caso 1: modelagem 2D e resultados de estabilidade.",
+      },
+      {
+        src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/barragem-4.png",
+        alt: "Vista do reservatório durante inspeção.",
+        legenda: "Caso 1: registro visual do reservatório durante a vistoria.",
+      },
+      {
+        src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/barragem-3.png",
+        alt: "Inspeção de dispositivo de drenagem.",
+        legenda: "Caso 1: condição observada em elemento de drenagem.",
+      },
+
+      // Caso novo (amostra)
+      {
+        src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/fig-01.png",
+        alt: "Figura técnica: seção/perfil considerado na análise de estabilidade do talude.",
+        legenda: "Caso 2: figura técnica do perfil analisado.",
+      },
+      {
+        src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/antes-01.JPG",
+        alt: "Condição inicial do talude e drenagem (antes).",
+        legenda: "Caso 2: condição inicial (antes).",
+      },
+      {
+        src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/depois-01.JPG",
+        alt: "Pós-intervenção: recomposição/berma de equilíbrio (depois).",
+        legenda: "Caso 2: pós-intervenção (depois).",
+      },
+    ],
+
+    casosPortfolio: [
+      // ✅ Caso JÁ EXISTENTE (mantido)
+      {
+        id: "barragem-terra-analise-estabilidade-2024",
+        titulo: "Análise de Estabilidade e Drenagem — Barragem de Terra",
+        periodo: "2024",
+        localidadeAproximada: "Interior de SP",
+        resumo:
+          "Parecer técnico para avaliação de uma barragem de terra associada a lagoa de retenção, com inspeção em campo, registros por drone, interpretação de sondagens SPT e uso de topografia para modelagem 2D. Foram analisados perfis representativos do barramento, verificada a estabilidade global por critério normativo e emitidas recomendações práticas para drenagem e monitoramento.",
+        destaques: [
+          "Inspeção técnica em campo + registro visual com drone (VANT).",
+          "Integração de sondagens SPT e topografia para perfis geotécnicos.",
+          "Análise de estabilidade 2D e verificação por critério da NBR 11682.",
+          "Estabilidade adequada nos perfis analisados e plano de ações recomendado.",
+          "Recomendações: melhorias de drenagem, instrumentação e monitoramento periódico.",
+        ],
+        imagens: [
+          {
+            src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/barragem-5.png",
+            alt: "Perfis de análise e resultados de estabilidade (modelagem 2D).",
+            legenda:
+              "Perfis de análise e resultados de estabilidade (modelagem 2D).",
+          },
+          {
+            src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/barragem-4.png",
+            alt: "Vista do reservatório durante inspeção.",
+            legenda: "Registro visual do reservatório no momento da vistoria.",
+          },
+          {
+            src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/barragem-3.png",
+            alt: "Inspeção de dispositivo de drenagem.",
+            legenda: "Registro em campo: condição do dispositivo de drenagem.",
+          },
+          {
+            src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/barragem-2.png",
+            alt: "Traçado dos perfis avaliados (visão geral).",
+            legenda: "Visão geral dos perfis considerados na análise.",
+          },
+          {
+            src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/barragem-1.png",
+            alt: "Perfis analisados na verificação de estabilidade (modelagem 2D).",
+            legenda:
+              "Perfis de análise e resultados de estabilidade (modelagem 2D).",
+          },
+        ],
+      },
+
+      // ✅ NOVO CASO (do PDF): talude da lagoa de retenção — com TODAS as imagens
+      {
+        id: "talude-lagoa-retencao-analise-estabilidade-2024",
+        titulo: "Análise de Estabilidade — Talude de Lagoa de Retenção",
+        periodo: "2024",
+        localidadeAproximada: "Interior de SP",
+        resumo:
+          "Parecer técnico para avaliação da estabilidade do talude de uma lagoa de retenção, com definição de seções críticas, uso de dados de sondagens SPT e topografia, e modelagem 2D para verificação de fator de segurança por critério normativo. O trabalho consolidou constatações de campo, avaliou estabilidade global e local e definiu recomendações objetivas para drenagem, instrumentação e monitoramento.",
+        destaques: [
+          "Análises realizadas nas seções transversais consideradas mais críticas (4 perfis).",
+          "Modelagem 2D em software especializado, com método de Bishop simplificado e superfícies circulares de ruptura.",
+          "Comparação dos resultados com os fatores de segurança recomendados pela NBR 11682 (Estabilidade de Encostas).",
+          "Conclusão de estabilidade global adequada, com atenção a ponto local associado a nível d’água elevado e necessidade de drenagem.",
+          "Registro de medida emergencial com recomposição a jusante e berma de equilíbrio elevando a segurança local.",
+          "Recomendações: projeto/adequação de drenagem do vertedouro, dreno na berma de alívio e programa de instrumentação/monitoramento (NA e marco referencial).",
+        ],
+        imagens: [
+          // Figuras técnicas
+          {
+            src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/fig-01.png",
+            alt: "Figura técnica: seção/perfil considerado na análise de estabilidade do talude.",
+            legenda: "Figura técnica: seção/perfil adotado na análise.",
+          },
+          {
+            src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/fig-02.png",
+            alt: "Figura técnica: parâmetros e/ou resultados apresentados para a análise de estabilidade.",
+            legenda:
+              "Figura técnica: parâmetros/resultados apresentados no estudo.",
+          },
+          {
+            src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/antes-01.JPG",
+            alt: "Condição inicial do talude e área de drenagem (antes).",
+            legenda: "Antes: condição inicial observada em campo.",
+          },
+          {
+            src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/antes-02.JPG",
+            alt: "Condição inicial do talude (antes): detalhe de área com influência de água.",
+            legenda: "Antes: detalhe observado em campo e influência de água.",
+          },
+          {
+            src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/antes-03.JPG",
+            alt: "Condição inicial do talude (antes): visão complementar do trecho inspecionado.",
+            legenda: "Antes: visão complementar do trecho inspecionado.",
+          },
+          {
+            src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/antes-04.JPG",
+            alt: "Condição inicial do talude (antes): registro complementar do local.",
+            legenda: "Antes: registro complementar do local.",
+          },
+          {
+            src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/antes-05.JPG",
+            alt: "Condição inicial do talude (antes): registro complementar do local e entorno.",
+            legenda: "Antes: registro complementar do local e entorno.",
+          },
+
+          // Depois (todas)
+          {
+            src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/depois-01.JPG",
+            alt: "Pós-intervenção: recomposição e berma de equilíbrio (depois).",
+            legenda: "Depois: recomposição e berma de equilíbrio.",
+          },
+          {
+            src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/depois-02.JPG",
+            alt: "Pós-intervenção: condição do talude após medidas emergenciais (depois).",
+            legenda: "Depois: condição do talude após medidas emergenciais.",
+          },
+          {
+            src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/depois-03.JPG",
+            alt: "Pós-intervenção: vista complementar do talude após recomposição.",
+            legenda: "Depois: vista complementar após recomposição.",
+          },
+          {
+            src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/depois-04.JPG",
+            alt: "Pós-intervenção: detalhe do trecho corrigido.",
+            legenda: "Depois: detalhe do trecho corrigido.",
+          },
+          {
+            src: "/portfolio/barragens/barragem-terra-analise-estabilidade-2024/depois-05.JPG",
+            alt: "Pós-intervenção: registro complementar do local após correções.",
+            legenda: "Depois: registro complementar após correções.",
+          },
+        ],
+      },
+    ],
+
     cta: {
-      label: "Falar no WhatsApp sobre Barragens",
-      whatsappMessage:
-        "Olá! Gostaria de solicitar um orçamento para BARRAGENS (apoio técnico/inspeção).\n\nPara agilizar, por favor envie na próxima mensagem:\n- Cidade/UF e local do empreendimento\n- Objetivo (inspeção de rotina, pós-chuva/evento, auditoria/contratante, etc.)\n- Prazo desejado\n- Fotos/vídeos e relatórios anteriores (se houver)\n- Se é emergência (plantão 24h até 300 km de Campinas/SP)",
+      label: "Falar sobre Barragens",
+      whatsappMessage: `Olá! Gostaria de solicitar um orçamento para BARRAGENS (apoio técnico/inspeção).`,
     },
     faqs: [
       {
@@ -158,9 +348,8 @@ export const services: Service[] = [
       "Histórico do processo, exigências recebidas e prazos.",
     ],
     cta: {
-      label: "Falar no WhatsApp sobre Regularização",
-      whatsappMessage:
-        "Olá! Gostaria de solicitar um orçamento para REGULARIZAÇÃO junto à Prefeitura.\n\nPara agilizar, por favor envie na próxima mensagem:\n- Município/UF\n- Tipo de imóvel/obra\n- Se já existe processo/exigência (sim/não)\n- Prazo desejado\n- Documentos e exigências recebidas (se houver)\n- Plantas/arquivos existentes (se houver)",
+      label: "Falar sobre Regularização",
+      whatsappMessage: `Olá! Gostaria de solicitar um orçamento para REGULARIZAÇÃO junto à Prefeitura.`,
     },
     faqs: [
       {
@@ -180,15 +369,14 @@ export const services: Service[] = [
 
   {
     slug: "drone-topografia-monitoramento",
-    title: "Drone – Topografia e Monitoramento",
+    title: "Drone – Mapeamento e Monitoramento",
     short:
-      "Levantamentos com drone para ortomosaico, modelos digitais e inspeção visual com rapidez e rastreabilidade.",
-    seoTitle: "Levantamento com Drone: topografia e monitoramento | J2C",
+      "Mapeamento e monitoramento com drone: ortomosaico, modelos digitais e inspeção visual com rapidez e rastreabilidade.",
+    seoTitle: "Levantamento com Drone: mapeamento e monitoramento | J2C",
     seoDescription:
-      "Drone para topografia e monitoramento: ortomosaico, modelos digitais, nuvem de pontos e relatórios. Operação alinhada às regras vigentes (ANAC/DECEA/ANATEL).",
+      "Drone para mapeamento e monitoramento: ortomosaico, modelos digitais, nuvem de pontos e relatórios. Operação alinhada às regras vigentes (ANAC/DECEA/ANATEL).",
     keywords: [
       "drone",
-      "topografia",
       "monitoramento",
       "ortomosaico",
       "nuvem de pontos",
@@ -233,9 +421,8 @@ export const services: Service[] = [
       "Janela de operação (datas e horários possíveis).",
     ],
     cta: {
-      label: "Falar no WhatsApp sobre Drone",
-      whatsappMessage:
-        "Olá! Gostaria de solicitar um orçamento para LEVANTAMENTO COM DRONE (topografia/monitoramento).\n\nPara agilizar, por favor envie na próxima mensagem:\n- Cidade/UF e local/área\n- Objetivo (topografia, monitoramento de obra, inspeção visual, etc.)\n- Área aproximada / extensão\n- Prazo desejado\n- Restrições de acesso/horários (se houver)\n- Um print/mapa da área (se possível)",
+      label: "Falar sobre Drone",
+      whatsappMessage: `Olá! Gostaria de solicitar um orçamento para LEVANTAMENTO COM DRONE (mapeamento/monitoramento).`,
     },
     faqs: [
       {
@@ -305,10 +492,153 @@ export const services: Service[] = [
       "Plantas/projetos existentes (se houver).",
       "Restrições de segurança e contato local.",
     ],
+
+    galeria: [
+      {
+        src: "/portfolio/laudos-estabilidade-taludes/inspecao-inicial-drenagem-escada-taludes-2025/figura-02.png",
+        alt: "Vista geral do canteiro e das áreas vistoriadas.",
+        legenda:
+          "Vista geral do canteiro e das áreas vistoriadas (registro aéreo parcial).",
+      },
+      {
+        src: "/portfolio/laudos-estabilidade-taludes/inspecao-inicial-drenagem-escada-taludes-2025/figura-07.png",
+        alt: "Canaleta de drenagem em berma com sinais de fissuras/desgaste.",
+        legenda:
+          "Canaleta de drenagem em berma: sinais de fissuras e desgaste.",
+      },
+      {
+        src: "/portfolio/laudos-estabilidade-taludes/inspecao-inicial-drenagem-escada-taludes-2025/figura-08.png",
+        alt: "Indícios de trincas e escorregamentos superficiais em talude.",
+        legenda:
+          "Talude com indícios de trincas e escorregamentos superficiais.",
+      },
+      {
+        src: "/portfolio/laudos-estabilidade-taludes/inspecao-inicial-drenagem-escada-taludes-2025/figura-05.png",
+        alt: "Escada hidráulica com aberturas e avarias nas paredes laterais.",
+        legenda:
+          "Escada hidráulica: aberturas laterais e avarias observadas em campo.",
+      },
+      {
+        src: "/portfolio/laudos-estabilidade-taludes/inspecao-inicial-drenagem-escada-taludes-2025/figura-12.png",
+        alt: "Poço de retardo em fase de execução (escavação e estruturas iniciais).",
+        legenda:
+          "Poço de retardo em execução: escavação e estruturas iniciais.",
+      },
+    ],
+
+    casosPortfolio: [
+      {
+        id: "inspecao-inicial-drenagem-escada-taludes-2025",
+        titulo:
+          "Inspeção inicial — Taludes, drenagem de bermas e escada hidráulica",
+        periodo: "2025",
+        localidadeAproximada: "Região metropolitana de SP",
+        resumo:
+          "Visita técnica para avaliar a conformidade da execução de terraplenagem e drenagem em andamento, com registro fotográfico terrestre e aéreo (parcial, por condições climáticas). Foram mapeadas patologias compatíveis com escorregamento superficial em taludes, além de avarias e obstruções em elementos de drenagem (canaletas de berma) e na escada hidráulica existente. O resultado foi um parecer técnico preliminar com priorização de manutenção/correções para reduzir risco geotécnico e preservar a eficiência hidráulica.",
+        destaques: [
+          "Condições adversas (chuva e vento): registro aéreo parcial e necessidade de complementação em nova visita.",
+          "Taludes com fissuras longitudinais/transversais, perda de vegetação e pontos com acúmulo de água na base — indícios de instabilidade localizada.",
+          "Canaletas de drenagem em bermas com sedimentos, vegetação e rachaduras, comprometendo o escoamento superficial.",
+          "Escada hidráulica existente com avarias (desagregação de concreto, armaduras expostas, fissuras e obstruções no canal).",
+          "Poço de retardo em fase de execução; interface hidráulica não conclusiva no momento da vistoria.",
+        ],
+        imagens: [
+          {
+            src: "/portfolio/laudos-estabilidade-taludes/inspecao-inicial-drenagem-escada-taludes-2025/figura-01.png",
+            alt: "Mapa de referência das áreas vistoriadas (G100/G200), sem informações sensíveis.",
+            legenda:
+              "Referência das áreas vistoriadas (G100/G200) e localização das ocorrências observadas.",
+          },
+          {
+            src: "/portfolio/laudos-estabilidade-taludes/inspecao-inicial-drenagem-escada-taludes-2025/figura-02.png",
+            alt: "Vista aérea parcial do local inspecionado.",
+            legenda:
+              "Registro aéreo parcial do local inspecionado (condições climáticas limitaram a operação).",
+          },
+          {
+            src: "/portfolio/laudos-estabilidade-taludes/inspecao-inicial-drenagem-escada-taludes-2025/figura-03.png",
+            alt: "Saída de drenagem com falhas construtivas e indícios de adensamento/compactação inadequada.",
+            legenda:
+              "Saída de drenagem: ausência de proteção lateral e evidências de compactação/adensamento sobre tubulação.",
+          },
+          {
+            src: "/portfolio/laudos-estabilidade-taludes/inspecao-inicial-drenagem-escada-taludes-2025/figura-04.png",
+            alt: "Drenagem de berma e talude com indícios de escorregamento e recomposição superficial.",
+            legenda:
+              "Drenagem de berma e talude: indícios de escorregamento superficial e recomposição.",
+          },
+          {
+            src: "/portfolio/laudos-estabilidade-taludes/inspecao-inicial-drenagem-escada-taludes-2025/figura-05.png",
+            alt: "Escada hidráulica: vista superior, aberturas laterais e avarias em paredes.",
+            legenda:
+              "Escada hidráulica: aberturas laterais e avarias observadas no trecho vistoriado.",
+          },
+          {
+            src: "/portfolio/laudos-estabilidade-taludes/inspecao-inicial-drenagem-escada-taludes-2025/figura-06.png",
+            alt: "Escada hidráulica: rompimento/local sem dissipação e falta de uniformidade geométrica.",
+            legenda:
+              "Escada hidráulica: trecho sem dissipação e com avarias associadas.",
+          },
+          {
+            src: "/portfolio/laudos-estabilidade-taludes/inspecao-inicial-drenagem-escada-taludes-2025/figura-07.png",
+            alt: "Canaleta de berma: sinais de fissuras e pontos de descontinuidade.",
+            legenda:
+              "Canaleta de berma: sinais de fissuras e descontinuidades.",
+          },
+          {
+            src: "/portfolio/laudos-estabilidade-taludes/inspecao-inicial-drenagem-escada-taludes-2025/figura-08.png",
+            alt: "Talude recomposto com indícios de desgaste e escorregamentos.",
+            legenda:
+              "Talude recomposto: indícios de desgaste e escorregamentos superficiais.",
+          },
+          {
+            src: "/portfolio/laudos-estabilidade-taludes/inspecao-inicial-drenagem-escada-taludes-2025/figura-09.png",
+            alt: "Escada hidráulica em construção: registro de execução e trincas pontuais acima do trecho.",
+            legenda:
+              "Escada hidráulica em construção: registro de execução e condições do entorno.",
+          },
+          {
+            src: "/portfolio/laudos-estabilidade-taludes/inspecao-inicial-drenagem-escada-taludes-2025/figura-10.png",
+            alt: "Vista geral do canteiro com indicação de áreas e elementos de drenagem.",
+            legenda:
+              "Vista geral do canteiro: referências de áreas e elementos de drenagem avaliados.",
+          },
+          {
+            src: "/portfolio/laudos-estabilidade-taludes/inspecao-inicial-drenagem-escada-taludes-2025/figura-11.png",
+            alt: "Drenagem pluvial em torno de área de obra (valas/canais).",
+            legenda:
+              "Drenagem pluvial em torno de área de obra: registros de campo.",
+          },
+          {
+            src: "/portfolio/laudos-estabilidade-taludes/inspecao-inicial-drenagem-escada-taludes-2025/figura-12.png",
+            alt: "Poço de retardo 1: fase de execução com acesso e base preparada.",
+            legenda: "Poço de retardo 1 em execução: acesso e base do escavo.",
+          },
+          {
+            src: "/portfolio/laudos-estabilidade-taludes/inspecao-inicial-drenagem-escada-taludes-2025/figura-13.png",
+            alt: "Poço de retardo 2: fase de concretagem e instalação de manilhas.",
+            legenda:
+              "Poço de retardo 2: etapa de concretagem e instalação de manilhas.",
+          },
+          {
+            src: "/portfolio/laudos-estabilidade-taludes/inspecao-inicial-drenagem-escada-taludes-2025/figura-14.png",
+            alt: "Registros complementares de drenagem e condições de talude no entorno.",
+            legenda:
+              "Registros complementares do sistema de drenagem e do talude no entorno.",
+          },
+          {
+            src: "/portfolio/laudos-estabilidade-taludes/inspecao-inicial-drenagem-escada-taludes-2025/figura-15.png",
+            alt: "Vista geral complementar do canteiro.",
+            legenda:
+              "Vista geral complementar do canteiro (registro de apoio).",
+          },
+        ],
+      },
+    ],
+
     cta: {
-      label: "Falar no WhatsApp sobre Taludes",
-      whatsappMessage:
-        "Olá! Gostaria de solicitar um orçamento para LAUDO/AVALIAÇÃO DE TALUDE/ENCOSTA.\n\nPara agilizar, por favor envie na próxima mensagem:\n- Cidade/UF e local\n- Sinais observados (trincas, erosão, deslocamento, água/surgência, etc.)\n- Prazo desejado\n- Fotos/vídeos atuais\n- Se há risco imediato (e se é emergência – plantão 24h até 300 km de Campinas/SP)",
+      label: "Falar sobre Taludes",
+      whatsappMessage: `Olá! Gostaria de solicitar um orçamento para LAUDO/AVALIAÇÃO DE TALUDE/ENCOSTA.`,
     },
     faqs: [
       {
@@ -376,9 +706,8 @@ export const services: Service[] = [
       "Prazos e restrições de obra.",
     ],
     cta: {
-      label: "Falar no WhatsApp sobre Investigação",
-      whatsappMessage:
-        "Olá! Gostaria de solicitar um orçamento para INVESTIGAÇÃO GEOTÉCNICA.\n\nPara agilizar, por favor envie na próxima mensagem:\n- Cidade/UF e local\n- Tipo de obra (residencial, industrial, infraestrutura, etc.)\n- Prazo desejado\n- Se já existe projeto/implantação (se houver, envie)\n- Se há histórico de sondagens/relatórios anteriores (se houver, envie)",
+      label: "Falar sobre Investigação",
+      whatsappMessage: `Olá! Gostaria de solicitar um orçamento para INVESTIGAÇÃO GEOTÉCNICA.`,
     },
     faqs: [
       {
@@ -447,9 +776,8 @@ export const services: Service[] = [
       "Restrições de canteiro (acesso, vizinhança, ruído, etc.).",
     ],
     cta: {
-      label: "Falar no WhatsApp sobre Fundações",
-      whatsappMessage:
-        "Olá! Gostaria de solicitar um orçamento para FUNDAÇÕES (recomendação/suporte técnico).\n\nPara agilizar, por favor envie na próxima mensagem:\n- Cidade/UF e local\n- Tipo de obra e informações de carga (se houver)\n- Prazo desejado\n- Se existe investigação do solo/relatórios (se houver, envie)\n- Restrições de canteiro/vizinhança (se houver)",
+      label: "Falar sobre Fundações",
+      whatsappMessage: `Olá! Gostaria de solicitar um orçamento para FUNDAÇÕES (recomendação/suporte técnico).`,
     },
     faqs: [
       {
@@ -519,9 +847,8 @@ export const services: Service[] = [
       "Prazos e restrições de obra.",
     ],
     cta: {
-      label: "Falar no WhatsApp sobre Solos Moles",
-      whatsappMessage:
-        "Olá! Gostaria de solicitar um orçamento para ATERRO EM SOLO MOLE (recalque/estabilidade).\n\nPara agilizar, por favor envie na próxima mensagem:\n- Cidade/UF e local\n- Altura/volume aproximado do aterro\n- Prazo desejado\n- Histórico do terreno/recalques (se houver)\n- Fotos e croqui/implantação (se possível)",
+      label: "Falar sobre Solos Moles",
+      whatsappMessage: `Olá! Gostaria de solicitar um orçamento para ATERRO EM SOLO MOLE (recalque/estabilidade).`,
     },
     faqs: [
       {
@@ -535,6 +862,73 @@ export const services: Service[] = [
       {
         q: "Vocês fazem acompanhamento?",
         a: "Podemos fazer acompanhamento pontual em marcos críticos, se fizer sentido no seu cenário e escopo.",
+      },
+    ],
+  },
+
+  {
+    slug: "vistoria-imoveis",
+    title: "Vistoria de Imóveis (Entrega e Pós-Obra)",
+    short:
+      "Vistoria técnica em imóveis novos e usados para entrega, compra ou avaliação — com relatório claro, fotos e recomendações.",
+    seoTitle: "Vistoria de Imóveis para entrega e compra | J2C",
+    seoDescription:
+      "Vistoria técnica em imóveis novos e usados para entrega, compra ou avaliação: registro de evidências, recomendações e relatório objetivo. Atendimento nacional.",
+    keywords: [
+      "vistoria",
+      "imóvel",
+      "entrega de obra",
+      "inspeção",
+      "relatório fotográfico",
+      "laudo",
+    ],
+    overview:
+      "Na entrega de um imóvel (ou antes de comprar/alugar), o que você precisa é de clareza: o que está conforme, o que é risco, o que exige correção imediata e o que pode ser tratado depois. A vistoria técnica organiza evidências, descreve condições observadas e recomenda próximos passos — com linguagem direta e documentação que ajuda na negociação, na entrega e no histórico do imóvel.",
+    howItWorks: [
+      "Alinhamento do objetivo (entrega, compra, pós-obra, avaliação) e do nível de detalhe.",
+      "Vistoria no local com registro fotográfico e checklist por ambientes/sistemas.",
+      "Análise das evidências: severidade, risco e recomendações por prioridade.",
+      "Relatório final com fotos, descrição objetiva e próximos passos.",
+    ],
+    whenClientsLookForYou: [
+      "Entrega de apartamento/casa (novo ou reformado).",
+      "Antes de comprar/alugar um imóvel (reduzir surpresas).",
+      "Avaliação pós-obra para identificar pendências e patologias iniciais.",
+    ],
+    commonSegments: [
+      "Pessoas físicas e famílias.",
+      "Investidores e imobiliárias (quando aplicável).",
+      "Construtoras (checagem de entrega e pendências).",
+    ],
+    typicalDeliverables: [
+      "Relatório de vistoria com registro fotográfico e descrição objetiva.",
+      "Lista de pendências/prioridades (o que fazer primeiro).",
+      "Recomendações de correção e mitigação (conforme caso).",
+      "ART (quando aplicável e solicitado).",
+    ],
+    typicalTimeline:
+      "3–7 dias úteis (varia por tamanho do imóvel, nível de detalhe e urgência).",
+    clientProvides: [
+      "Endereço e disponibilidade para acesso.",
+      "Objetivo da vistoria (entrega, compra, pós-obra, etc.).",
+      "Documentos/plantas (se houver) e prazos de entrega/negociação.",
+    ],
+    cta: {
+      label: "Falar sobre Vistoria",
+      whatsappMessage: `Olá! Gostaria de solicitar um orçamento para VISTORIA DE IMÓVEL (entrega/compra/pós-obra).`,
+    },
+    faqs: [
+      {
+        q: "A vistoria serve para entrega de imóvel novo?",
+        a: "Sim. O foco é registrar evidências, identificar pendências e orientar prioridades de correção com um relatório claro.",
+      },
+      {
+        q: "Vocês fazem vistoria antes de comprar?",
+        a: "Sim. Ajuda a reduzir surpresas e dá base para negociação, principalmente quando há sinais de umidade, trincas, deformações ou histórico desconhecido.",
+      },
+      {
+        q: "Precisa ter plantas do imóvel?",
+        a: "Ajuda, mas não é obrigatório. Com acesso ao local e objetivo definido, conseguimos executar a vistoria e documentar as condições observadas.",
       },
     ],
   },
@@ -590,10 +984,126 @@ export const services: Service[] = [
       "Projetos existentes (se houver).",
       "Informações sobre drenagem (pontos de água, vazamentos, etc.).",
     ],
+
+    galeria: [
+      {
+        src: "/portfolio/muros-de-contencao/muro-divisa-fiore-gardenia-2025/foto-03-rachaduras-horizontais-muro.png",
+        alt: "Rachaduras horizontais no muro de divisa da residência vizinha (porção posterior).",
+        legenda:
+          "Fissuras horizontais contínuas, indicativas de cisalhamento ou adensamento do solo.",
+      },
+      {
+        src: "/portfolio/muros-de-contencao/muro-divisa-fiore-gardenia-2025/foto-05-ferragens-expostas-corrosao.png",
+        alt: "Ferragens expostas e em processo de corrosão no muro de divisa (residência vizinha).",
+        legenda:
+          "Armaduras aparentes com sinais de oxidação avançada, comprometendo a integridade estrutural.",
+      },
+      {
+        src: "/portfolio/muros-de-contencao/muro-divisa-fiore-gardenia-2025/foto-06-vista-geral-interface-terrenos.png",
+        alt: "Vista geral da interface entre os terrenos, com diferença de níveis e contato de solo natural com estrutura enterrada.",
+        legenda:
+          "Diferença de níveis e presença de solo natural em contato direto com estrutura enterrada.",
+      },
+    ],
+
+    casosPortfolio: [
+      {
+        id: "muro-divisa-fiore-gardenia-2025",
+        titulo:
+          "Avaliação geotécnica e estrutural — muro de divisa",
+        periodo: "2025",
+        localidadeAproximada: "São Paulo/SP",
+        resumo:
+          "Laudo técnico preliminar com inspeção e registro fotográfico do muro de divisa entre o Edifício e a residência vizinha. Foram observadas fissuras verticais nos subsolos (mais pronunciadas no 3º subsolo, com continuidade ao 2º) e galgamento/infiltração de água mesmo em período de estiagem. No muro da residência vizinha, identificaram-se rachaduras horizontais contínuas e pontos com armaduras expostas e oxidadas, indicando degradação e potencial risco estrutural.",
+        destaques: [
+          "Inspeção técnica e registros fotográficos em 19/08/2025.",
+          "Fissuras verticais progressivas no edifício, com maior abertura no 3º subsolo e continuidade ao 2º subsolo.",
+          "Galgamento/infiltração de água na base do 3º subsolo mesmo em estiagem.",
+          "Muro vizinho (~40 m) com rachaduras horizontais contínuas, sugerindo cisalhamento/adensamento do solo.",
+          "Armaduras expostas com oxidação avançada: perda de cobrimento e comprometimento de durabilidade/capacidade.",
+          "Recomendações: monitoramento, sondagens/ensaios, avaliação estrutural do muro e drenagem para alívio de pressão hidrostática.",
+        ],
+        imagens: [
+          {
+            src: "/portfolio/muros-de-contencao/muro-divisa-fiore-gardenia-2025/foto-01-fissura-vertical-3-subsolo.png",
+            alt: "Fissura vertical no terceiro subsolo do Edifício, próximo à divisa.",
+            legenda:
+              "Fissura vertical com abertura estimada em cerca de 2 mm, com continuidade até o segundo subsolo.",
+          },
+          {
+            src: "/portfolio/muros-de-contencao/muro-divisa-fiore-gardenia-2025/foto-02-infiltracao-base-3-subsolo.png",
+            alt: "Infiltração de água na base do terceiro subsolo (pé da parede de divisa).",
+            legenda:
+              "Presença de umidade/possível infiltração proveniente do solo vizinho, mesmo em período de estiagem.",
+          },
+          {
+            src: "/portfolio/muros-de-contencao/muro-divisa-fiore-gardenia-2025/foto-03-rachaduras-horizontais-muro.png",
+            alt: "Rachaduras horizontais no muro da residência vizinha (porção posterior).",
+            legenda:
+              "Fissuras horizontais contínuas, indicativas de cisalhamento ou adensamento do solo.",
+          },
+          {
+            src: "/portfolio/muros-de-contencao/muro-divisa-fiore-gardenia-2025/foto-04-trinca-horizontal-garagens.png",
+            alt: "Trinca horizontal no muro com diferença de níveis entre subsolos/garagens.",
+            legenda:
+              "Diferença de níveis entre áreas (subsolo 1 e subsolo 2) com trinca horizontal visível no muro.",
+          },
+          {
+            src: "/portfolio/muros-de-contencao/muro-divisa-fiore-gardenia-2025/foto-05-ferragens-expostas-corrosao.png",
+            alt: "Ferragens expostas e em processo de corrosão no muro de divisa da residência.",
+            legenda:
+              "Armaduras aparentes com oxidação avançada, comprometendo a integridade estrutural.",
+          },
+          {
+            src: "/portfolio/muros-de-contencao/muro-divisa-fiore-gardenia-2025/foto-06-vista-geral-interface-terrenos.png",
+            alt: "Vista geral da interface entre os terrenos (subsolo do edifício e muro da residência).",
+            legenda:
+              "Diferença de níveis e presença de solo natural em contato direto com estrutura enterrada.",
+          },
+        ],
+      },
+
+      {
+        id: "muro-fechamento-contencao-drenagem-2024",
+        titulo:
+          "Projeto e Memória de Cálculo — Muro de Fechamento com Contenção e Drenagem",
+        periodo: "2024",
+        localidadeAproximada: "Interior de SP",
+        resumo:
+          "Memória de cálculo e detalhamento técnico para muro de fechamento com função de contenção, incluindo solução de drenagem e dimensionamento estrutural em concreto armado. O trabalho contemplou definição de geometria, elementos de fundação e armação por trechos, além de estimativa de quantitativos para execução — com objetivo de garantir segurança estrutural e desempenho hidráulico do sistema.",
+        destaques: [
+          "Solução com muro de concreto armado (~2,0 m), contrafortes e reaterro compactado por camadas.",
+          "Integração de drenagem (galeria e canaletas) para controle de água e redução de pressões no maciço.",
+          "Dimensionamento estrutural por empuxo de solo e verificação de esforços (momento/cisalhamento) conforme premissas de projeto.",
+          "Detalhamento de armação por trechos + fundação com estacas e laje de base (conforme necessidade do local).",
+          "Quantitativos de materiais (concreto/aço) para apoiar planejamento e execução.",
+        ],
+        imagens: [
+          {
+            src: "/portfolio/muros-de-contencao/muro-fechamento-contencao-drenagem-2024/perfil-3-3-depois.png",
+            alt: "Perfil de estabilidade com aumento de margem de segurança após intervenções (sem dados sensíveis).",
+            legenda:
+              "Comparativo de estabilidade: leitura do fator de segurança após medidas executadas.",
+          },
+          {
+            src: "/portfolio/muros-de-contencao/muro-fechamento-contencao-drenagem-2024/perfil-3-3-antes.png",
+            alt: "Perfil de estabilidade antes das intervenções (sem dados sensíveis).",
+            legenda:
+              "Referência de análise anterior às intervenções para comparação de desempenho.",
+          },
+          {
+            src: "/portfolio/muros-de-contencao/muro-fechamento-contencao-drenagem-2024/prancha-perfil-aa-redigida.png",
+            alt: "Prancha técnica com implantação e perfil (informações de contato removidas).",
+            legenda:
+              "Prancha de implantação/perfil: referências geométricas e de drenagem (com dados sensíveis redigidos).",
+          },
+        ],
+      },
+    ],
+
     cta: {
-      label: "Falar no WhatsApp sobre Contenção",
-      whatsappMessage:
-        "Olá! Gostaria de solicitar um orçamento para MURO DE CONTENÇÃO/CONTENÇÃO.\n\nPara agilizar, por favor envie na próxima mensagem:\n- Cidade/UF e local\n- Sintomas (trincas, deslocamento, água/saturação, etc.)\n- Prazo desejado\n- Fotos/vídeos\n- Se há risco imediato (e se é emergência – plantão 24h até 300 km de Campinas/SP)",
+      label: "Falar sobre Contenção",
+      whatsappMessage: `Olá! Gostaria de solicitar um orçamento para MURO DE CONTENÇÃO/CONTENÇÃO.`,
     },
     faqs: [
       {
@@ -612,11 +1122,40 @@ export const services: Service[] = [
   },
 ];
 
-export function getServiceBySlug(slug: string) {
+export const ordemServicosPrioridade: readonly string[] = [
+  "investigacao-geotecnica",
+  "laudos-estabilidade-taludes",
+  "barragens",
+  "muros-de-contencao",
+  "fundacoes",
+  "aterros-solos-moles",
+  "drone-topografia-monitoramento",
+  "vistoria-imoveis",
+  "regularizacao-prefeitura",
+];
+
+function isServiceDefined(service: Service | undefined): service is Service {
+  return service !== undefined;
+}
+
+export function getServicesEmOrdemPrioritaria(): Service[] {
+  const porSlug = new Map(services.map((s) => [s.slug, s] as const));
+  const prioridadeSet = new Set(ordemServicosPrioridade);
+
+  const ordenados = ordemServicosPrioridade
+    .map((slug) => porSlug.get(slug))
+    .filter(isServiceDefined);
+
+  const restantes = services.filter((s) => !prioridadeSet.has(s.slug));
+
+  return [...ordenados, ...restantes];
+}
+
+export function getServiceBySlug(slug: string): Service | undefined {
   const normalized = decodeURIComponent(slug).toLowerCase().trim();
   return services.find((s) => s.slug.toLowerCase() === normalized);
 }
 
-export function getAllServiceSlugs() {
+export function getAllServiceSlugs(): string[] {
   return services.map((s) => s.slug);
 }
