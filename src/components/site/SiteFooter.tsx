@@ -60,6 +60,31 @@ function EmergencyBadge({
   );
 }
 
+function BadgeDesenvolvidoPorSitesTurbo() {
+  return (
+    <a
+      href="https://www.sitesturbo.com.br/"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Visitar Sites Turbo"
+      title="Visitar Sites Turbo"
+      className="inline-flex items-center gap-2 no-underline text-slate-500 hover:text-slate-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--j2c-gold)]"
+    >
+      <span className="whitespace-nowrap text-[11px] font-medium">
+        Desenvolvido por
+      </span>
+
+      <Image
+        src="/brand/logo-sitesturbo.png"
+        alt="Sites Turbo"
+        width={260}
+        height={65}
+        className="h-10 w-auto"
+      />
+    </a>
+  );
+}
+
 export function SiteFooter() {
   const year = new Date().getFullYear();
 
@@ -180,18 +205,25 @@ export function SiteFooter() {
 
       <div className="border-t border-black/10">
         <div className="mx-auto max-w-6xl px-4 py-4">
-          <div className="mx-auto grid max-w-4xl items-center gap-3 text-xs text-slate-600 sm:grid-cols-3">
-            <span className="sm:justify-self-start">
+          <div className="mx-auto grid max-w-6xl items-center gap-3 text-xs text-slate-600 sm:grid-cols-[1fr_auto_1fr]">
+            <span
+              className="min-w-0 truncate sm:justify-self-start"
+              title={`© ${year} ${siteConfig.legalName}. Todos os direitos reservados.`}
+            >
               © {year} {siteConfig.legalName}. Todos os direitos reservados.
             </span>
 
-            <div className="sm:justify-self-center">
+            <div className="justify-self-center">
               <SecureConnectionBadge />
             </div>
 
-            <span className="sm:justify-self-end">
-              CREA-{siteConfig.crea.uf} {siteConfig.crea.number}
-            </span>
+            <div className="flex items-center justify-end gap-15 justify-self-end">
+              <span className="whitespace-nowrap">
+                CREA-{siteConfig.crea.uf} {siteConfig.crea.number}
+              </span>
+
+              <BadgeDesenvolvidoPorSitesTurbo />
+            </div>
           </div>
         </div>
       </div>

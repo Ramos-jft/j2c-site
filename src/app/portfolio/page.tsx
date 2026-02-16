@@ -111,11 +111,11 @@ export default async function PortfolioPage({
         {/* ✅ REMOVIDO: seção “Registros” (grid por galeria) */}
 
         {casos.length ? (
-          <div className="mt-8 grid gap-4 lg:grid-cols-2">
+          <div className="mt-8 columns-1 gap-4 lg:columns-2">
             {casos.map(({ servico, caso }) => (
               <article
                 key={`${servico.slug}:${caso.id}`}
-                className="overflow-hidden rounded-2xl border border-black/10 bg-white p-6"
+                className="mb-4 inline-block w-full break-inside-avoid overflow-hidden rounded-2xl border border-black/10 bg-white p-6"
               >
                 <p className="text-xs font-semibold text-slate-500">
                   {montarMetaDoCaso(
