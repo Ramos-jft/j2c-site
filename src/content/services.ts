@@ -1080,19 +1080,19 @@ export const services: Service[] = [
         ],
         imagens: [
           {
-            src: "/public/portfolio/muros-de-contencao/muro-fechamento-contencao-drenagem-2024/antes-3-3.png",
+            src: "/portfolio/muros-de-contencao/muro-fechamento-contencao-drenagem-2024/antes-3-3.png",
             alt: "Registro da condição anterior à intervenção, com área externa e piso degradado/irregular, indicando necessidade de adequação do escoamento superficial e captação de águas pluviais.",
             legenda:
               "Antes — Situação existente (drenagem/área externa).",
           },
           {
-            src: "/public/portfolio/muros-de-contencao/muro-fechamento-contencao-drenagem-2024/solucao-drenagem.png",
+            src: "/portfolio/muros-de-contencao/muro-fechamento-contencao-drenagem-2024/solucao-drenagem.png",
             alt: "Prancha do projeto de drenagem com implantação do traçado, pontos de captação/transição e galerias, incluindo perfil longitudinal e seções típicas (sem expor dados sensíveis do local).",
             legenda:
               "Solução — Projeto básico de drenagem (implantação + perfis)",
           },
           {
-            src: "/public/portfolio/muros-de-contencao/muro-fechamento-contencao-drenagem-2024/solucao-muro.png",
+            src: "/portfolio/muros-de-contencao/muro-fechamento-contencao-drenagem-2024/solucao-muro.png",
             alt: "Prancha do muro de fechamento com implantação por trechos e detalhamento de elementos estruturais (ex.: contrafortes/estacas), com ilustração sobre imagem aérea para contextualização (sem identificar endereço/proprietários).",
             legenda:
               "Solução — Projeto do muro de fechamento/contensão (implantação + detalhes)",
