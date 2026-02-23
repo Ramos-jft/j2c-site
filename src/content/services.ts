@@ -1080,22 +1080,22 @@ export const services: Service[] = [
         ],
         imagens: [
           {
-            src: "/portfolio/muros-de-contencao/muro-fechamento-contencao-drenagem-2024/perfil-3-3-depois.png",
-            alt: "Perfil de estabilidade com aumento de margem de segurança após intervenções (sem dados sensíveis).",
+            src: "/public/portfolio/muros-de-contencao/muro-fechamento-contencao-drenagem-2024/antes-3-3.png",
+            alt: "Registro da condição anterior à intervenção, com área externa e piso degradado/irregular, indicando necessidade de adequação do escoamento superficial e captação de águas pluviais.",
             legenda:
-              "Comparativo de estabilidade: leitura do fator de segurança após medidas executadas.",
+              "Antes — Situação existente (drenagem/área externa).",
           },
           {
-            src: "/portfolio/muros-de-contencao/muro-fechamento-contencao-drenagem-2024/perfil-3-3-antes.png",
-            alt: "Perfil de estabilidade antes das intervenções (sem dados sensíveis).",
+            src: "/public/portfolio/muros-de-contencao/muro-fechamento-contencao-drenagem-2024/solucao-drenagem.png",
+            alt: "Prancha do projeto de drenagem com implantação do traçado, pontos de captação/transição e galerias, incluindo perfil longitudinal e seções típicas (sem expor dados sensíveis do local).",
             legenda:
-              "Referência de análise anterior às intervenções para comparação de desempenho.",
+              "Solução — Projeto básico de drenagem (implantação + perfis)",
           },
           {
-            src: "/portfolio/muros-de-contencao/muro-fechamento-contencao-drenagem-2024/prancha-perfil-aa-redigida.png",
-            alt: "Prancha técnica com implantação e perfil (informações de contato removidas).",
+            src: "/public/portfolio/muros-de-contencao/muro-fechamento-contencao-drenagem-2024/solucao-muro.png",
+            alt: "Prancha do muro de fechamento com implantação por trechos e detalhamento de elementos estruturais (ex.: contrafortes/estacas), com ilustração sobre imagem aérea para contextualização (sem identificar endereço/proprietários).",
             legenda:
-              "Prancha de implantação/perfil: referências geométricas e de drenagem (com dados sensíveis redigidos).",
+              "Solução — Projeto do muro de fechamento/contensão (implantação + detalhes)",
           },
         ],
       },
