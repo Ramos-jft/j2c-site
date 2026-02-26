@@ -4,6 +4,10 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { siteConfig } from "@/content/site";
 import { buildMailtoLink } from "@/lib/email";
+import {
+  registrarConversaoEmail,
+  registrarConversaoWhatsApp,
+} from "@/lib/tracking/googleAds";
 
 type AlinhamentoMenu = "esquerda" | "direita";
 
@@ -63,7 +67,7 @@ export function BotaoContatoComSelecao({
 
   const hrefEmail = buildMailtoLink({
     destinatario: destinatarioEmail,
-    assunto: assuntoEmail
+    assunto: assuntoEmail,
   });
 
   useEffect(() => {
@@ -152,7 +156,10 @@ export function BotaoContatoComSelecao({
             className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-sm font-semibold text-slate-900 hover:bg-[var(--j2c-cor-superficie)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--j2c-cor-laranja)]"
             target={abrirWhatsAppEmNovaAba ? "_blank" : undefined}
             rel={abrirWhatsAppEmNovaAba ? "noopener noreferrer" : undefined}
-            onClick={() => setAberto(false)}
+            onClick={() => {
+              registrarConversaoWhatsApp();
+              setAberto(false);
+            }}
           >
             Falar no WhatsApp
           </a>
@@ -162,6 +169,8 @@ export function BotaoContatoComSelecao({
             href={hrefEmail}
             className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-sm font-semibold text-slate-900 hover:bg-[var(--j2c-cor-superficie)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--j2c-cor-laranja)]"
             onClick={() => {
+              registrarConversaoEmail();
+
               // Não usar preventDefault para não atrapalhar o mailto:
               setAberto(false);
               abrirAvisoEmail();

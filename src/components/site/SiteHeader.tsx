@@ -7,6 +7,7 @@ import { siteConfig } from "@/content/site";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 import { getServiceBySlug } from "@/content/services";
 import { LinkEmailComFallback } from "@/components/contato/LinkEmailComFallback";
+import { registrarConversaoWhatsApp } from "@/lib/tracking/googleAds";
 
 type ItemMenu = { href: string; label: string };
 
@@ -68,7 +69,6 @@ export function SiteHeader() {
     const servico = getServiceBySlug(slug);
     if (!servico) return assuntoPadrao;
 
-    // Mesma linha usada nos CTAs da página do serviço
     return `Orçamento - ${servico.title}`;
   })();
 
@@ -119,6 +119,9 @@ export function SiteHeader() {
                 className="j2c-header-icone-link"
                 aria-label="Chamar no WhatsApp"
                 title="WhatsApp"
+                onClick={() => {
+                  registrarConversaoWhatsApp();
+                }}
               >
                 <Image
                   src="/brand/whatsapp-v2.png"
@@ -168,9 +171,9 @@ export function SiteHeader() {
 
           <nav
             aria-label="Menu principal"
-            className="col-span-2 row-start-2 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 sm:col-span-1 sm:col-start-2 sm:row-start-1"
+            className="col-span-2 row-start-2 flex flex-wrap items-center gap-x-4 gap-y-2 sm:col-span-1 sm:col-start-2 sm:row-start-1 sm:justify-self-center"
           >
-            <MenuLinks caminhoAtual={caminhoAtual} />
+            <MenuLinks caminhoAtual={caminhoAtual ?? "/"} />
           </nav>
         </div>
       </div>

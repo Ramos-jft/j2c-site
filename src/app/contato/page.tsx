@@ -3,6 +3,7 @@ import Image from "next/image";
 import { siteConfig } from "@/content/site";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 import { LinkEmailComFallback } from "@/components/contato/LinkEmailComFallback";
+import { LinkWhatsAppComConversao } from "@/components/tracking/LinkWhatsAppComConversao";
 
 export const metadata: Metadata = {
   title: "Contato",
@@ -34,7 +35,7 @@ export default function ContactPage() {
         </p>
 
         <div className="mt-4 grid gap-3 text-sm">
-          <a
+          <LinkWhatsAppComConversao
             className="flex items-center gap-2 text-slate-700 hover:text-slate-900"
             href={wa}
             target="_blank"
@@ -48,7 +49,7 @@ export default function ContactPage() {
               className="h-[18px] w-[18px]"
             />
             <span>WhatsApp: {siteConfig.contacts.whatsapp}</span>
-          </a>
+          </LinkWhatsAppComConversao>
 
           <LinkEmailComFallback
             assunto={`Orçamento - ${siteConfig.name}`}
