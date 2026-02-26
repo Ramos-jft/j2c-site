@@ -4,6 +4,7 @@
 import { useEffect, useRef, useState } from "react";
 import { siteConfig } from "@/content/site";
 import { buildMailtoLink } from "@/lib/email";
+import { registrarConversaoEmail } from "@/lib/tracking/googleAds";
 
 type EstadoCopia = "idle" | "ok" | "erro";
 
@@ -103,6 +104,8 @@ export function LinkEmailComFallback({
         aria-label={ariaLabel}
         title={title}
         onClick={() => {
+          registrarConversaoEmail();
+
           // Não usar preventDefault para não atrapalhar o mailto:
           setFallbackAberto(false);
           setEstadoCopia("idle");

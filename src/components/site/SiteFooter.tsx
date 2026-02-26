@@ -3,6 +3,7 @@ import Image from "next/image";
 import { siteConfig } from "@/content/site";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 import { LinkEmailComFallback } from "@/components/contato/LinkEmailComFallback";
+import { LinkWhatsAppComConversao } from "@/components/tracking/LinkWhatsAppComConversao";
 
 function SecureConnectionBadge() {
   return (
@@ -44,10 +45,12 @@ function EmergencyBadge({
   title,
 }: Readonly<{ href: string; title: string }>) {
   return (
-    <a
+    <LinkWhatsAppComConversao
       href={href}
       aria-label="Acionar plantão 24 horas via WhatsApp"
       title={title}
+      target="_blank"
+      rel="noopener noreferrer"
       className="mt-3 inline-flex items-center gap-2 rounded-full border border-[var(--j2c-whatsapp)]/35 bg-[var(--j2c-whatsapp)]/12 px-3 py-2 text-xs font-semibold text-[var(--j2c-whatsapp)] hover:bg-[var(--j2c-whatsapp)]/16 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--j2c-gold)]"
     >
       <span
@@ -56,17 +59,16 @@ function EmergencyBadge({
       />
       <span>Plantão 24h</span>
       <span className="hidden sm:inline text-slate-600">• Emergências</span>
-    </a>
+    </LinkWhatsAppComConversao>
   );
 }
 
-function BadgeDesenvolvidoPorSitesTurbo() {
+function SitesTurboBadge() {
   return (
     <a
-      href="https://www.sitesturbo.com.br/"
+      href="https://www.sitesturbo.com.br"
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Visitar Sites Turbo"
       title="Visitar Sites Turbo"
       className="inline-flex items-center gap-2 no-underline text-slate-500 hover:text-slate-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--j2c-gold)]"
     >
@@ -122,7 +124,7 @@ export function SiteFooter() {
             </p>
 
             <div className="mt-3 space-y-2 text-sm">
-              <a
+              <LinkWhatsAppComConversao
                 href={buildWhatsAppLink(
                   siteConfig.contacts.whatsapp,
                   "Olá! Vim pelo site e gostaria de um orçamento.",
@@ -139,7 +141,7 @@ export function SiteFooter() {
                   className="h-[18px] w-[18px]"
                 />
                 <span>WhatsApp: {siteConfig.contacts.whatsapp}</span>
-              </a>
+              </LinkWhatsAppComConversao>
 
               <LinkEmailComFallback
                 assunto={`Orçamento - ${siteConfig.name}`}
@@ -178,53 +180,45 @@ export function SiteFooter() {
           </div>
 
           <div>
-            <p className="text-sm font-semibold text-slate-900">Informações</p>
-            <div className="mt-2 flex flex-col gap-2 text-sm">
+            <p className="text-sm font-semibold text-slate-900">Navegação</p>
+
+            <div className="mt-3 space-y-2 text-sm">
+              <Link className="text-slate-700 hover:text-slate-900" href="/">
+                Início
+              </Link>
+              <br />
               <Link
                 className="text-slate-700 hover:text-slate-900"
                 href="/servicos"
               >
-                Ver serviços
+                Serviços
               </Link>
+              <br />
               <Link
                 className="text-slate-700 hover:text-slate-900"
                 href="/portfolio"
               >
-                Ver portfólio
+                Portfólio
               </Link>
+              <br />
               <Link
                 className="text-slate-700 hover:text-slate-900"
                 href="/contato"
               >
-                Solicitar orçamento
+                Contato
               </Link>
             </div>
           </div>
         </div>
-      </div>
 
-      <div className="border-t border-black/10">
-        <div className="mx-auto max-w-6xl px-4 py-4">
-          <div className="mx-auto grid max-w-6xl items-center gap-3 text-xs text-slate-600 sm:grid-cols-[1fr_auto_1fr]">
-            <span
-              className="min-w-0 truncate sm:justify-self-start"
-              title={`© ${year} ${siteConfig.legalName}. Todos os direitos reservados.`}
-            >
-              © {year} {siteConfig.legalName}. Todos os direitos reservados.
-            </span>
-
-            <div className="justify-self-center">
-              <SecureConnectionBadge />
-            </div>
-
-            <div className="flex items-center justify-end gap-15 justify-self-end">
-              <span className="whitespace-nowrap">
-                CREA-{siteConfig.crea.uf} {siteConfig.crea.number}
-              </span>
-
-              <BadgeDesenvolvidoPorSitesTurbo />
-            </div>
+        <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-black/10 pt-6 sm:flex-row">
+          <div className="text-xs text-slate-600">
+            © {year} {siteConfig.legalName}. Todos os direitos reservados.
           </div>
+
+          <SecureConnectionBadge />
+
+          <SitesTurboBadge />
         </div>
       </div>
     </footer>
