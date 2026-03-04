@@ -1,4 +1,5 @@
 import Script from "next/script";
+import { Suspense } from "react";
 import { GoogleAnalyticsPageView } from "@/components/tracking/GoogleAnalyticsPageView";
 
 const idGa4 = process.env.NEXT_PUBLIC_GA4_ID?.trim();
@@ -20,7 +21,9 @@ export function GoogleTag() {
         gtag('config', '${idGa4}', { send_page_view: false });
       `}</Script>
 
-      <GoogleAnalyticsPageView />
+      <Suspense fallback={null}>
+        <GoogleAnalyticsPageView />
+      </Suspense>
     </>
   );
 }
