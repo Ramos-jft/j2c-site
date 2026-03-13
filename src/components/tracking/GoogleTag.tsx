@@ -5,44 +5,41 @@ import { GoogleAnalyticsPageView } from "@/components/tracking/GoogleAnalyticsPa
 const idGa4 = process.env.NEXT_PUBLIC_GA4_ID?.trim();
 const idGoogleAds = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID?.trim();
 
-function normalizarId(valor?: string) {
-  const v = (valor ?? "").trim();
-  return v.length > 0 ? v : null;
-}
+const idTagPrincipal = idGa4 || idGoogleAds;
 
 export function GoogleTag() {
-  const ga4 = normalizarId(idGa4);
-  const ads = normalizarId(idGoogleAds);
-
-  // Se não houver nenhum ID configurado, não injeta tag.
-  if (!ga4 && !ads) return null;
-
-  // Carrega o gtag.js com um ID “principal” (qualquer um funciona).
-  const idPrincipal = ga4 ?? ads;
+  if (!idTagPrincipal) return null;
 
   return (
     <>
       <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${idPrincipal}`}
+        src={`https://www.googletagmanager.com/gtag/js?id=${idTagPrincipal}`}
         strategy="afterInteractive"
       />
 
-      <Script id="google-tag-init" strategy="afterInteractive">{`
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){window.dataLayer.push(arguments);}
-        window.gtag = window.gtag || gtag;
+      <Script id="google-tag-init" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          window.gtag = window.gtag || gtag;
 
-        gtag('js', new Date());
+          gtag('js', new Date());
 
-        ${ga4 ? `gtag('config', '${ga4}', { send_page_view: false });` : ""}
+          ${
+            idGa4
+              ? `gtag('config', '${idGa4}', { send_page_view: false });`
+              : ""
+          }
 
-        ${ads ? `gtag('config', '${ads}');` : ""}
-      `}</Script>
+          ${idGoogleAds ? `gtag('config', '${idGoogleAds}');` : ""}
+        `}
+      </Script>
 
-      {/* Page view manual para App Router (SPA) */}
-      <Suspense fallback={null}>
-        <GoogleAnalyticsPageView />
-      </Suspense>
+      {idGa4 ? (
+        <Suspense fallback={null}>
+          <GoogleAnalyticsPageView />
+        </Suspense>
+      ) : null}
     </>
   );
 }
